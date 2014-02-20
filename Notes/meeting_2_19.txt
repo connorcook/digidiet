@@ -1,0 +1,91 @@
+;; Notes from 2/19 meeting, organized by requirement topic
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+What type of information will be posted; and how will it be posted?
+-recipe site
+	-food and drinks
+-possible age restricted category (NSFW)
+	-verification system needed
+	-alcohol does not require age verification
+-recipe requirements
+	-REQUIRE a photo
+	-description of recipe
+	-what it is
+	-procedure
+	-possible reverse image search to ensure recipes/photos are original
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+What type of information comprises user profiles?
+-username
+-description of what they like to cook
+-badges/ratings
+-followers
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+What will show up on the user profile page?
+-avatar
+	-picture they can upload, whatever they want it to be
+-about me (what they like to cook)
+-badges
+	-no complex selection system for displaying badges
+	-something simple, like displaying badges over avatar
+-how many followers
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+What powers administrators, moderators, and users will have?
+-User rights
+	-fill out profile
+	-post recipes
+	-create account
+	-post comments
+	-review/rate recipes
+	-search for recipes
+	-click on recipes
+	-delete own account
+-Moderators
+	-review content before it is posted
+		-for recipes only
+		-flagging for any content
+-Admins
+	-ability to ban
+	-can assign role of moderator
+	-decide what goes on the front page
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+How will the reviews and comments work?
+-Rating system
+	-keep it narrow
+	-5 star rating system
+-comments are important
+	-require a (verified?) comment/review to get credit for making a recipe to incentivize comments
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
+How the search will work?
+-search by titles, usernames, filter by attributes
+-order results by most relevant (# words in common or another algorithm)
+	-maybe identify top chef recipes by badges, not by search
+	-some filtering/ordering of results, but up to group based on what
+	-click on a category to search (simple UI)
+How will user reputation work?
+-badges
+	-keep it small/simple
+-how many recipes uploaded (or attempted?)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Implementation details (database, programming language, platform)
+-doesn't care
+-keep it simple
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+Any other details
+-Notifications
+	-users should be notified about activity
+	-esp if content has been taken down
+	
