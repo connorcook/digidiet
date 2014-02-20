@@ -1,0 +1,55 @@
+# Notes I took form our 2-19 meeting with Morgan #
+
+- Food/drink sharing site
+- moderators -> monitor content
+- NSFW section of site?
+  - age verification for this section only
+
+- commenting system for recipies - moderately high priority
+  -most relevent post first under a recipe
+  -consdier rewarding system
+
+-user profiles:
+      picture avatar, doesn't have to be themselves
+      name
+      description/interests/about me
+      display rewards/incentives
+      followers/following
+
+- recipe ratings out of five stars
+- simple design 
+- don't care about implemention, that's up to us
+
+user abilities:
+     make account, log in, fill out profile
+     have unique username
+     post recipes
+     post comments
+     review/rank recipes
+     search recipes
+     delete account
+
+notification system: notify user of activity related to their account
+	     	     up to us what exactly we notify
+
+content(recipes, comments, users, etc.) can be flagged by users for 
+review by mods/admins
+
+moderators:
+	review content before it gets put up on the site
+	can say no to content
+	review flags, send major issues to admins
+
+admin:
+	assign mods, ban users, all abilities of mod as well
+
+ability to search by title and username
+results returned by relvance(ratings)
+
+no need to implement a filter on the search, that can come if we 
+have time later
+
+recipes can be tagged for searching
+
+have bi-weekly meetings with Morgan to keep her up-to-date
+email is the best form of contact
