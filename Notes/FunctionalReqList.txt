@@ -1,0 +1,12 @@
+List of Functional Requirements
+
+1) Users have ability to search for recipes
+2) Users have ability to rate recipes out of 5 stars
+3) Users have ability to write a comment or review of recipe
+4) Users have ability to flag a comment for review
+5) Moderators can review and approve content
+6) Administrators can designate and remove moderators
+7) Administrators can change the front page
+8) Administrators can ban users
+9) Users will be notified if content is taken down
+10) 
