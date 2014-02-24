@@ -1,0 +1,20 @@
+Brent Mattox
+February 20, 2014
+1st Customer Meeting – Requirements Notes
+
+* Website content: food and drink recipes
+* User profiles: should include: avatar (option to upload pic), description, interests, badges, followers/how many followers and how many following
+* Recipe rating out of 5 stars
+* Must be able to leave comments for recipes
+* 21+ category (e.g. for alcoholic drink recipes)? Is there a need to restrict? – group decision
+* Posting a recipe – content: require a picture of what is being made, recipe description, ingredients list, recipe procedure, tags
+* home page should display trending recipes or relevant recipes (perhaps due to an upcoming holiday)
+* Customer does not care about what technologies or software we use to build the site
+* User/moderator/administrator powers:
+	* Users: fill out profile, post recipes, post comments, review recipes, search recipes, navigate site, delete account, receive notifications about activity related to their account (e.g. content removed)
+	* Moderators: in addition to all user privileges, moderators will also be responsible for reviewing recipes before allowing them to be posted; all other content will be reviewed if flagged (moderators should be notified of flagged content)
+	* Administrators: in addition to all moderator privileges, administrators can also ban users and assign moderators
+* Searching: be able to search recipes by name or by user name
+* results should be returned by relevance to query (based on words in common with the search)
+* User reputation: based on…badges, average recipe ratings, etc – group decision
+* Customer communication: customer prefers email, and meetings every two weeks (unless she feels updated enough, then meetings may take place less frequently)
