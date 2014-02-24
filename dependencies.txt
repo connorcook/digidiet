@@ -1,0 +1,22 @@
+Dependencies, Plugins, etc for Deployment
+
+Composer.json -> used to install Laravel and other resources for PHP framework-facilitated development
+-(will be using this a lot in the future!)
+-install in project root under /bin
+Requires:
+-Following should be under plugins or config settings for XAMP, WAMP, etc: email me with questions (cookcon1@umbc.edu)
+--php:
+---mcrypt
+---curl
+---cgi
+---apache
+--and of course, php should be installed already- please do so immediately if it hasn't!
+--PHAR (PHP archive) and JSON should be recognized by the server correctly- Composer install will fail if not. Fix by editing php.ini config file
+
+Laravel -> installed trivially via Composer in project root (_not_ /bin)
+- Install includes Hello World and example of View/Controller usage
+- Read up on URIs in the context of RESTful architectures: critical to early deployment
+
+Git Repo MUST be inside the server root directory
+-- KNOW YOUR SERVER ROOT, and change if its not easy to access. (ie: Linux users may want to change their server root in /etc/httpd/conf/httpd.ini to /home/*username*/)
+-- Avoid enabling unnecessary settings and plugins in config- will make it difficult in the future to do standardized testing
