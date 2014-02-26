@@ -61,3 +61,5 @@ Commenting system for recipes:
 	Ability to write a comment or review of the recipe
 	simple design
 	ability for users to flag a comment to be reviewed by moderators
+
+Give updates to customer bi-weekly
