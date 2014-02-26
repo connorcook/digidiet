@@ -1,22 +1,39 @@
 Dependencies, Plugins, etc for Deployment
 
-Composer.json -> used to install Laravel and other resources for PHP framework-facilitated development
--(will be using this a lot in the future!)
--install in project root under /bin
-Requires:
+Laravel has been installed in the repo!
+-Installed under temp name of "digidiet"
+-Access splash page with localhost/*reponame*/digidiet/public/
+-reponame is by default "Section-2-Team-3"
+-Requires:
 -Following should be under plugins or config settings for XAMP, WAMP, etc: email me with questions (cookcon1@umbc.edu)
---php:
----mcrypt
----curl
----cgi
----apache
---and of course, php should be installed already- please do so immediately if it hasn't!
---PHAR (PHP archive) and JSON should be recognized by the server correctly- Composer install will fail if not. Fix by editing php.ini config file
+--Following should be enabled in php/php.ini 
+--(XAMP/WAMP users can right click on WAMP/XAMP icon and enable/disable these under PHP settings)
+___________
 
-Laravel -> installed trivially via Composer in project root (_not_ /bin)
-- Install includes Hello World and example of View/Controller usage
-- Read up on URIs in the context of RESTful architectures: critical to early deployment
+---mcrypt.so
+---json.so
+---openssl.so
+---phar.so
+---mysql.so
+---curl.so
+---cgi.so
+---apache.so
+---zip.so
+____________
+--# is comment marker for php, to enable, remove # from existing entry
+--If php.ini does not include one of these plugins already...
+-- .. FIRST add it to the list yourself in the same format as the others
+-- THEN try to download and install the extension yourself if that doesn't work.
 
-Git Repo MUST be inside the server root directory
--- KNOW YOUR SERVER ROOT, and change if its not easy to access. (ie: Linux users may want to change their server root in /etc/httpd/conf/httpd.ini to /home/*username*/)
+
+Git Repo MUST be inside the document root directory of server!
+-- KNOW YOUR DOCUMENT ROOT. for XAMP/WAMP/MAMP, its in htdocs in the main XAMP folder
+-- linux users have their document root in one of several places: check your repo for more info. (mine is in /srv/http/)
 -- Avoid enabling unnecessary settings and plugins in config- will make it difficult in the future to do standardized testing
+
+*AMP users should have these plugins already: if you are missing any and putting them in php.ini doesn't work,
+-- find the extensions online via google.
+*nix users may be missing the packages necessary: if something is missing, check your package manager first. 
+---(Many php extensions are located there!)
+We are using PHP5.4- check which version you have and if you have the option, switch to 5.4.
+-- Currently more ideal to use 5.4 for conflict-free development.
