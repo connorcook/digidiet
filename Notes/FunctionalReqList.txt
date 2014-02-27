@@ -1,12 +1,30 @@
 List of Functional Requirements
 
-1) Users have ability to search for recipes
-2) Users have ability to rate recipes out of 5 stars
-3) Users have ability to write a comment or review of recipe
-4) Users have ability to flag a comment for review
-5) Moderators can review and approve content
-6) Administrators can designate and remove moderators
-7) Administrators can change the front page
-8) Administrators can ban users
-9) Users will be notified if content is taken down
-10) 
+ User can create a new account. 
+ User can log in.
+ User can view a profile. 
+ User can upload a recipe. 
+ User can rate a recipe.
+ User can write a comment on a recipe.
+ User can search for a recipe. 
+ User can view their statistics. 
+ User will recieve notifications about their recipes.
+ User can flag a comment. 
+ Moderator will approve recipes before posting.
+ Admins can assign moderators.
+ Admins can ban users.
+ Admin/Mods can remove comments. 
+ 
+
+List of non-functoinal requirements
+
+ Must follow Spiral development process.
+ Must use a PHP framework.
+ Must have bi-weekly updates with customer. 
+ Must utilize Github to store the project. 
+ All code will be well documented.
+ Must adhere to group set coding standards. 
+ Appplication will use MVC design. 
+ Site will be secure.
+ Utilize only publicly available technologies.
+ We will write maintainable code. 
