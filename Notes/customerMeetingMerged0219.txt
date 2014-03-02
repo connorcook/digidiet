@@ -1,3 +1,5 @@
+Creating a website where people can share and review recipes
+
 Overview:
 	Food recipes section
 	Drink recipes section

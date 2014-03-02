@@ -3,15 +3,19 @@ List of Functional Requirements
  User can create a new account. 
  User can log in.
  User can view a profile. 
+
  User can upload a recipe. 
  User can rate a recipe.
  User can write a comment on a recipe.
+
  User can search for a recipe. 
  User can view their statistics. 
- User will recieve notifications about their recipes.
+ User will receive notifications about their recipes.
+
  User can flag a comment. 
  Moderator will approve recipes before posting.
  Admins can assign moderators.
+
  Admins can ban users.
  Admin/Mods can remove comments. 
  
@@ -24,7 +28,7 @@ List of non-functoinal requirements
  Must utilize Github to store the project. 
  All code will be well documented.
  Must adhere to group set coding standards. 
- Appplication will use MVC design. 
+ Application will use MVC design. 
  Site will be secure.
  Utilize only publicly available technologies.
  We will write maintainable code. 
