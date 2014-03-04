@@ -13,6 +13,7 @@
 			color: #000000;
 			left: 50%;
 			top: 50%;
+		        background-image:url("/images/food.png");
 		}
 
 		.container {
@@ -22,6 +23,8 @@
 			margin-top: 50px;
 			margin-bot: 50px;
 			margin-right: 50px;
+		        background-color:#ffffff;
+		        opacity:0.7;
 			
 		 }
 
