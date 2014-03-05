@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Welcome to DIGIDIET.com!</title>
@@ -9,24 +10,35 @@
 		body {
 			margin:0;
 			font-family:'Lato', sans-serif;
+			font-size: 20px;
+			font-color: #FF7400;
 			text-align:center;
 			color: #000000;
-			left: 50%;
-			top: 50%;
-		        background-image:url("/images/food.png");
+			
+		    background-image: url({{ URL::asset('/images/food.png'); }})
+
 		}
 
+
 		.container {
-			border:2px solid #FF0000;
-			border-radius:25px;
-			margin-left: 50px;
-			margin-top: 50px;
-			margin-bot: 50px;
-			margin-right: 50px;
-		        background-color:#ffffff;
-		        opacity:0.7;
+			
+			border:3px solid #216268;
+			border-radius:15px;
+			width: 60%;
+			margin: 20% auto;
+			padding: 10px;
+
+		    background-color:#009999;
+
+		       opacity:0.7;
 			
 		 }
+		 h2{
+			font-size:  64px;
+			font-color: #A64B00;
+			margin-bottom: 5px;
+			margin-top: 5px;
+		}
 
 		a, a:visited {
 			text-decoration:none;
@@ -34,14 +46,15 @@
 
 		h1 {
 			font-size: 32px;
-			margin: 16px 0 0 0;
 		}
 	</style>
 </head>
 <body>
+
 	    
         <div class="container">
             @yield('content')
         </div>
+
 </body>
 </html>

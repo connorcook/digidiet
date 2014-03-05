@@ -1,9 +1,10 @@
 @extends('layouts.standard')
 
 @section('content')
-     <h2>DIGIDIET</h2>
+     <h2>DigiDiet</h2>
+     <hr style="border-color: #216268; width: 75%"/>
      <body>
-     Food of the future.
-     Food of the world.
+     Just another reason to love cooking.
+     Coming soon.
      </body>
 @stop
