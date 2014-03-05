@@ -54,7 +54,9 @@
 	    
         <div class="container">
             @yield('content')
+        {{ Form::email($name, $value = null, $attributes = array()); }}
         </div>
+        
 
 </body>
 </html>
