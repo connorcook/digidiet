@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
+
 use Illuminate\Database\Migrations\Migration;
 
 class CreateRecipes extends Migration {
@@ -13,10 +13,12 @@ class CreateRecipes extends Migration {
 	public function up()
 	{
 		Schema::create('recipes', function($table) {
+			// auto-increment ID / primary key
             $table->increments('id');
-            $table->string('post_title', 255);
-            $table->text('post_body');
-            $table->integer('post_author');
+            $table->string('recipe_name', 255);
+            $table->text('recipe_body');
+            $table->integer('author_id')->unsigned();
+            
             $table->timestamps();
         });
 	}

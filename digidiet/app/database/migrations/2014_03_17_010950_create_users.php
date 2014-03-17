@@ -18,6 +18,7 @@ class CreateUsers extends Migration {
 			$table->string('username', 64);
 			$table->string('password', 64);
 			$table->string('name', 128);
+			$table->text('about_me');
 			$table->timestamps();
 		});
 
