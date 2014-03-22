@@ -9,4 +9,14 @@
      <hr style="border-color: #216268; width: 75%"/>
      Sign up for updates: {{ Form::email($name = "updateEmail", $value = null, $attributes = array()); }}
      </body>
+     </div></div>
+
+     @foreach($recipes as $recipe)
+     <div="container">
+     	<body>
+     	<h2>{{ 	$recipe->recipe_name }} </h2>
+     	<p>	{{ 	$recipe->recipe_body }} </p>
+     	</body>
+     </div>
+     @endforeach
 @stop

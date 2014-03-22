@@ -11,7 +11,7 @@ class Recipe extends Eloquent {
 
 	public function recipes()
 	{
-		return $this->belongs_to('User', 'post_author');
+		return $this->belongs_to('User', 'recipe_author');
 	}
 
 }

@@ -1,5 +1,7 @@
 <?php
 
+use \Illuminate\Auth\UserInterface;
+
 class User extends Eloquent {
 
 	/**

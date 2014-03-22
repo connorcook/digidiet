@@ -103,15 +103,19 @@
         <span class="element-divider place-right"></span>
         <a class="element place-right" href="#"><span class="icon-user"></span></a>
         <button class="element image-button image-left place-right">
-            Anonymous
-            
+        @if ( Auth::guest())    
+            <a class="btn" href="{{URL::to('login')}}"> Login </a>
+        @else
+            {{ HTML::link('admin', Auth::user()->username)}}
+            {{ HTML::link('logout', 'Logout')}}
+        @endif    
         </button>
 	</nav>
 </nav>
 
         <div class="container">
-            @yield('content')
-        </div>
+        @yield('content')
+        <!-/container->
         
 
 </body>
