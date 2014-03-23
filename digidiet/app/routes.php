@@ -44,3 +44,23 @@ Route::get('logout', function() {
 	Auth::logout();
 	return Redirect::to('/');
 });
+
+Route::get('register', function() {
+	return View::make('register');
+});
+
+Route::post('register', function() {
+	$registration = array(
+		'username' => Input::get('username'),
+		'password' => Input::get('password'),
+		'name' => Input::get('first_name') + " " + Input::get('last_name')
+	);
+	Eloquent::unguard();
+	User::create(array(
+		'username' => Input::get('username'),
+		'password' => Hash::make(Input::get('password')),
+		'name' => Input::get('first_name') + " " + Input::get('last_name'),
+		'about_me' => Input::get('about_me')
+	));
+	return Redirect::to('/');
+});

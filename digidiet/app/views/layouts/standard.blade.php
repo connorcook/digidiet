@@ -103,8 +103,14 @@
         <span class="element-divider place-right"></span>
         <a class="element place-right" href="#"><span class="icon-user"></span></a>
         <button class="element image-button image-left place-right">
-        @if ( Auth::guest())    
+
+
+        @if ( Auth::guest())
+          
             <a class="btn" href="{{URL::to('login')}}"> Login </a>
+            <span class="element-divider"></span>
+            <a class="btn" href="{{URL::to('register')}}"> Register </a>
+
         @else
             {{ HTML::link('admin', Auth::user()->username)}}
             {{ HTML::link('logout', 'Logout')}}
