@@ -17,15 +17,26 @@
 
 </head>
 <body>
-<style>
-  background-image: url({{ URL::asset('/images/food.png'); }});
-
-</style>
 
 <!-- Menu Horizontal -->
 <ul class="menu">
-<li class="current"><a href="">Item 1</a></li>
-<li><a href="">Item 2</a></li>
+<li class="current">
+
+<li><a href="{{URL::to('/')}}"><span class="icon" data-icon="G"></span>Home</a></li>
+<li><a href=""><span class="icon" data-icon="R"></span>Account</a>
+    <ul>
+        @if ( Auth::guest())
+          <li><a href="{{URL::to('login')}}"><span class="icon" data-icon="G"></span>Login</a></li>
+          <li><a href="{{URL::to('register')}}"><span class="icon" data-icon="G"></span>Register</a></li>
+        @else
+          {{ HTML::link('admin', Auth::user()->username)}}
+          {{ HTML::link('logout', 'Logout')}}
+          <li><a href="{{HTML::link('admin', Auth::user()->username)}}"><span class="icon" data-icon="G"></span>Settings</a></li>
+          <li><a href="{{URL::to('logout')}}"><span class="icon" data-icon="G"></span>Logout</a></li>
+        @endif
+    </ul>
+</li>
+   
 <li><a href=""><span class="icon" data-icon="R"></span>Item 3</a>
   <ul>
   <li><a href=""><span class="icon" data-icon="G"></span>Sub Item</a></li>
@@ -68,7 +79,7 @@
   <li><i class="icon-ok"></i> Drinks</li>
   <li><i class="icon-ok"></i> Soups</li>
   <li><i class="icon-ok"></i> Entrees</li>
-  <li><i class="icon-ok"></i> Festive Adult Delights</li>
+  <li><i class="icon-ok"></i> Adult Delights</li>
   </ul>
   
   <h5>Share</h5>
@@ -107,7 +118,7 @@
   </div>
   
   <div class="col_3">
-  <h4>Festive Adult Delights</h4>
+  <h4>Adult Delights</h4>
   <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore 
   magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis</p>
   </div>
