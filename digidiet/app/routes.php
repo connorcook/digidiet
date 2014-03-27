@@ -64,3 +64,8 @@ Route::post('register', function() {
 	));
 	return Redirect::to('/');
 });
+
+Route::post('search', function() { 
+	$search = Input::get('search');
+	return View::make('results')->with('search', $search);
+	});
