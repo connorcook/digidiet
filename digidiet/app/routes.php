@@ -11,8 +11,6 @@
 |
 */
 
-Route::get('users','UsersController@get_index');
-
 Route::get('/', function()
 {
 	$recipes = Recipe::all();
