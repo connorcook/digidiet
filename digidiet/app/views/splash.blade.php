@@ -4,6 +4,15 @@
      <h3>Working Title Recipes</h3>
      <em>Just another reason to love cooking. Coming soon.</em>
 
+     {{ Form::open(array('url'=>'search', 'method'=>'post')); }}
+     <!- search box field ->
+     <p>{{ Form::label('Recipe', 'Recipe Search'); }}</p>
+     <p>{{ Form::text('search') }}</p>
+
+     <!– search button –>
+     <p>{{ Form::submit('Search', array('class' => 'btn-large')); }}</p>
+     {{ Form::close(); }}
+
      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
