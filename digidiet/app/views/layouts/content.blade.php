@@ -61,32 +61,8 @@
 <div class="grid">
 <div class="col_12">
   <!-- MAIN CONTENT SECTION -->
-  <div class="col_9">
+  <div class="col_12">
     @yield('content')
-  </div>
-  
-  <div class="col_3">
-  <h5>Now Serving</h5>
-  <ul class="icons">
-  <li><i class="icon-ok"></i> Drinks</li>
-  <li><i class="icon-ok"></i> Soups</li>
-  <li><i class="icon-ok"></i> Entrees</li>
-  <li><i class="icon-ok"></i> Adult Delights</li>
-  </ul>
-  
-  <h5>Share</h5>
-  <i class="icon-twitter-sign icon-4x"></i> 
-  <i class="icon-facebook-sign icon-4x"></i>
-  <i class="icon-linkedin-sign icon-4x"></i>
-  <i class="icon-github-sign icon-4x"></i>
-  
-  <span class="icon social x-large darkgray" data-icon="1"></span>
-  <span class="icon social x-large black" data-icon="w"></span>
-  <span class="icon x-large pink" data-icon="*"></span>
-  <span class="icon social x-large green" data-icon="v"></span>
-  
-  <h5>RSS Feed</h5>
-  <a class="button orange small" href="#"><i class="icon-rss"></i> RSS</a>
   </div>
   
   <hr />

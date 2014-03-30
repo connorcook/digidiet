@@ -1,4 +1,4 @@
-@extends('layouts.standard')
+@extends('layouts.content')
 
 @section('content')
 	<div class="span4 offset4 well">
