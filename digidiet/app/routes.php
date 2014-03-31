@@ -70,6 +70,5 @@ Route::post('search', function() {
 	return View::make('results')->with('search', $search);
 	});
 
-Route::get('users','UsersController@get_index');
-
+Route::resource('recipe', 'RecipeController')
 Route::resource('user', 'UserController');

@@ -3,7 +3,11 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Working on a Title</title>
+  <title>
+  @section('title')
+  Digidiet
+  @show
+  </title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="" />
@@ -64,7 +68,7 @@
   <div class="col_9">
     @yield('content')
   </div>
-  
+  @section('sidebar')
   <div class="col_3">
   <h5>Now Serving</h5>
   <ul class="icons">
@@ -88,6 +92,7 @@
   <h5>RSS Feed</h5>
   <a class="button orange small" href="#"><i class="icon-rss"></i> RSS</a>
   </div>
+  @show
   
   <hr />
 
@@ -119,6 +124,3 @@
 </div>
 
 </body></html> 
-
-</body>
-</html>

@@ -1,4 +1,7 @@
 @extends('layouts.content')
+@section('title')
+	{{ isset($user) ? $user->username."'s Profile" : 'User not found.' }}
+@endsection
 
 @section('content')
 	<h4>{{ isset($user) ? $user->username."'s Profile" : 'User not found.' }}</h4>

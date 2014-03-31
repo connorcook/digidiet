@@ -1,21 +1,10 @@
 @extends('layouts.standard')
-
-<!-- Menu Horizontal -->
 @section('navigation')
   @parent
 @stop
-<!-- END NAVIGATION BAR -->
-
-
-<div class="grid">
-<div class="col_12">
-  <!-- MAIN CONTENT SECTION -->
-  <div class="col_12">
-    @yield('content')
-  </div>
-  
-  <hr />
-
+  @section('sidebar')
+    
+  @stop
   <!-- SUBCONTENT SECTION --> 
   @section('subcontent1')
     
@@ -32,6 +21,3 @@
   @section('subcontent4')
     
   @stop
-</div>
-
-</div><!-- END GRID -->
