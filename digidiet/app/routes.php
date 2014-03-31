@@ -70,5 +70,5 @@ Route::post('search', function() {
 	return View::make('results')->with('search', $search);
 	});
 
-Route::resource('recipe', 'RecipeController')
+Route::resource('recipe', 'RecipeController');
 Route::resource('user', 'UserController');
