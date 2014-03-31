@@ -71,3 +71,5 @@ Route::post('search', function() {
 	});
 
 Route::get('users','UsersController@get_index');
+
+Route::resource('user', 'UserController');

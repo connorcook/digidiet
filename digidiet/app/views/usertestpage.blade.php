@@ -2,10 +2,10 @@
 
 
 @section('content')
-<h1> Users List Page </h1>
+<h3> Users List Page </h3>
 
 	@foreach($users as $user)
-    <h2>{{ 	$user->username }} </h2>
+    <h4>{{ 	$user->username }} </h4>
     <p>	{{ 	$user->name }} </p>
     @endforeach
 @stop
