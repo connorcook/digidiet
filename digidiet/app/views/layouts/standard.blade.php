@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title>
+  digidiet | 
   @section('title')
-  Digidiet
+  
   @show
   </title>
 
@@ -28,35 +29,37 @@
 <li class="current">
 
 <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="G"></span>Home</a></li>
-<li><a href=""><span class="icon" data-icon="R"></span>Account</a>
+@if ( Auth::guest())
+  <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="R"></span>Account</a>
+@else
+  <li><a href="{{URL::to('profile')}}"><span class="icon" data-icon="R"></span>{{Auth::user()->username}}</a>
+@endif
     <ul>
         @if ( Auth::guest())
           <li><a href="{{URL::to('login')}}"><span class="icon" data-icon="G"></span>Login</a></li>
           <li><a href="{{URL::to('register')}}"><span class="icon" data-icon="G"></span>Register</a></li>
         @else
-          {{ HTML::link('admin', Auth::user()->username)}}
-          {{ HTML::link('logout', 'Logout')}}
-          <li><a href="{{HTML::link('admin', Auth::user()->username)}}"><span class="icon" data-icon="G"></span>Settings</a></li>
+          <li><a href="{{URL::to('profile')}}"><span class="icon" data-icon="G"></span>Profile</a></li>
           <li><a href="{{URL::to('logout')}}"><span class="icon" data-icon="G"></span>Logout</a></li>
         @endif
     </ul>
 </li>
    
-<li><a href=""><span class="icon" data-icon="R"></span>Item 3</a>
+<li><a href="{{URL::to('/')}}"><span class="icon" data-icon="R"></span>Recipes</a>
   <ul>
-  <li><a href=""><span class="icon" data-icon="G"></span>Sub Item</a></li>
-  <li><a href=""><span class="icon" data-icon="A"></span>Sub Item</a>
+  <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="G"></span>Sub Item</a></li>
+  <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="A"></span>Sub Item</a>
     <ul>
-    <li><a href=""><span class="icon" data-icon="Z"></span>Sub Item</a></li>
-    <li><a href=""><span class="icon" data-icon="k"></span>Sub Item</a></li>
-    <li><a href=""><span class="icon" data-icon="J"></span>Sub Item</a></li>
-    <li><a href=""><span class="icon" data-icon="="></span>Sub Item</a></li>
+    <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="Z"></span>Sub Item</a></li>
+    <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="k"></span>Sub Item</a></li>
+    <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="J"></span>Sub Item</a></li>
+    <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="="></span>Sub Item</a></li>
     </ul>
   </li>
-  <li class="divider"><a href=""><span class="icon" data-icon="T"></span>li.divider</a></li>
+  <li class="divider"><a href="{{URL::to('/')}}"><span class="icon" data-icon="T"></span>li.divider</a></li>
   </ul>
 </li>
-<li><a href="">Item 4</a></li>
+<li><a href="{{URL::to('/user/')}}">User Directory</a></li>
 </ul>
 @show
 <!-- END NAVIGATION BAR -->
