@@ -1,8 +1,31 @@
 @extends('layouts.standard')
 
+@section('title')
+	Home
+@stop
+
 @section('content')
-     <h3>Working Title Recipes</h3>
-     <em>Just another reason to love cooking. Coming soon.</em>
+	<h3>Digidiet</h3>
+	<em>Recipes and more from the finest culinary enthusiasts in the world!</em>
+	<!-- Slideshow -->
+	<!--
+	<ul class="slideshow">
+		<li><img src="http://placehold.it/500x350/4D99E0/ffffff.png&text=550x350" /></li>
+		<li><img src="http://placehold.it/500x350/75CC00/ffffff.png&text=550x350" /></li>
+		<li><img src="http://placehold.it/500x350/E49800/ffffff.png&text=550x350" /></li>
+	</ul>
+	-->
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>
+
+     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>
 
      {{ Form::open(array('url'=>'search', 'method'=>'post')); }}
      <!- search box field ->
@@ -13,17 +36,6 @@
      <p>{{ Form::submit('Search', array('class' => 'btn-large')); }}</p>
      {{ Form::close(); }}
 
-     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>
-
-     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>
 @stop
 
 @section('subcontent1')

@@ -9,7 +9,7 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('usertestpage')->with('users', User::all());
+		return View::make('users.directory')->with('users', User::all());
 	}
 
 	/**
