@@ -9,8 +9,7 @@ class RecipeController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('recipies.directory')->with('recipies', Recipie::all());
-		//MAKE CORRESPONDING VIEW (DIRECTORY)
+		return View::make('recipes.directory')->with('recipes', Recipe::all());
 	}
 
 	/**
@@ -20,8 +19,7 @@ class RecipeController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('recipies.add');
-		//MAKE CORRESPONDING VIEW (ADD)
+		return View::make('recipes.add');
 	}
 
 	/**
@@ -31,8 +29,13 @@ class RecipeController extends \BaseController {
 	 */
 	public function store()
 	{
-		//UPDATE DB RECIPIES TABLE WITH DESIRED ATTRIBUTES (CHANGE MIGRATION)
-		//FINISH
+		return User::create([
+			'title' => Input::get('title'),
+			'description' => Input::get('description'),
+			'ingredients' => Input::get('ingredients'),
+			'instructions' => Input::get('instructions'),
+			'author_id' => User::getAuthIdentifier()
+			]);
 	}
 
 	/**
@@ -44,7 +47,7 @@ class RecipeController extends \BaseController {
 	public function show($id)
 	{
 		$recipie = User::find($id);
-		return View::make('recipies.info')->with('recipie', $recipie);
+		return View::make('recipes.info')->with('recipe', $recipe);
 	}
 
 	/**
@@ -55,8 +58,7 @@ class RecipeController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		return View::make('recipies.edit');
-		//CREATE CORRESPONDING VIEW (EDIT)
+		return View::make('recipes.edit');
 	}
 
 	/**
@@ -67,8 +69,14 @@ class RecipeController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//SEE STORE
-		//FINISH
+			$recipie = Recipe::find($id);
+			$recipie->title = Input::get('title');
+			$recipie->description = Input::get('description');
+			$recipie->ingredients = Input::get('ingredients');
+			$recipie->instructions = Input::get('instructions');
+			$recipie->author_id = User::getAuthIdentifier();
+			
+			$recipe->save();
 	}
 
 	/**
@@ -79,7 +87,7 @@ class RecipeController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$recipie = Recipie::find($id);
+		$recipie = Recipe::find($id);
 		$recipie->delete();
 	}
 
