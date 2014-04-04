@@ -3,26 +3,34 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRecipes extends Migration {
+class CreateUsers extends Migration {
 
 	/**
 	 * Run the migrations.
-	 * Creates the "recipes" table in the database
+	 * Create users table in db
+	 * Then store a record for the admin
 	 * @return void
 	 */
 	public function up()
 	{
-		Schema::create('recipes', function($table) {
-			// auto-increment ID / primary key
-            $table->increments('id');
-            $table->string('name', 255);
-            $table->text('instructions');
-            $table->text('ingredients');
-            $table->integer('author_id')->unsigned();
-            
+		Schema::create('users', function($table) {
+			$table->increments('id');
+			$table->string('username', 64);
+			$table->string('password', 64);
+			$table->string('name', 128);
+			$table->string('location', 64);
+			$table->text('about_me');
+			$table->string('avatar', 128);
+			$table->timestamps();
+		});
 
-            $table->timestamps();
-        });
+		DB::table('users')->insert(array(
+            'username'  => 'admin',
+            'password'  => Hash::make('devdes'),
+            'name'  => 'Administrator',
+            'about_me' => 'Hello world.',
+            'location' => 'Moon Base Alpha'
+        ));
 	}
 
 	/**
@@ -32,7 +40,7 @@ class CreateRecipes extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('recipes');
+		Schema::drop('users');
 	}
 
 }
