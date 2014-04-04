@@ -49,7 +49,8 @@ class RecipeTableSeeder extends Seeder {
 	{
 		DB::table('recipes')->delete();
 		Recipe::create(array(
-                'name' => 'Buttered Delicious Crumpets',
+                'title' => 'Buttered Delicious Crumpets',
+                'description' => 'This is a delicious recipe.',
                 'author_id' => 1,
                 'instructions' => "Take butter, melt, pour over dough, cook at 400 degrees Fahrenheit for 20 minutes.",
                 'ingredients' => "Butter, Dough, Oven, and a Smile"
@@ -57,7 +58,8 @@ class RecipeTableSeeder extends Seeder {
         
         for($i = 0; $i < 100; $i++){
         	$recipe = array(
-                'name' => 'Secret Bread Recipe #'.$i,
+                'title' => 'Secret Bread Recipe #'.$i,
+                'description' => 'This is a secret delicious recipe for bread.',
                 'author_id' => 1,
                 'instructions' => "Take butter, melt, pour over dough, cook at ".($i*20)." degrees Fahrenheit for 20 minutes.",
                 'ingredients' => "Butter, Dough, Oven, and ".$i." Smile(s)"
