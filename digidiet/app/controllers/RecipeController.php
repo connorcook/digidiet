@@ -9,7 +9,8 @@ class RecipeController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('recipies.directory')->with('recipies', Recipie::all());
+		//MAKE CORRESPONDING VIEW (DIRECTORY)
 	}
 
 	/**
@@ -19,7 +20,8 @@ class RecipeController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('recipies.add');
+		//MAKE CORRESPONDING VIEW (ADD)
 	}
 
 	/**
@@ -29,7 +31,8 @@ class RecipeController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		//UPDATE DB RECIPIES TABLE WITH DESIRED ATTRIBUTES (CHANGE MIGRATION)
+		//FINISH
 	}
 
 	/**
@@ -40,7 +43,7 @@ class RecipeController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		//FINISH
 	}
 
 	/**
@@ -51,7 +54,8 @@ class RecipeController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		return View::make('recipies.edit');
+		//CREATE CORRESPONDING VIEW (EDIT)
 	}
 
 	/**
@@ -62,7 +66,8 @@ class RecipeController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		//SEE STORE
+		//FINISH
 	}
 
 	/**
@@ -73,7 +78,8 @@ class RecipeController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$recipie = Recipie::find($id);
+		$recipie->delete();
 	}
 
 }
