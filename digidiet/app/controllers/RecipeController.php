@@ -43,7 +43,8 @@ class RecipeController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//FINISH
+		$recipie = User::find($id);
+		return View::make('recipies.info')->with('recipie', $recipie);
 	}
 
 	/**
