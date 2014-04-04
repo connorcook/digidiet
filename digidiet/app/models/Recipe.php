@@ -9,9 +9,14 @@ class Recipe extends Eloquent {
 	 */
 	protected $table = 'recipes';
 
-	public function recipes()
+	public function user()
 	{
-		return $this->belongs_to('User', 'recipe_author');
+		return $this->belongsTo('User','author_id', 'id');
 	}
+
+	public function tags()
+    {
+        return $this->morphToMany('Tag', 'taggable');
+    }
 
 }

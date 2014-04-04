@@ -31,6 +31,10 @@
 	<!- avatar field ->
 	<p>{{ Form::label('image', 'Avatar'); }}</p>
 	<p>{{ Form::file('image'); }}</p>
+
+	<!– about me field –>
+	<p>{{ Form::label('location', 'Location'); }}</p>
+	<p>{{ Form::text('location'); }}</p>
 	
 	<!– about me field –>
 	<p>{{ Form::label('about_me', 'About Me'); }}</p>

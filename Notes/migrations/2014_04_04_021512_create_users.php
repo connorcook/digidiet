@@ -18,14 +18,18 @@ class CreateUsers extends Migration {
 			$table->string('username', 64);
 			$table->string('password', 64);
 			$table->string('name', 128);
+			$table->string('location', 64);
 			$table->text('about_me');
+			$table->string('avatar', 128);
 			$table->timestamps();
 		});
 
 		DB::table('users')->insert(array(
             'username'  => 'admin',
-            'password'  => Hash::make('password'),
-            'name'  => 'Admin'
+            'password'  => Hash::make('devdes'),
+            'name'  => 'Administrator',
+            'about_me' => 'Hello world.',
+            'location' => 'Moon Base Alpha'
         ));
 	}
 

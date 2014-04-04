@@ -28,15 +28,18 @@ class UserTableSeeder extends Seeder {
                 'username' => 'admin',
                 'password' => Hash::make('devdes'),
                 'name' => 'Administrator',
-                'about_me' => "Hello world."
+                'about_me' => "Hello world.",
+                'location' => "Moon Base Alpha"
         ));
-
-        User::create(array(
-                'username' => 'rainbowkitty69',
+		for($i = 0; $i < 100; $i++){
+        	User::create(array(
+                'username' => 'rainbowkitty'.$i,
                 'password' => Hash::make('sparklesparklejazz'),
-                'name' => 'John Smith',
-                'about_me' => "The username says it all."
-        ));
+                'name' => 'John Smith, #'.$i,
+                'about_me' => "The username says it all.",
+                'location' => "Eternia"
+        	));
+    	}
 	}
 }
 
@@ -46,11 +49,24 @@ class RecipeTableSeeder extends Seeder {
 	{
 		DB::table('recipes')->delete();
 		Recipe::create(array(
-                'recipe_name' => 'Buttered Delicious Crumpets',
-                'recipe_body' => "Take butter, melt, pour over dough, cook at 400 degrees Fahrenheit for 20 minutes.",
-                'author_id' => 1
-                
+                'name' => 'Buttered Delicious Crumpets',
+                'author_id' => 1,
+                'instructions' => "Take butter, melt, pour over dough, cook at 400 degrees Fahrenheit for 20 minutes.",
+                'ingredients' => "Butter, Dough, Oven, and a Smile"
         ));
+        
+        for($i = 0; $i < 100; $i++){
+        	$recipe = array(
+                'name' => 'Secret Bread Recipe #'.$i,
+                'author_id' => 1,
+                'instructions' => "Take butter, melt, pour over dough, cook at ".($i*20)." degrees Fahrenheit for 20 minutes.",
+                'ingredients' => "Butter, Dough, Oven, and ".$i." Smile(s)"
+        	 );
+        	Recipe::create($recipe);
+        	// $user = User::find($i+1);
+        	// $recipe = Recipe::find($i+1);
+        	// $recipe->user()->save($user);
+        }
 
 	}
 }

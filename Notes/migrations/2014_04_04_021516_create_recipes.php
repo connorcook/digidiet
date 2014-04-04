@@ -15,10 +15,12 @@ class CreateRecipes extends Migration {
 		Schema::create('recipes', function($table) {
 			// auto-increment ID / primary key
             $table->increments('id');
-            $table->string('recipe_name', 255);
-            $table->text('recipe_body');
+            $table->string('name', 255);
+            $table->text('instructions');
+            $table->text('ingredients');
             $table->integer('author_id')->unsigned();
             
+
             $table->timestamps();
         });
 	}
