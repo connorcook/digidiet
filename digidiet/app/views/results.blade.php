@@ -55,38 +55,38 @@ function openDBConn() {
 	exit();
 	}
 
-	print_r($_POST);		// TESTING PURPOSES ONLY
+//	print_r($_POST);		// TESTING PURPOSES ONLY
 
 	/* 
 	 * Place a result set that matches the search query
 	 * stored in $search, and sorted by $sortby_option
 	 * if the variable is set, in the variable $result
-	 * TODO Search by fields other than recipe_name
+	 * TODO SEARCH BY HIGHEST RATING AND LOWEST RATING
 	 */
 	if(isset($_POST['sortby'][0])) {
 		$sortby_option = $_POST['sortby'][0];
 		switch ($sortby_option) {
 			case "highest rating":
-				echo "User wishes to sort by highest rating";
-				//$result = mysqli_query($dblink, );
+//				echo "User wishes to sort by highest rating";
+				$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE name LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%' ORDER BY created_at DESC", MYSQLI_USE_RESULT);
 				break;
 			case "lowest rating":
-				echo "User wishes to sort by lowest rating.";
-				//$result = mysqli_query($dblink, );
+//				echo "User wishes to sort by lowest rating.";
+				$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE name LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%' ORDER BY created_at DESC", MYSQLI_USE_RESULT);
 				break;
 			case "more recent":
-				echo "User wishes to sort by more recent.";
-				$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE recipe_name LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%' ORDER BY created_at DESC", MYSQLI_USE_RESULT);
+//				echo "User wishes to sort by more recent.";
+				$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE name LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%' ORDER BY created_at DESC", MYSQLI_USE_RESULT);
 				break;
 			case "less recent":
-				echo "User wishes to sort by less recent.";
-				$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE recipe_name LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%' ORDER BY created_at", MYSQLI_USE_RESULT);
+//				echo "User wishes to sort by less recent.";
+				$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE name LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%' ORDER BY created_at", MYSQLI_USE_RESULT);
 				break;
 			default:
-				echo "User wishes to sort by {$sortby_option}, but that is not a sort option.";
+//				echo "User wishes to sort by {$sortby_option}, but that is not a sort option.";
 		}
 	} else {
-		$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE recipe_name LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%'", MYSQLI_USE_RESULT);
+		$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE name LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%'", MYSQLI_USE_RESULT);
 	}
 	if (!$result) {
 		echo("<P>Error performing query: " .
@@ -112,12 +112,12 @@ function openDBConn() {
     {
     	$results[] = $row;
     	echo "<tr>";
-    	echo "<td>" . $row['recipe_name'] . "</td>";
+    	echo "<td>" . $row['name'] . "</td>";
     	//echo "<td>" . $row['rating'] . "</td>";
     	echo "</tr>";
     }
     echo "</table>";
-    print_r($results);		// TESTING PURPOSES ONLY
+//  print_r($results);		// TESTING PURPOSES ONLY
     mysqli_free_result($result);	// Free result set
 
    	/* TODO Call preg_match to match on regular expressions */
