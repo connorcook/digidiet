@@ -29,12 +29,15 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		return User::create([
+		
+		return User::create(array(
 			'username' => Input::get('username'),
-			'password' => Input::get('password'),
-			'name' => Input::get('first_name') + " " + Input::get('last_name'),
-			'about_me' => Input::get('about_me')
-			]);
+			'password' => Hash::make(Input::get('password')),
+			'name' => Input::get('first_name')." ".Input::get('last_name'),
+			'about_me' => Input::get('about_me'),
+			'avatar' => Input::get('image'),
+			'location' => Input::get('location')
+		));
 	}
 
 	/**
@@ -70,9 +73,11 @@ class UserController extends \BaseController {
 	{
 		$user = User::find($id);
 		$user->username = Input::get('username');
-		$user->password = Input::get('password');
-		$user->name 	= Input::get('first_name');
+		$user->password = Hash::make(Input::get('password'));
+		$user->name 	= Input::get('first_name')." ".Input::get('last_name');
 		$user->about_me = Input::get('about_me');
+		$user->avatar 	= Input::get('image');
+		$user->location = Input::get('location');
 
 		$user->save();
 	}
