@@ -58,85 +58,101 @@ class RecipeTableSeeder extends Seeder {
         ));
 
         Recipe::create(array(
-                'name' => "Mom's pea soup",
+                'title' => "Mom's pea soup",
+                'description' => 'Gotta love mom\'s homemade soup, there is notthing like it.',
                 'author_id' => 1,
                 'instructions' => "Boil water. Throw in split peas, carrots, ham, potatoes, onion, garlic. Cook until vegetables are soft. Season with salt and pepper.",
                 'ingredients' => "Water, split peas, carrots, potatoes, ham, onion, garlic, salt",
         ));
         Recipe::create(array(
-                'name' => 'Homemade Chicken Pot Pie',
+                'title' => 'Homemade Chicken Pot Pie',
+                'description' => 'Be careful with this recipe. It just might be too delicious for a mere mortal to handle.',
                 'author_id' => 1,
-                'instructions' => "",
-                'ingredients' => "",
+                'instructions' => "Heat it up in the microwave.",
+                'ingredients' => "Get a frozen chicken pot pie from the grocery store.",
         ));
         Recipe::create(array(
-                'name' => 'Sushi Alaska Roll',
+                'title' => 'Sushi Alaska Roll',
+                'description' => 'Who doesn\'t like sushi?',
                 'author_id' => 2,
                 'instructions' => "Roll up some salmon, cucumber, and avocado in rice and seaweed.",
                 'ingredients' => "Rice, seaweed, salmon, cucumber, avocado, sugar, vinegar",
         ));
         Recipe::create(array(
-                'name' => 'Coffee-marinated Pork Chops',
+                'title' => 'Coffee-marinated Pork Chops',
+                'description' => 'Delicious porkchops with the added bonus of liquid energy!',
                 'author_id' => 2,
                 'instructions' => "Marinate pork chops in coffee marinade over night (12+ hours). Grill over flame til desired doneness.",
                 'ingredients' => "Coffee, worcestershire sauce, pork chops",
         ));
         Recipe::create(array(
-                'name' => 'Eggs Benedict',
+                'title' => 'Eggs Benedict',
+                'description' => 'Be careful, no one knows if these eggs will betray you.',
                 'author_id' => 3,
-                'instructions' => "",
-                'ingredients' => "",
+                'instructions' => "fry your egg and serve with the declaration of independence as a garnish",
+                'ingredients' => "eggs,oil,the declaration of independence",
         ));
         Recipe::create(array(
-                'name' => 'Chocolate Chip Pancakes',
+                'title' => 'Chocolate Chip Pancakes',
+                'description' => 'Buttermilk pancakes with chocolate chips',
                 'author_id' => 3,
-                'instructions' => "",
-                'ingredients' => "",
+                'instructions' => "Mix ingredients in a bowl until smooth, ",
+                'ingredients' => "Flour, Eggs, Milk, Baking Soda, Chocolate Chips",
         ));
         Recipe::create(array(
-                'name' => 'Bowl of Cereal',
+                'title' => 'Bowl of Cereal',
+                'description' => 'Generic and boring bowl of grey cereal in grey bowl with a grey spoon.',
                 'author_id' => 3,
                 'instructions' => "Pour cereal in bowl, then pour milk in bowl.",
                 'ingredients' => "Cereal, milk",
         ));
         Recipe::create(array(
-                'name' => 'Cheesy Macaroni and Cheese',
+                'title' => 'Cheesy Macaroni and Cheese',
+                'description' => 'Even cheesier than my jokes!',
                 'author_id' => 4,
                 'instructions' => "Cook some noodles, then melt some cheese in them.",
                 'ingredients' => "Noodles, Cheese, salt, pepper",
         ));
         Recipe::create(array(
-                'name' => 'Creamy Macaroni and Cheese',
+                'title' => 'Creamy Macaroni and Cheese',
+                'description' => 'So cheesy it might make you queasy',
                 'author_id' => 4,
                 'instructions' => "Cook some noodles, then melt some cheese in them.",
                 'ingredients' => "Noodles, heavy cream, cheese",
         ));
         Recipe::create(array(
-                'name' => 'Old fashioned',
+                'title' => 'Old fashioned',
+                'description' => 'This drink will take you back in time to the year 1934',
                 'author_id' => 4,
-                'instructions' => "",              
-                'ingredients' => "",
+                'instructions' => "Mix sugar, water and angostura bitters in an old-fashioned glass. 
+                Drop in a cherry and an orange wedge. Muddle into a paste using a muddler or the back end of a spoon. 
+                Pour in bourbon, fill with ice cubes, and stir.",              
+                'ingredients' => "Bourbon, bitters, water, sugar, a cherry, and an orange wedge",
         ));
         Recipe::create(array(
-                'name' => 'Worcester Steak',
+                'title' => 'Worcester Steak',
+                'description' => 'Like the place in england I think',
                 'author_id' => 5,
                 'instructions' => "Marinate steak overnight in secret worcestershire-style sauce. Grill over flame til desired doneness",
                 'ingredients' => "Worcestershire sauce, steak, cumin, salt, pepper,"
         ));
         Recipe::create(array(
-                'name' => "Grandma's Pecan Pie",
+                'title' => "Grandma's Pecan Pie",
+                'description' => 'Better than mom\'s, but don\'t tell her that',
                 'author_id' => 6,
                 'instructions' => "A whole lot of candied pecans in a pie shell. Bake at 350 deg F for 40 minutes.",
                 'ingredients' => "Candied pecans, pie crust",
         ));
         Recipe::create(array(
-                'name' => 'The Best Philly Cheesesteak',
+                'title' => 'The Best Philly Cheesesteak',
+                'description' => 'I got this recipe from my friend in Philly',
                 'author_id' => 7,
-                'instructions' => "",
-                'ingredients' => "",
+                'instructions' => "Put the meat on the cheesy bread and eat it.",
+                'ingredients' => "Meat, cheesy bread",
         ));
         Recipe::create(array(
-                'name' => 'Cheesy Cheese Pizza',
+                'title' => 'Cheesy Cheese Pizza',
+                'description' => 'Extra cheese please. I\'m begging you, I\'m on my knees',
                 'author_id' => 7,
                 'instructions' => "Roll dough, put on sauce, put on cheese, bake in 400 degree Fahrenheit oven for 20 minutes",
                 'ingredients' => "Water, flour, pizza sauce, mozzarella cheese",
