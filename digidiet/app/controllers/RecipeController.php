@@ -19,7 +19,13 @@ class RecipeController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('recipes.add');
+		//must be logged in to view a recipe
+		if(Auth::guest()){
+			return Redirect::to('recipe');
+		}
+		else{
+			return View::make('recipes.add');
+		}
 	}
 
 	/**
@@ -29,13 +35,16 @@ class RecipeController extends \BaseController {
 	 */
 	public function store()
 	{
-		return User::create([
+		
+		Eloquent::unguard();
+		Recipe::create([
 			'title' => Input::get('title'),
 			'description' => Input::get('description'),
 			'ingredients' => Input::get('ingredients'),
 			'instructions' => Input::get('instructions'),
-			'author_id' => User::getAuthIdentifier()
+			'author_id' => Auth::user()->id
 			]);
+		return Redirect::to('/');		
 	}
 
 	/**
@@ -46,8 +55,9 @@ class RecipeController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$recipie = User::find($id);
-		return View::make('recipes.info')->with('recipe', $recipe);
+		$recipe = Recipe::find($id);
+		$user = User::find($recipe -> author_id);
+		return View::make('recipes.info')->with(array('recipe' => $recipe, 'user' => $user));
 	}
 
 	/**
@@ -69,12 +79,12 @@ class RecipeController extends \BaseController {
 	 */
 	public function update($id)
 	{
-			$recipie = Recipe::find($id);
-			$recipie->title = Input::get('title');
-			$recipie->description = Input::get('description');
-			$recipie->ingredients = Input::get('ingredients');
-			$recipie->instructions = Input::get('instructions');
-			$recipie->author_id = User::getAuthIdentifier();
+			$recipe = Recipe::find($id);
+			$recipe->title = Input::get('title');
+			$recipe->description = Input::get('description');
+			$recipe->ingredients = Input::get('ingredients');
+			$recipe->instructions = Input::get('instructions');
+			$recipe->author_id = User::getAuthIdentifier();
 			
 			$recipe->save();
 	}
@@ -87,8 +97,8 @@ class RecipeController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$recipie = Recipe::find($id);
-		$recipie->delete();
+		$recipe = Recipe::find($id);
+		$recipe->delete();
 	}
 
 }

@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('RecipeTableSeeder');
 
 		$this->command->info("User table seeded.");
+        $this->command->info("Recipe table seeded.");
 	}
 
 }
@@ -141,11 +142,11 @@ class RecipeTableSeeder extends Seeder {
                 'ingredients' => "Water, flour, pizza sauce, mozzarella cheese",
         ));
         
-        for($i = 0; $i < 100; $i++){
+        for($i = 1; $i < 100; $i++){
         	$recipe = array(
                 'title' => 'Secret Bread Recipe #'.$i,
                 'description' => 'This is a secret delicious recipe for bread.',
-                'author_id' => 1,
+                'author_id' => $i,
                 'instructions' => "Take butter, melt, pour over dough, cook at ".($i*20)." degrees Fahrenheit for 20 minutes.",
                 'ingredients' => "Butter, Dough, Oven, and ".$i." Smile(s)"
         	 );

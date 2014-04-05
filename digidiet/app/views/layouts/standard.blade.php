@@ -35,7 +35,7 @@
   <li><a href="{{URL::to('profile')}}"><span class="icon" data-icon="R"></span>{{Auth::user()->username}}</a>
 @endif
     <ul>
-        @if ( Auth::guest())
+        @if ( Auth::guest() )
           <li><a href="{{URL::to('login')}}"><span class="icon" data-icon="G"></span>Login</a></li>
           <li><a href="{{URL::to('register')}}"><span class="icon" data-icon="G"></span>Register</a></li>
         @else
@@ -45,19 +45,12 @@
     </ul>
 </li>
    
-<li><a href="{{URL::to('/')}}"><span class="icon" data-icon="R"></span>Recipes</a>
-  <ul>
-  <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="G"></span>Sub Item</a></li>
-  <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="A"></span>Sub Item</a>
+<li><a href="{{URL::to('recipe')}}"><span class="icon" data-icon="R"></span>Recipes</a>
+  @if (!Auth::guest())
     <ul>
-    <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="Z"></span>Sub Item</a></li>
-    <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="k"></span>Sub Item</a></li>
-    <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="J"></span>Sub Item</a></li>
-    <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="="></span>Sub Item</a></li>
+      <li><a href="{{URL::to('recipe/create')}}"><span class="icon" data-icon="A"></span>Add</a></li>
     </ul>
-  </li>
-  <li class="divider"><a href="{{URL::to('/')}}"><span class="icon" data-icon="T"></span>li.divider</a></li>
-  </ul>
+  @endif
 </li>
 <li><a href="{{URL::to('/user/')}}">User Directory</a></li>
 </ul>

@@ -77,3 +77,5 @@ Route::get('profile', function() {
 
 Route::resource('recipe', 'RecipeController');
 Route::resource('user', 'UserController');
+
+//Route::get('add','RecipeController@create');
