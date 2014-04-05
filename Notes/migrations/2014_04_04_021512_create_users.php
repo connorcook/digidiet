@@ -35,7 +35,7 @@ class CreateUsers extends Migration {
 
 	/**
 	 * Reverse the migrations.
-	 * For now, just drop the tale.
+	 *
 	 * @return void
 	 */
 	public function down()
