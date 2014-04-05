@@ -21,7 +21,7 @@ Route::get('/', function()
 // Present the user with login form
 Route::get('login', function() 
 {
-	return View::make('users.login');
+	return View::make('login');
 });
 
 Route::post('login', function() {
@@ -46,21 +46,22 @@ Route::get('logout', function() {
 });
 
 Route::get('register', function() {
-	return View::make('users.register');
+	return View::make('register');
 });
 
 Route::post('register', function() {
 	$registration = array(
 		'username' => Input::get('username'),
-		'password' => Hash::make(Input::get('password')),
-		'name' => Input::get('first_name')." ".Input::get('last_name'),
-		'about_me' => Input::get('about_me'),
-		'avatar' => Input::get('image'),
-		'location' => Input::get('location')
+		'password' => Input::get('password'),
+		'name' => Input::get('first_name') + " " + Input::get('last_name')
 	);
 	Eloquent::unguard();
-	User::create($registration);
-	
+	User::create(array(
+		'username' => Input::get('username'),
+		'password' => Hash::make(Input::get('password')),
+		'name' => Input::get('first_name') + " " + Input::get('last_name'),
+		'about_me' => Input::get('about_me')
+	));
 	return Redirect::to('/');
 });
 
@@ -69,13 +70,9 @@ Route::post('search', function() {
 	return View::make('results')->with('search', $search);
 	});
 
-Route::get('profile', function() {
-	if(Auth::check())
-		return View::make('users.profile')->with('user', Auth::user());
-	else return Redirect::to('/');
-});
-
 Route::resource('recipe', 'RecipeController');
 Route::resource('user', 'UserController');
 
-//Route::get('add','RecipeController@create');
+Route::get('api', function() {
+	return View::make('api');
+});
