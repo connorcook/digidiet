@@ -35,18 +35,30 @@ class UserTest extends TestCase {
 	
 	public function testShow()
 	{
-		
+		//create user to test display
 		$post_data = array('username' => 'testDelete', 'password' => 'testDelete', 'name' => 'Test Delete', 'about_me' => 'Test user for deletion','image' =>'test.jpg', 'location' => 'location');
 		$this->call('POST', '/user', $post_data);
 		$user = User::where('username', '=', 'testDelete')->get();
+		//call show on the created user's id
 		$this->call('GET', '/user/'.$user[0]->id);
+		//check response was ok
 		$this->assertResponseOK();
+		//clean up the dummy user
 		$this->call('DELETE', '/user/'.$user[0]->id);
 	}
 	
 	public function testUpdate()
 	{
-	
+		//insert user to test update on
+		// $post_data = array('username' => 'testDelete', 'password' => 'testDelete', 'name' => 'Test Delete', 'about_me' => 'Test user for deletion','image' =>'test.jpg', 'location' => 'location');
+		// $this->call('POST', '/user', $post_data);	
+		// $user = User::where('username', '=', 'testDelete2')->get();
+		
+		// $put_data = array('username' => 'testDelete2', 'password' => 'testDelete', 'name' => 'Test Delete', 'about_me' => 'Test user for deletion','image' =>'test.jpg', 'location' => 'location');
+		// $this->call('PUT', '/user', $put_data);
+		
+		// $this->call('DELETE', '/user/'.$user[0]->id);
+		
 	}
 	
 	public function testEdit()
@@ -65,8 +77,8 @@ class UserTest extends TestCase {
 		
 		
 		$this->call('DELETE', '/user/'.$user[0]->id);
-		// $crawler = $this->call('GET', '/user');
-		// $this->assertCount(0, $crawler->filter('html:contains("testDelete")'));
+		$crawler = $this->client->request('GET', '/user');
+		$this->assertCount(0, $crawler->filter('html:contains("testDelete")'));
 	}
 
 
