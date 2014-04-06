@@ -40,13 +40,13 @@
 
 <body class="themeDark">
 
-<div id="container" style="padding-top: 0px">
+<div id="container" style="padding-top:0px;">
 
-  
+      
 
 <div id="documentationContainer">
 
-   
+    
 <script>window.docResources = {};</script>
 
 <div id="leftColumn">
@@ -61,7 +61,7 @@
       
                                             <div class="sameResourceGroup">
         
-                  <h2 class="nameResource">Index and Store</h2>                      <div class="descriptionMethod"><p>Display a user or store a new user.</p></div>
+                  <h2 class="nameResource">Index and Store</h2>                      <div class="descriptionMethod"><p>Display a list of users or store a new user.</p></div>
                   
                   <h3 class="nameMethod">List all Users</h3>
         
@@ -784,6 +784,735 @@ window.docResources["generatedResourceCodeS1E7"] = (window.docResources["generat
           </div>
         </section>      
           </div>
+      <a name="recipe"></a>
+    <div class="chapterWrapper">
+              <hgroup class="chapter">
+          <h1>Recipe</h1>          <div class="details"><p>Recipe related resources of the <strong>digidiet API</strong></p></div>
+                  </hgroup>
+      
+                                            <div class="sameResourceGroup">
+        
+                  <h2 class="nameResource">Index and Store</h2>                      <div class="descriptionMethod"><p>Display a list of recipes or store a new recipe.</p></div>
+                  
+                  <h3 class="nameMethod">List all Recipes</h3>
+        
+        <section class="resource noActivity hasDescription">
+          <hgroup>
+            <h1 class="methodGet"><span>GET</span></h1>
+            <h2>/recipe</h2>
+            <a class="resourcePermalink" href="#get-%2Frecipe" name="get-%2Frecipe"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+
+                              <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                  <a href="#debugger"><li><span>Debugger</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                                  <a href="#tryit" class="jsTryitSwitcher"><li><span>Try It</span></li></a>
+                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                          <option value="vb">Visual Basic</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS2E1">                                                      <script>
+window.docResources["generatedResourceCodeS2E1"] = (window.docResources["generatedResourceCodeS2E1"] || []).concat({
+  "url": "/recipe",
+  "method": "GET",
+  "headers": {},
+  "body": "digidiet/recipe"
+});
+</script>
+                                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)
+Content-Type: application/json</code></pre>
+                    <pre class="outgoing"><code class="language-javascript">[{&#34;id&#34;: 1, 
+  &#34;title&#34;: &#34;fish sticks&#34;,
+  &#34;description&#34;: &#34;fish sticks&#34;,
+  &#34;ingredients&#34;: &#34;fish sticks&#34;,
+  &#34;instructions&#34;: &#34;cook thoroughly&#34;,
+  &#34;author_id&#34;: 1},
+  {&#34;id&#34;: 2, 
+  &#34;title&#34;: &#34;chicken nuggets&#34;,
+  &#34;description&#34;: &#34;chicken nuggets&#34;,
+  &#34;ingredients&#34;: &#34;chicken nuggets&#34;,
+  &#34;instructions&#34;: &#34;cook thoroughly&#34;,
+  &#34;author_id&#34;: 1}
+  ]</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                          <section class="debugger" data-resource-signature="GET /recipe"></section>
+                            <section class="social">
+                <nav class="switch"></nav>
+
+                <section class="newPost">
+                  <form action="/discussion/53404c1f62d9d40200009f66" method="post">
+                     <textarea placeholder="Start a new thread…" name="comment"></textarea>
+                     <div class="postControl">
+                       <div class="postTools">
+                         <input class="button blue big" type="submit" value="Submit">
+                         <a class="cancel" href="#"><i class="icon-remove"></i> Cancel</a>
+                       </div>
+                     </div>
+                     <input type="hidden" name="url" value="/recipe">
+                     <input type="hidden" name="method" value="GET" >
+                  </form>
+                </section>
+
+                                <section class="all" name="thread">
+                                  </section>
+                              </section>
+              
+              <section class="tryit">
+                <form name="jsRunExample">
+                  <span class="ajaxLoader block jsEmptyTryit"></span>
+                </form>
+              </section>
+                      </div>
+
+          
+        </section>                      
+        
+                  <h3 class="nameMethod">Store a Recipe</h3>
+        
+        <section class="resource noActivity hasDescription">
+          <hgroup>
+            <h1 class="methodPost"><span>POST</span></h1>
+            <h2>/recipe</h2>
+            <a class="resourcePermalink" href="#post-%2Frecipe" name="post-%2Frecipe"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+
+                              <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                  <a href="#debugger"><li><span>Debugger</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                                  <a href="#tryit" class="jsTryitSwitcher"><li><span>Try It</span></li></a>
+                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                          <option value="vb">Visual Basic</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS2E2">                                                      <script>
+window.docResources["generatedResourceCodeS2E2"] = (window.docResources["generatedResourceCodeS2E2"] || []).concat({
+  "url": "/recipe",
+  "method": "POST",
+  "contentType": "application/json",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{ \"title\": \"tater tots\",\n  \"description\": \"bumpy potatoes\",\n  \"ingredients\": \"bumpy potatoes\",\n  \"instructions\": \"cook thoroughly\"}"
+});
+</script>
+                                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>201 (Created)</code></pre>
+                    <pre class="outgoing"><code class=""></code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                          <section class="debugger" data-resource-signature="POST /recipe"></section>
+                            <section class="social">
+                <nav class="switch"></nav>
+
+                <section class="newPost">
+                  <form action="/discussion/53404c1f62d9d40200009f66" method="post">
+                     <textarea placeholder="Start a new thread…" name="comment"></textarea>
+                     <div class="postControl">
+                       <div class="postTools">
+                         <input class="button blue big" type="submit" value="Submit">
+                         <a class="cancel" href="#"><i class="icon-remove"></i> Cancel</a>
+                       </div>
+                     </div>
+                     <input type="hidden" name="url" value="/recipe">
+                     <input type="hidden" name="method" value="POST" >
+                  </form>
+                </section>
+
+                                <section class="all" name="thread">
+                                  </section>
+                              </section>
+              
+              <section class="tryit">
+                <form name="jsRunExample">
+                  <span class="ajaxLoader block jsEmptyTryit"></span>
+                </form>
+              </section>
+                      </div>
+
+          
+        </section>              </div>                  <div class="sameResourceGroup">
+        
+                  <h2 class="nameResource">Create</h2>                      <div class="descriptionMethod"><p>Show the form for creating a new recipe (must be authenticated)</p></div>
+                  
+                  <h3 class="nameMethod">Create a Recipe</h3>
+        
+        <section class="resource noActivity hasDescription">
+          <hgroup>
+            <h1 class="methodGet"><span>GET</span></h1>
+            <h2>/recipe/create</h2>
+            <a class="resourcePermalink" href="#get-%2Frecipe%2Fcreate" name="get-%2Frecipe%2Fcreate"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+
+                              <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                  <a href="#debugger"><li><span>Debugger</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                                  <a href="#tryit" class="jsTryitSwitcher"><li><span>Try It</span></li></a>
+                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                          <option value="vb">Visual Basic</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS2E3">                                                      <script>
+window.docResources["generatedResourceCodeS2E3"] = (window.docResources["generatedResourceCodeS2E3"] || []).concat({
+  "url": "/recipe/create",
+  "method": "GET",
+  "headers": {},
+  "body": "digidiet/recipe/create"
+});
+</script>
+                                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">makes view: digidiet/recipes/add</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                          <section class="debugger" data-resource-signature="GET /recipe/create"></section>
+                            <section class="social">
+                <nav class="switch"></nav>
+
+                <section class="newPost">
+                  <form action="/discussion/53404c1f62d9d40200009f66" method="post">
+                     <textarea placeholder="Start a new thread…" name="comment"></textarea>
+                     <div class="postControl">
+                       <div class="postTools">
+                         <input class="button blue big" type="submit" value="Submit">
+                         <a class="cancel" href="#"><i class="icon-remove"></i> Cancel</a>
+                       </div>
+                     </div>
+                     <input type="hidden" name="url" value="/recipe/create">
+                     <input type="hidden" name="method" value="GET" >
+                  </form>
+                </section>
+
+                                <section class="all" name="thread">
+                                  </section>
+                              </section>
+              
+              <section class="tryit">
+                <form name="jsRunExample">
+                  <span class="ajaxLoader block jsEmptyTryit"></span>
+                </form>
+              </section>
+                      </div>
+
+          
+        </section>              </div>                  <div class="sameResourceGroup">
+        
+                  <h2 class="nameResource">Show, Update, and Destroy</h2>                      <div class="descriptionMethod"><p>View a recipe by ID, update the specified recipe in storage, and delete a recipe</p></div>
+                  
+                  <h3 class="nameMethod">Show a Recipe</h3>
+        
+        <section class="resource noActivity hasDescription">
+          <hgroup>
+            <h1 class="methodGet"><span>GET</span></h1>
+            <h2>/recipe/{id}</h2>
+            <a class="resourcePermalink" href="#get-%2Frecipe%2F%7Bid%7D" name="get-%2Frecipe%2F%7Bid%7D"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+
+                                <article class="details">
+                                          <div class="paramsTableWrap"><table class="paramsTable">
+                <caption>Parameters</caption>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                                      <tr>
+                      <td>id</td>
+                      <td><p>Numeric <code>id</code> of the Recipe to display. Has example value.</p>
+</td>
+                      <td>number, required<br>example: <samp>1</samp>                                              </td>
+                    </tr>
+                                  </tbody>
+              </table></div>
+                          </article>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                  <a href="#debugger"><li><span>Debugger</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                                  <a href="#tryit" class="jsTryitSwitcher"><li><span>Try It</span></li></a>
+                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                          <option value="vb">Visual Basic</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS2E4">                                                      <script>
+window.docResources["generatedResourceCodeS2E4"] = (window.docResources["generatedResourceCodeS2E4"] || []).concat({
+  "url": "/recipe/{id}",
+  "method": "GET",
+  "headers": {},
+  "body": "/digidiet/recipe/1",
+  "parameters": {
+    "id": 1
+  }
+});
+</script>
+                                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">makes view: digidiet/recipes/infor with recipe: 1</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                          <section class="debugger" data-resource-signature="GET /recipe/{id}"></section>
+                            <section class="social">
+                <nav class="switch"></nav>
+
+                <section class="newPost">
+                  <form action="/discussion/53404c1f62d9d40200009f66" method="post">
+                     <textarea placeholder="Start a new thread…" name="comment"></textarea>
+                     <div class="postControl">
+                       <div class="postTools">
+                         <input class="button blue big" type="submit" value="Submit">
+                         <a class="cancel" href="#"><i class="icon-remove"></i> Cancel</a>
+                       </div>
+                     </div>
+                     <input type="hidden" name="url" value="/recipe/{id}">
+                     <input type="hidden" name="method" value="GET" >
+                  </form>
+                </section>
+
+                                <section class="all" name="thread">
+                                  </section>
+                              </section>
+              
+              <section class="tryit">
+                <form name="jsRunExample">
+                  <span class="ajaxLoader block jsEmptyTryit"></span>
+                </form>
+              </section>
+                      </div>
+
+          
+        </section>                      
+        
+                  <h3 class="nameMethod">Update a Recipe</h3>
+        
+        <section class="resource noActivity hasDescription">
+          <hgroup>
+            <h1 class="methodPost"><span>PUT</span></h1>
+            <h2>/recipe/{id}</h2>
+            <a class="resourcePermalink" href="#put-%2Frecipe%2F%7Bid%7D" name="put-%2Frecipe%2F%7Bid%7D"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+
+                                <article class="details">
+                                          <div class="paramsTableWrap"><table class="paramsTable">
+                <caption>Parameters</caption>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                                      <tr>
+                      <td>id</td>
+                      <td><p>Numeric <code>id</code> of the Recipe to display. Has example value.</p>
+</td>
+                      <td>number, required<br>example: <samp>1</samp>                                              </td>
+                    </tr>
+                                  </tbody>
+              </table></div>
+                          </article>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                  <a href="#debugger"><li><span>Debugger</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                                  <a href="#tryit" class="jsTryitSwitcher"><li><span>Try It</span></li></a>
+                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                          <option value="vb">Visual Basic</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS2E5">                                                      <script>
+window.docResources["generatedResourceCodeS2E5"] = (window.docResources["generatedResourceCodeS2E5"] || []).concat({
+  "url": "/recipe/{id}",
+  "method": "PUT",
+  "contentType": "application/JSON",
+  "headers": {
+    "Content-Type": "application/JSON"
+  },
+  "body": "{ \"title\": \"cheese fish sticks\",\n\"description\": \"cheese fish sticks\",\n\"ingredients\": \"cheese, fish sticks\",\n\"instructions\": \"cook thoroughly\"}",
+  "parameters": {
+    "id": 1
+  }
+});
+</script>
+                                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class=""></code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                          <section class="debugger" data-resource-signature="PUT /recipe/{id}"></section>
+                            <section class="social">
+                <nav class="switch"></nav>
+
+                <section class="newPost">
+                  <form action="/discussion/53404c1f62d9d40200009f66" method="post">
+                     <textarea placeholder="Start a new thread…" name="comment"></textarea>
+                     <div class="postControl">
+                       <div class="postTools">
+                         <input class="button blue big" type="submit" value="Submit">
+                         <a class="cancel" href="#"><i class="icon-remove"></i> Cancel</a>
+                       </div>
+                     </div>
+                     <input type="hidden" name="url" value="/recipe/{id}">
+                     <input type="hidden" name="method" value="PUT" >
+                  </form>
+                </section>
+
+                                <section class="all" name="thread">
+                                  </section>
+                              </section>
+              
+              <section class="tryit">
+                <form name="jsRunExample">
+                  <span class="ajaxLoader block jsEmptyTryit"></span>
+                </form>
+              </section>
+                      </div>
+
+          
+        </section>                      
+        
+                  <h3 class="nameMethod">Destroy a Recipe</h3>
+        
+        <section class="resource noActivity hasDescription">
+          <hgroup>
+            <h1 class="methodPost"><span>DELETE</span></h1>
+            <h2>/recipe/{id}</h2>
+            <a class="resourcePermalink" href="#delete-%2Frecipe%2F%7Bid%7D" name="delete-%2Frecipe%2F%7Bid%7D"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+
+                                <article class="details">
+                                          <div class="paramsTableWrap"><table class="paramsTable">
+                <caption>Parameters</caption>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                                      <tr>
+                      <td>id</td>
+                      <td><p>Numeric <code>id</code> of the Recipe to display. Has example value.</p>
+</td>
+                      <td>number, required<br>example: <samp>1</samp>                                              </td>
+                    </tr>
+                                  </tbody>
+              </table></div>
+                          </article>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                  <a href="#debugger"><li><span>Debugger</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                                  <a href="#tryit" class="jsTryitSwitcher"><li><span>Try It</span></li></a>
+                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                          <option value="vb">Visual Basic</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS2E6">                                                      <script>
+window.docResources["generatedResourceCodeS2E6"] = (window.docResources["generatedResourceCodeS2E6"] || []).concat({
+  "url": "/recipe/{id}",
+  "method": "DELETE",
+  "headers": {},
+  "body": "digidiet/recipe/1",
+  "parameters": {
+    "id": 1
+  }
+});
+</script>
+                                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class=""></code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                          <section class="debugger" data-resource-signature="DELETE /recipe/{id}"></section>
+                            <section class="social">
+                <nav class="switch"></nav>
+
+                <section class="newPost">
+                  <form action="/discussion/53404c1f62d9d40200009f66" method="post">
+                     <textarea placeholder="Start a new thread…" name="comment"></textarea>
+                     <div class="postControl">
+                       <div class="postTools">
+                         <input class="button blue big" type="submit" value="Submit">
+                         <a class="cancel" href="#"><i class="icon-remove"></i> Cancel</a>
+                       </div>
+                     </div>
+                     <input type="hidden" name="url" value="/recipe/{id}">
+                     <input type="hidden" name="method" value="DELETE" >
+                  </form>
+                </section>
+
+                                <section class="all" name="thread">
+                                  </section>
+                              </section>
+              
+              <section class="tryit">
+                <form name="jsRunExample">
+                  <span class="ajaxLoader block jsEmptyTryit"></span>
+                </form>
+              </section>
+                      </div>
+
+          
+        </section>              </div>                  <div class="sameResourceGroup">
+        
+                  <h2 class="nameResource">Edit</h2>                      <div class="descriptionMethod"><p>Show the form for editing the specified recipe</p></div>
+                  
+                  <h3 class="nameMethod">Edit a Recipe</h3>
+        
+        <section class="resource noActivity hasDescription">
+          <hgroup>
+            <h1 class="methodGet"><span>GET</span></h1>
+            <h2>/recipe/{id}/edit</h2>
+            <a class="resourcePermalink" href="#get-%2Frecipe%2F%7Bid%7D%2Fedit" name="get-%2Frecipe%2F%7Bid%7D%2Fedit"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+
+                                <article class="details">
+                                          <div class="paramsTableWrap"><table class="paramsTable">
+                <caption>Parameters</caption>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                                      <tr>
+                      <td>id</td>
+                      <td><p>Numeric <code>id</code> of the Recipe to display. Has example value.</p>
+</td>
+                      <td>number, required<br>example: <samp>1</samp>                                              </td>
+                    </tr>
+                                  </tbody>
+              </table></div>
+                          </article>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                  <a href="#debugger"><li><span>Debugger</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                                  <a href="#tryit" class="jsTryitSwitcher"><li><span>Try It</span></li></a>
+                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                          <option value="vb">Visual Basic</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS2E7">                                                      <script>
+window.docResources["generatedResourceCodeS2E7"] = (window.docResources["generatedResourceCodeS2E7"] || []).concat({
+  "url": "/recipe/{id}/edit",
+  "method": "GET",
+  "headers": {},
+  "body": "/digidiet/recipe/1/edit",
+  "parameters": {
+    "id": 1
+  }
+});
+</script>
+                                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">makes view: digidiet/edit with recipe: 1</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                          <section class="debugger" data-resource-signature="GET /recipe/{id}/edit"></section>
+                            <section class="social">
+                <nav class="switch"></nav>
+
+                <section class="newPost">
+                  <form action="/discussion/53404c1f62d9d40200009f66" method="post">
+                     <textarea placeholder="Start a new thread…" name="comment"></textarea>
+                     <div class="postControl">
+                       <div class="postTools">
+                         <input class="button blue big" type="submit" value="Submit">
+                         <a class="cancel" href="#"><i class="icon-remove"></i> Cancel</a>
+                       </div>
+                     </div>
+                     <input type="hidden" name="url" value="/recipe/{id}/edit">
+                     <input type="hidden" name="method" value="GET" >
+                  </form>
+                </section>
+
+                                <section class="all" name="thread">
+                                  </section>
+                              </section>
+              
+              <section class="tryit">
+                <form name="jsRunExample">
+                  <span class="ajaxLoader block jsEmptyTryit"></span>
+                </form>
+              </section>
+                      </div>
+
+          </div>
+        </section>      
+          </div>
   
 </div>
 
@@ -890,7 +1619,7 @@ window.docResources["generatedResourceCodeS1E7"] = (window.docResources["generat
   window.mixpanelDomain = "apiary.io"
 </script>
 <!-- /Mixpanel --><script id="IntercomSettingsScriptTag">
-  var intercomSettings = {"app_id":"8dy7eohb","user_id":"534046bb62d9d40200009646","user_hash":"99fffb7019631479e19bec5c7a1796ee28d00d40","email":"mattvlaw@gmail.com","name":"mattvlaw ","created_at":1396721340,"custom_data":{"github":"mattvlaw","blueprint_size":3481,"subdomain":"digidiet, test1373"},"widget":{"activator":"#Intercom","use_counter":true}};
+  var intercomSettings = {"app_id":"8dy7eohb","user_id":"534046bb62d9d40200009646","user_hash":"99fffb7019631479e19bec5c7a1796ee28d00d40","email":"mattvlaw@gmail.com","name":"mattvlaw ","created_at":1396721340,"custom_data":{"github":"mattvlaw","blueprint_size":5696,"subdomain":"digidiet, test1373"},"widget":{"activator":"#Intercom","use_counter":true}};
   intercomSettings.widget.activator_html=function (obj) {
         var unread_count;
         unread_count = obj.owner.store.get_unread_count();
