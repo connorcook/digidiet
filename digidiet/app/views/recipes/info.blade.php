@@ -8,7 +8,7 @@
 	@if( isset($recipe) )
 		<h3> {{ $recipe -> title}} </h3><br>
 		
-		<h4> By: {{$user -> username}}</h4>
+		<h4> By: <a href="/user/{{ $user->id }}">{{$user -> username}}</a></h4>
 		<h4> Description: </h4>
 		<p> {{ $recipe -> description }} </p>
 

@@ -15,4 +15,5 @@
 		</a>
 	@endforeach
 	</div>
+	{{ $users->links(); }}
 @endsection

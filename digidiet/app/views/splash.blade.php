@@ -40,36 +40,36 @@
 
 @section('subcontent1')
 	<h4>What's Hot</h4>
-	<li>
-	@foreach($recipes as $recipe)
-     	<p><a href="/recipes/{{ $recipe->id }}">{{ $recipe->recipe_name }}</a></p>
+    <ol>
+	@foreach(DB::table('recipes')->orderBy('created_at', 'desc')->take(5)->get() as $recipe)
+     	<li><p><a href="/recipe/{{ $recipe->id }}">{{ $recipe->title }}</a></p></li>
     @endforeach
-    </li>
+    </ol>
 @stop
 
 @section('subcontent2')
 	<h4>Newest</h4>
-  	<li>
-	@foreach($recipes as $recipe)
-     	<p><a href="/recipes/{{ $recipe->id }}">{{ $recipe->recipe_name }}</a></p>
+  	<ol>
+	@foreach(DB::table('recipes')->orderBy('created_at', 'asc')->take(5)->get() as $recipe)
+     	<li><p><a href="/recipe/{{ $recipe->id }}">{{ $recipe->title }}</a></p></li>
     @endforeach
-    </li>
+    </ol>
 @stop
 
 @section('subcontent3')
 	<h4>Top Rated</h4>
-  	<li>
+    <ol>
 	@foreach($recipes as $recipe)
-     	<p><a href="/recipes/{{ $recipe->id }}">{{ $recipe->recipe_name }}</a></p>
+     	<li><p><a href="/recipe/{{ $recipe->id }}">{{ $recipe->title }}</a></p></li>
     @endforeach
-    </li>
+    </ol>
 @stop
 
 @section('subcontent4')
-	<h4>Up and Coming</h4>
-  	<li>
-	@foreach($recipes as $recipe)
-     	<p><a href="/recipes/{{ $recipe->id }}">{{ $recipe->recipe_name }}</a></p>
+	<h4>New Users</h4>
+    <ol>
+	@foreach(DB::table('users')->orderBy('created_at', 'desc')->take(5)->get() as $user)
+     	<li><p><a href="/user/{{ $user->id }}">{{ $user->username }}</a></p></li>
     @endforeach
-    </li>
+    </ol>
 @stop

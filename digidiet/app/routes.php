@@ -13,15 +13,14 @@
 
 Route::get('/', function()
 {
-	$recipes = Recipe::all();
-	//$posts = Recipe::with(‘user’)->order_by(‘updated_at’, ‘desc’)->paginate(5);
+	$recipes = DB::table('recipes')->orderBy('created_at', 'desc')->take(5)->get();
 	return View::make('splash')->with('recipes', $recipes);
 });
 
 // Present the user with login form
 Route::get('login', function() 
 {
-	return View::make('login');
+	return View::make('users.login');
 });
 
 Route::post('login', function() {
@@ -45,24 +44,14 @@ Route::get('logout', function() {
 	return Redirect::to('/');
 });
 
-Route::get('register', function() {
-	return View::make('register');
-});
+Route::get('register', 'UserController@create');
 
-Route::post('register', function() {
-	$registration = array(
-		'username' => Input::get('username'),
-		'password' => Input::get('password'),
-		'name' => Input::get('first_name') + " " + Input::get('last_name')
-	);
-	Eloquent::unguard();
-	User::create(array(
-		'username' => Input::get('username'),
-		'password' => Hash::make(Input::get('password')),
-		'name' => Input::get('first_name') + " " + Input::get('last_name'),
-		'about_me' => Input::get('about_me')
-	));
-	return Redirect::to('/');
+Route::post('register', 'UserController@store');
+
+Route::get('profile', function() {
+	if(Auth::check())
+		return View::make('users.profile')->with('user', Auth::user());
+	else return Redirect::to('login');
 });
 
 Route::post('search', function() { 

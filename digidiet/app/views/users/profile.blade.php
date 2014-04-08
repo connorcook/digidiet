@@ -12,6 +12,16 @@
 		<hr class="alt1" />
 		<h5>About</h5>
 		<p> {{ isset($user) ? $user->about_me : 'The user with the specified ID was not found. Please contact an administrator.' }}</p>
+		<hr class="alt2" />
+		<h5>{{ $user->username }}'s Recipes</h5>
+		<ul>
+		@foreach(DB::table('recipes')->where('author_id', '=', $user->id)->orderBy('created_at', 'desc')->get() as $recipe)
+			<li><p><a href="/recipe/{{ $recipe->id }}">{{ $recipe->title }}</a></p></li>
+		@endforeach
+		</ul>
+		@if(Auth::check() && Auth::user()->id == $user->id)
+			<b><p><a href="/user/{{Auth::user()->id}}/edit">Edit Your Profile</a></p></b>
+		@endif
 	@else
 		<p>User not found.</p>
 	@endif

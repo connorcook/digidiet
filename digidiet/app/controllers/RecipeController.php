@@ -9,7 +9,8 @@ class RecipeController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('recipes.directory')->with('recipes', Recipe::all());
+		$recipes = Recipe::paginate(12);
+		return View::make('recipes.directory')->with('recipes', $recipes);
 	}
 
 	/**

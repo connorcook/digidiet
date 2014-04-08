@@ -9,7 +9,8 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('users.directory')->with('users', User::all());
+		$users = User::paginate(12);
+		return View::make('users.directory')->with('users', $users);
 	}
 
 	/**
@@ -30,14 +31,14 @@ class UserController extends \BaseController {
 	public function store()
 	{
 		
-		return User::create(array(
+		User::create(array(
 			'username' => Input::get('username'),
 			'password' => Hash::make(Input::get('password')),
 			'name' => Input::get('first_name')." ".Input::get('last_name'),
 			'about_me' => Input::get('about_me'),
-			'avatar' => Input::get('image'),
 			'location' => Input::get('location')
 		));
+		return Redirect::to('/');
 	}
 
 	/**
@@ -60,7 +61,7 @@ class UserController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		return View::make('users.edit');
+		return View::make('users.edit')->with('user', User::find($id));
 	}
 
 	/**
@@ -72,14 +73,19 @@ class UserController extends \BaseController {
 	public function update($id)
 	{
 		$user = User::find($id);
-		$user->username = Input::get('username');
-		$user->password = Hash::make(Input::get('password'));
-		$user->name 	= Input::get('first_name')." ".Input::get('last_name');
-		$user->about_me = Input::get('about_me');
-		$user->avatar 	= Input::get('image');
-		$user->location = Input::get('location');
+		if(Input::has('username'))
+			$user->password = Hash::make(Input::get('password'));
+		if(Input::has('first_name') && Input::has('last_name'))
+			$user->name 	= Input::get('first_name')." ".Input::get('last_name');
+		if(Input::has('about_me'))
+			$user->about_me = Input::get('about_me');
+		if(Input::has('image'))
+			$user->avatar 	= Input::get('image');
+		if(Input::has('location'))
+			$user->location = Input::get('location');
 
 		$user->save();
+		return View::make('users.profile')->with('user', $user);
 	}
 
 	/**

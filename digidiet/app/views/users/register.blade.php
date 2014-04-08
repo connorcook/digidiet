@@ -32,7 +32,7 @@
 	<p>{{ Form::label('image', 'Avatar'); }}</p>
 	<p>{{ Form::file('image'); }}</p>
 
-	<!– about me field –>
+	<!– location field –>
 	<p>{{ Form::label('location', 'Location'); }}</p>
 	<p>{{ Form::text('location'); }}</p>
 	
