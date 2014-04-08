@@ -65,3 +65,5 @@ Route::resource('user', 'UserController');
 Route::get('api', function() {
 	return View::make('api');
 });
+
+Route::post('rate', 'RatingController@store');

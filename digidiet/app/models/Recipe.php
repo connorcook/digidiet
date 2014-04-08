@@ -18,5 +18,10 @@ class Recipe extends Eloquent {
     {
         return $this->morphToMany('Tag', 'taggable');
     }
+	
+	public function rating()
+	{
+		return $this->hasMany('Rating');
+	}
 
 }

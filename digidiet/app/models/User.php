@@ -50,4 +50,24 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+	
+	/**
+	 * Get a list of the ratings associated with this recipe
+	 *
+	 * @return array of ratings
+	 */
+	public function rating()
+	{
+		return $this->hasMany('Rating');
+	}
+	
+	/**
+	 * Get the users who have rated this recipe
+	 *
+	 * @return array of users
+	 */
+	public function recipeRatings()
+	{
+		return $this->hasManyThrough('Rating', 'Recipe', 'author_id', 'user_id');
+	}
 }
