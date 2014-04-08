@@ -12,5 +12,5 @@
 		<h6>{{$recipe -> title}}</h6> </a>
 	@endforeach
 	</div>
-	<p>{{ $recipes->links(); }}</p>
+	<div id="navmenu"><p>{{ $recipes->links(); }}</p></div>
 @endsection
