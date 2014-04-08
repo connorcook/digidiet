@@ -6,15 +6,35 @@
 	 Re-search if new query submitted.
 	 TODO Get this search box on every page of the site
 -->
+<?php
+	if(isset($_POST['sort_search'])) {
+		$search = $_POST['sort_search'];
+	}
+?>
 	{{ Form::open(array('url'=>'search', 'method'=>'post')); }}
 
      <!- search box field ->
      <p>{{ Form::label('Recipe', 'Search for recipes'); }}</p>
-     <p>{{ Form::text('search') }}</p>
+     <p>{{ Form::text('search', $search) }}</p>
 
      <!-- Search button -->
      <p>{{ Form::submit('Search', array('class' => 'btn-large')); }}</p>
      {{ Form::close(); }}
+	
+
+<form action="" method="post" id="sortForm">
+    <br>Sort by: <br />
+    <select name="sortby[]">
+        <option value="highest rating" name="sort_option">Highest Rating</option>
+        <option value="lowest rating" name="sort_option">Lowest Rating</option>
+        <option value="most recent" name="sort_option">Most Recent</option>
+        <option value="least recent" name="sort_option">Least Recent</option>
+    </select><br />
+    <br />
+    <!-- passes the value in $search as input to the page -->
+    <input type="hidden" value=<?php echo "{$search}"; ?> name="sort_search">
+    <input type="submit" value="Sort"/>
+</form>
 
 <?php
 
@@ -81,8 +101,6 @@ function openDBConn() {
 		exit();
 	}
 
-	print_r($_POST);		// TESTING PURPOSES ONLY
-
 	/* Create an array for storing the result set,
 	 * and create a table to hold the results for
 	 * display to the user
@@ -114,17 +132,5 @@ function openDBConn() {
 	if($results_count== 1) { echo ' result'; } else { echo ' results';} 
 	echo " displayed."
 ?>
-
-<form action="" method="post">
-    <br>Sort by: <br />
-    <select multiple name="sortby[]">
-        <option value="highest rating" name="sort_option">Highest Rating</option>
-        <option value="lowest rating" name="sort_option">Lowest Rating</option>
-        <option value="most recent" name="sort_option">Most Recent</option>
-        <option value="least recent" name="sort_option">Least Recent</option>
-    </select><br />
-    <br />
-    <input type="submit" value="Sort"/>
-</form>
 @stop
 @endsection
