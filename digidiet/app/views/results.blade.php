@@ -119,7 +119,7 @@ function openDBConn() {
     {
     	$results[] = $row;
     	echo "<tr>";
-    	echo "<td>" . $row['title'] . "</td>";
+    	echo "<td><a href='/recipe/" . $row['id'] . "\'>". $row['title'] . "</a></td>";
     	//echo "<td>" . $row['rating'] . "</td>";
     	echo "</tr>";
     }
