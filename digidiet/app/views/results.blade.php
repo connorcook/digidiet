@@ -1,6 +1,7 @@
 @extends('layouts.standard')
 
 @section('content')
+{{ HTML::script('/js/jquery.raty.js'); }}
 
 <!-- Display search box at the top of the search results page
 	 Re-search if new query submitted.
@@ -118,9 +119,21 @@ function openDBConn() {
 	while($row = mysqli_fetch_assoc($result))
     {
     	$results[] = $row;
+		//$rating = new HttpRequest("/rating/".$row['id'], HttpRequest::METH_GET);
+		//$rating = http_get("/rating/".$row['id'], $info);
+		//use curl to send a get request to get the rating for each
+		$curl = curl_init();
+		curl_setopt($curl, CURLOPT_URL, "http://localhost/rating/".$row['id']);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$rating = curl_exec($curl);
+		if ( $error = curl_error($curl) ) 
+			{echo 'ERROR: ',$error;}
+		
+		curl_close($curl);
+		
     	echo "<tr>";
     	echo "<td><a href='/recipe/" . $row['id'] . "\'>". $row['title'] . "</a></td>";
-    	//echo "<td>" . $row['rating'] . "</td>";
+    	echo "<td> <div class=\"star\" data-score=\"" . $rating . "\"></div></td>";
     	echo "</tr>";
     }
     echo "</table>";
@@ -132,5 +145,14 @@ function openDBConn() {
 	if($results_count== 1) { echo ' result'; } else { echo ' results';} 
 	echo " displayed."
 ?>
+<script>
+var rating = {{ $rating }};
+$('.star').raty({
+  score: function() {
+    return $(this).attr('data-score');
+  },
+  readOnly: true
+});
+</script>
 @stop
 @endsection
