@@ -12,16 +12,17 @@
 		$search = $_POST['sort_search'];
 	}
 ?>
+<!--
 	{{ Form::open(array('url'=>'search', 'method'=>'post')); }}
 
      <!- search box field ->
      <p>{{ Form::label('Recipe', 'Search for recipes'); }}</p>
      <p>{{ Form::text('search', $search) }}</p>
 
-     <!-- Search button -->
+     <!-- Search button
      <p>{{ Form::submit('Search', array('class' => 'btn-large')); }}</p>
      {{ Form::close(); }}
-	
+     -->
 
 <form action="" method="post" id="sortForm">
     <br>Sort by: <br />
@@ -76,11 +77,11 @@ function openDBConn() {
 		switch ($sortby_option) {
 			case "highest rating":
 //				echo "User wishes to sort by highest rating";
-				$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE title LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%' ORDER BY created_at DESC", MYSQLI_USE_RESULT);
+				$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE title LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%' ORDER BY rating", MYSQLI_USE_RESULT);
 				break;
 			case "lowest rating":
 //				echo "User wishes to sort by lowest rating.";
-				$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE title LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%' ORDER BY created_at DESC", MYSQLI_USE_RESULT);
+				$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE title LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%' ORDER BY rating DESC", MYSQLI_USE_RESULT);
 				break;
 			case "most recent":
 //				echo "User wishes to sort by more recent.";

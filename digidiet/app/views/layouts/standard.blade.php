@@ -53,6 +53,12 @@
   @endif
 </li>
 <li><a href="{{URL::to('/user/')}}">User Directory</a></li>
+<li>
+	<form action="{{URL::to('search')}}" method="post">
+	<input type="search" name="search">
+	<input type="submit" value="Search Recipes">
+	</form>
+</li>
 </ul>
 @show
 <!-- END NAVIGATION BAR -->
