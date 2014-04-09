@@ -18,8 +18,9 @@ class RatingController extends \BaseController {
 			'rating' => Input::get('rating'),
 			'user_id' => Auth::user()->id
 			]);
-		$ratingController = new RatingController();
-		$rating = $ratingController->getRating($id);
+		//make an instance of a rating controller to 
+		//$ratingController = new RatingController();
+		$rating = $this->getRating($id);
 		$recipe = Recipe::find($id);
 		$recipe->rating = $rating;
 		$recipe->save();
