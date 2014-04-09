@@ -4,7 +4,7 @@ class RatingController extends \BaseController {
 
 	/**
 	 * Store a rating
-	 * Parameter: id of recipe to rate
+	 * Parameter: none
 	 * @return Response
 	 */
 	public function store()
@@ -21,3 +21,16 @@ class RatingController extends \BaseController {
 		//reload the page
 		return Redirect::to('/recipe/'.$id);	
 	}
+	
+	
+	/**
+	 * Get average rating of a recipe
+	 * Parameter: id of recipe to get rating for
+	 * @return Response
+	 */
+	public function getRating($id)
+	{
+		$rating = Rating::where('recipe_id', '=', $id)->avg('rating');
+		return $rating>0 ? $rating : 0;
+	}
+}

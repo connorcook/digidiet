@@ -14,4 +14,12 @@ class RatingTest extends TestCase {
 		//test that the view has at least one user
 //		$this->assertViewHas('users');
 	}
+	
+	public function testGetRating()
+	{
+		echo $this->call('GET', '/rating/3');
+		$this->assertResponseOK();
+		
+	
+	}
 }
