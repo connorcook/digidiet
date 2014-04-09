@@ -18,10 +18,11 @@ class RatingController extends \BaseController {
 			'rating' => Input::get('rating'),
 			'user_id' => Auth::user()->id
 			]);
-		//make an instance of a rating controller to 
-		//$ratingController = new RatingController();
+		//get the new average rating to store in the recipe table
 		$rating = $this->getRating($id);
+		//get the recipe instance to store the new rating
 		$recipe = Recipe::find($id);
+		//store the new rating and save it
 		$recipe->rating = $rating;
 		$recipe->save();
 		//reload the page
