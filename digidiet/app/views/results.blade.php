@@ -117,6 +117,7 @@ function openDBConn() {
 	/* Put the result set into an array and fill
 	 * a table for results display
 	 */
+	$rating = 0;
 	while($row = mysqli_fetch_assoc($result))
     {
     	$results[] = $row;
@@ -135,7 +136,7 @@ function openDBConn() {
 		$rating = $row['rating'];
     	echo "<tr>";
     	echo "<td><a href='/recipe/" . $row['id'] . "\'>". $row['title'] . "</a></td>";
-    	echo "<td> <div class=\"star\" data-score=\"" . $row['rating'] . "\"></div></td>";
+		echo "<td> <div class=\"star\" data-score=\"" . $row['rating'] . "\"></div></td>";
     	echo "</tr>";
     }
     echo "</table>";
