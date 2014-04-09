@@ -24,14 +24,7 @@ class UserTableSeeder extends Seeder {
 
 	public function run()
 	{
-		DB::table('users')->delete();
-		User::create(array(
-                'username' => 'admin',
-                'password' => Hash::make('devdes'),
-                'name' => 'Administrator',
-                'about_me' => "Hello world.",
-                'location' => "Moon Base Alpha"
-        ));
+		
 		for($i = 0; $i < 100; $i++){
         	User::create(array(
                 'username' => 'rainbowkitty'.$i,
