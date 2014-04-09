@@ -20,8 +20,7 @@ class CreateRecipes extends Migration {
             $table->text('ingredients');
             $table->text('instructions');
             $table->integer('author_id')->unsigned();
-            
-
+			$table->float('rating')->unsigned()->default(0);      
             $table->timestamps();
         });
 	}

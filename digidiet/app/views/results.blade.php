@@ -122,18 +122,19 @@ function openDBConn() {
 		//$rating = new HttpRequest("/rating/".$row['id'], HttpRequest::METH_GET);
 		//$rating = http_get("/rating/".$row['id'], $info);
 		//use curl to send a get request to get the rating for each
-		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, "http://localhost/rating/".$row['id']);
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		$rating = curl_exec($curl);
-		if ( $error = curl_error($curl) ) 
-			{echo 'ERROR: ',$error;}
+		// $curl = curl_init();
+		// curl_setopt($curl, CURLOPT_URL, "http://localhost/rating/".$row['id']);
+		// curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		// $rating = curl_exec($curl);
+		// if ( $error = curl_error($curl) ) 
+			// {echo 'ERROR: ',$error;}
 		
-		curl_close($curl);
-		
+		// curl_close($curl);
+		// $rating = Request::path(
+		$rating = $row['rating'];
     	echo "<tr>";
     	echo "<td><a href='/recipe/" . $row['id'] . "\'>". $row['title'] . "</a></td>";
-    	echo "<td> <div class=\"star\" data-score=\"" . $rating . "\"></div></td>";
+    	echo "<td> <div class=\"star\" data-score=\"" . $row['rating'] . "\"></div></td>";
     	echo "</tr>";
     }
     echo "</table>";

@@ -18,6 +18,11 @@ class RatingController extends \BaseController {
 			'rating' => Input::get('rating'),
 			'user_id' => Auth::user()->id
 			]);
+		$ratingController = new RatingController();
+		$rating = $ratingController->getRating($id);
+		$recipe = Recipe::find($id);
+		$recipe->rating = $rating;
+		$recipe->save();
 		//reload the page
 		return Redirect::to('/recipe/'.$id);	
 	}
