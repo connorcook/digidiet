@@ -77,11 +77,11 @@ function openDBConn() {
 		switch ($sortby_option) {
 			case "highest rating":
 //				echo "User wishes to sort by highest rating";
-				$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE title LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%' ORDER BY rating", MYSQLI_USE_RESULT);
+				$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE title LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%' ORDER BY rating DESC", MYSQLI_USE_RESULT);
 				break;
 			case "lowest rating":
 //				echo "User wishes to sort by lowest rating.";
-				$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE title LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%' ORDER BY rating DESC", MYSQLI_USE_RESULT);
+				$result = mysqli_query($dblink, "SELECT * FROM recipes WHERE title LIKE'%" . mysqli_real_escape_string($dblink, $search) . "%' ORDER BY rating", MYSQLI_USE_RESULT);
 				break;
 			case "most recent":
 //				echo "User wishes to sort by more recent.";
