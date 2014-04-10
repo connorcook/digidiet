@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('UserTableSeeder');
 		$this->call('RecipeTableSeeder');
 		$this->call('RatingTableSeeder');
+		$this->call('RoleTableSeeder');
 		$this->command->info("User table seeded.");
         $this->command->info("Recipe table seeded.");
 		$this->command->info("Rating table seeded.");
@@ -173,6 +174,7 @@ class RatingTableSeeder extends Seeder {
 
 	public function run()
 	{
+		DB::table('rating')->delete();
 		$rating = 0;
 		for($i = 1; $i < 100; $i++){
         	for($j = 1; $j <100; $j++){
@@ -193,5 +195,35 @@ class RatingTableSeeder extends Seeder {
     	}
 	}
 }
-	
-	
+
+class RoleTableSeeder extends Seeder {
+
+	public function run()
+	{
+		DB::table('role')->delete();
+		DB::table('role_user')->delete();
+		Role::create(array(
+			'name' => 'admin'
+			));
+		Role::create(array(
+			'name' => 'mod'
+			));
+		Role::create(array(
+			'name' => 'user'
+			));
+		$user_role = DB::table('role')->where('name', '=', 'user')->first()->get();
+		$admin_role = DB::table('role')->where('name', '=', 'admin')->first()->get();
+		foreach (User::all() as $user){
+			if($user->name == 'rainbowkitty1')
+				RoleUser::create(array(
+					'user_id' => $user->id,
+					'role_id' => $admin_role->id
+				));
+			else 
+				RoleUser::create(array(
+					'user_id' => $user->id,
+					'role_id' => $user_role->id
+			));
+		}
+	}
+}

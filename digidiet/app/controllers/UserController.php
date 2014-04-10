@@ -38,6 +38,15 @@ class UserController extends \BaseController {
 			'about_me' => Input::get('about_me'),
 			'location' => Input::get('location')
 		));
+		$user = DB::table('users')
+			->where('username', '=', Input::get('username'))
+			->first()
+			->get();
+		$role = DB::table('role')->where('name', '=', 'user')->first()->get();
+		UserRole::create(array(
+			'user_id' => $user->id,
+			'role_id' => $role->id
+		));
 		return Redirect::to('/');
 	}
 
@@ -51,6 +60,19 @@ class UserController extends \BaseController {
 	{
 		$user = User::find($id);
 		return View::make('users.profile')->with('user', $user);
+	}
+
+	/**
+	 * Return the role for the specified user.
+	 *
+	 * @param  int  $id
+	 * @return $role
+	 */
+	public function role($id)
+	{
+		$user = User::find($id);
+		$role = DB::table('role_user')->where('user_id', '=', $user->id)->first()->get();
+		return $role;
 	}
 
 	/**
