@@ -13,9 +13,11 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('UserTableSeeder');
 		$this->call('RecipeTableSeeder');
-
+		$this->call('RatingTableSeeder');
 		$this->command->info("User table seeded.");
         $this->command->info("Recipe table seeded.");
+		$this->command->info("Rating table seeded.");
+		
 	}
 
 }
@@ -167,3 +169,29 @@ class RecipeTableSeeder extends Seeder {
 
 	}
 }
+class RatingTableSeeder extends Seeder {
+
+	public function run()
+	{
+		$rating = 0;
+		for($i = 1; $i < 100; $i++){
+        	for($j = 1; $j <100; $j++){
+				$ratings =(array(
+					'user_id' => $i,
+					'recipe_id' => $j,
+					'rating' => rand(1,5)
+				));
+				Rating::create($ratings);
+				$controller = new RatingController();
+				$rating = $controller->getRating($j);
+				
+				$recipe = Recipe::find($j);
+				//store the new rating and save it
+				$recipe->rating = $rating;
+				$recipe->save();
+			}
+    	}
+	}
+}
+	
+	
