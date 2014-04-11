@@ -19,6 +19,15 @@
 			<li><p><a href="/recipe/{{ $recipe->id }}">{{ $recipe->title }}</a></p></li>
 		@endforeach
 		</ul>
+		<hr class="alt1" />
+		<h5>Most Recent Comments</h5>
+		@foreach(DB::table('posts')->where('author_id', '=', $user->id)->get() as $post)
+			<h4>{{DB::table('recipes')->where('id', '=', $post->parent_id)}}</h4>
+			<p>{{$post->content}}</p>
+			<a href="{{'/'.$post->type.'s/'.$post->parent_id.'#'.$post->id}}"><p>Read More</p></a>
+			<hr class="alt2" />
+		@endforeach
+
 		@if(Auth::check() && Auth::user()->id == $user->id)
 			<b><p><a href="/user/{{Auth::user()->id}}/edit">Edit Your Profile</a></p></b>
 		@endif

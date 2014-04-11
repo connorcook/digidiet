@@ -76,6 +76,17 @@ class UserController extends \BaseController {
 	}
 
 	/**
+	 * Return all posts for a given user $id
+	 *
+	 * @param  int  $id
+	 * @return $posts
+	 */
+	public function posts($id)
+	{
+		return DB::table('posts')->where('author_id', '=', $id)->get();
+	}
+
+	/**
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param  int  $id

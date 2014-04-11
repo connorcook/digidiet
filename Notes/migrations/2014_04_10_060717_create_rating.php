@@ -14,8 +14,8 @@ class CreateRating extends Migration {
 	{
 		Schema::create('rating', function($table) {
 			$table->increments('id');
-			$table->integer('recipe_id');
-			$table->integer('user_id');
+			$table->integer('recipe_id')->unsigned();
+			$table->integer('user_id')->unsigned();
 			$table->integer('rating');
 			$table->timestamps();
 		});

@@ -62,6 +62,20 @@ Route::post('search', function() {
 Route::resource('recipe', 'RecipeController');
 Route::resource('user', 'UserController');
 
+Route::get('recipe/{id}/post', function() {
+	return PostController::create();
+});
+Route::get('user/{id}/post', function() {
+	return PostController::create();
+});
+
+Route::post('recipe/{id}/post', function() {
+	return PostController::store($id, 'recipe');
+});
+Route::post('user/{id}/post', function() {
+	return PostController::store($id, 'user');
+});
+
 Route::get('api', function() {
 	return View::make('api');
 });

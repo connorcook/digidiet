@@ -84,6 +84,20 @@ class RecipeController extends \BaseController {
 	}
 
 	/**
+	 * Return all posts for a given recipe $id
+	 *
+	 * @param  int  $id
+	 * @return $posts
+	 */
+	public function posts($id)
+	{
+		return PostController::show($id, 'recipe');
+	}
+
+
+
+
+	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int  $id
