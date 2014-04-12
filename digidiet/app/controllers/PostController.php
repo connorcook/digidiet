@@ -17,10 +17,10 @@ class PostController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($id)
 	{
 		if(Auth::check())
-			return View::make('posts.create');
+			return View::make('posts.create')->with(array('id' => $id));
 		else URL::to('login');
 	}
 
@@ -32,6 +32,7 @@ class PostController extends \BaseController {
 	 */
 	public function store($id, $type)
 	{
+		Eloquent::unguard();
 		$post = Post::create(array( 
 			'content' 		=> Input::get('content'),
 			'author_id' 	=> Auth::user()->id,
@@ -47,11 +48,11 @@ class PostController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
-		$post = Post::find($id);
-		return Redirect::to('/'.$post->parent_type.'s/'.$post->parent_id.'#'.$post->id);
-	}
+	// public function show($id)
+	// {
+		// $post = Post::find($id);
+		// return Redirect::to('/'.$post->parent_type.'s/'.$post->parent_id.'#'.$post->id);
+	// }
 
 	/**
 	 * Show all posts with a resource $id of $type

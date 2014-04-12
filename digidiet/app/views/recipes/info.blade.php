@@ -37,7 +37,7 @@
 			<hr class="alt2" />
 		@endforeach
 		@if(Auth::check())
-			<h4><a href="{{URL::to('recipe/'.$recipe->id.'/post')}}">Add a Comment</a></h4>
+			<h4><a href="{{URL::to('recipe/'.$recipe->id.'/post/')}}">Add a Comment</a></h4>
 		@endif
 	@else
 		<p> Recipe not found. </p>

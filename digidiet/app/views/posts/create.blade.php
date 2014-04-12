@@ -1,7 +1,8 @@
 @extends('layouts.content')
 
 @section('content')
-	{{ Form::open(array('url'=>'post', 'method'=>'post')); }}
+
+	{{ Form::open(array('url'=> Request::url(), 'method'=>'post')); }}
 	<!– check for login errors flash var –>
 	@if (Session::has('post_errors'))
 		<p>The post was not valid. Please try again.</p>
