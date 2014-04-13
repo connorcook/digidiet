@@ -13,15 +13,18 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('UserTableSeeder');
 		$this->call('RecipeTableSeeder');
-		$this->call('RatingTableSeeder');
 		$this->call('RoleTableSeeder');
+		$this->call('RatingTableSeeder');
+		
 		$this->command->info("User table seeded.");
         $this->command->info("Recipe table seeded.");
+		$this->command->info("Roles table seeded.");
 		$this->command->info("Rating table seeded.");
 		
 	}
 
 }
+
 
 class UserTableSeeder extends Seeder {
 
@@ -203,16 +206,16 @@ class RoleTableSeeder extends Seeder {
 		DB::table('role')->delete();
 		DB::table('role_user')->delete();
 		Role::create(array(
-			'name' => 'admin'
+			'title' => 'admin'
 			));
 		Role::create(array(
-			'name' => 'mod'
+			'title' => 'mod'
 			));
 		Role::create(array(
-			'name' => 'user'
+			'title' => 'user'
 			));
-		$user_role = DB::table('role')->where('name', '=', 'user')->first()->get();
-		$admin_role = DB::table('role')->where('name', '=', 'admin')->first()->get();
+		$user_role = DB::table('role')->where('title', '=', 'user')->first();
+		$admin_role = DB::table('role')->where('title', '=', 'admin')->first();
 		foreach (User::all() as $user){
 			if($user->name == 'rainbowkitty1')
 				RoleUser::create(array(
