@@ -30,7 +30,7 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		
+		Eloquent::unguard();
 		User::create(array(
 			'username' => Input::get('username'),
 			'password' => Hash::make(Input::get('password')),
@@ -40,10 +40,9 @@ class UserController extends \BaseController {
 		));
 		$user = DB::table('users')
 			->where('username', '=', Input::get('username'))
-			->first()
-			->get();
-		$role = DB::table('role')->where('name', '=', 'user')->first()->get();
-		UserRole::create(array(
+			->first();
+		$role = DB::table('role')->where('title', '=', 'user')->first();
+		RoleUser::create(array(
 			'user_id' => $user->id,
 			'role_id' => $role->id
 		));
