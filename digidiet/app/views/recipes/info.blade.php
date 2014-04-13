@@ -9,6 +9,9 @@
 	@if( isset($recipe) )
 		<h3> {{ $recipe -> title}} </h3><br>
 		<!--if there is a rating for this recipe by this user, don't enable rating -->
+
+        <img src="{{$recipe -> image_url}}" width="200" height="200">
+
 		@if(isset($rated) & $rated>0 )
 			<?php $hasRated = 1; ?>
 			

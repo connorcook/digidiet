@@ -19,8 +19,9 @@ class CreateRecipes extends Migration {
             $table->text('description');
             $table->text('ingredients');
             $table->text('instructions');
+            $table->string('image_url', 225);
             $table->integer('author_id')->unsigned();
-			$table->float('rating')->unsigned()->default(0);      
+			$table->float('rating')->unsigned()->default(0);     
             $table->timestamps();
         });
 	}

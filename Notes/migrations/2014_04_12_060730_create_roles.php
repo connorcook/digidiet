@@ -7,7 +7,7 @@ class CreateRoles extends Migration {
 
 	public function up()
 	{
-		Schema::create('roles', function(Blueprint $table) {
+		Schema::create('role', function(Blueprint $table) {
 			$table->increments('id');
 			$table->string('title');
 		});
@@ -15,6 +15,6 @@ class CreateRoles extends Migration {
 
 	public function down()
 	{
-		Schema::drop('roles');
+		Schema::drop('role');
 	}
 }

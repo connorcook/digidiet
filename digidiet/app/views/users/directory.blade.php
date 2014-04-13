@@ -15,5 +15,5 @@
 		</a>
 	@endforeach
 	</div>
-	{{ $users->links(); }}
+	<div id=navmenu>{{ $users->links(); }}</div>
 @endsection

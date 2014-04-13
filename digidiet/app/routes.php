@@ -82,3 +82,8 @@ Route::get('api', function() {
 
 Route::post('rate', 'RatingController@store');
 Route::get('rating/{id}', 'RatingController@getRating');
+
+Route::get(
+	'public/images/{file}', 
+	'ImageController@getImage'
+);
