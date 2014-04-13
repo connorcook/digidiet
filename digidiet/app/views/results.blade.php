@@ -111,6 +111,7 @@ function openDBConn() {
 	echo "<table border='0'>
 	<tr>
 	<th>Recipe Title</th>
+	<th>Description</th>
 	<th>Rating</th>
 	</tr>";
 
@@ -136,8 +137,10 @@ function openDBConn() {
 		$rating = $row['rating'];
     	echo "<tr>";
     	echo "<td><a href='/recipe/" . $row['id'] . "\'>". $row['title'] . "</a></td>";
+		echo "<td>".$row['description']."</td>";
 		echo "<td> <div class=\"star\" data-score=\"" . $row['rating'] . "\"></div></td>";
     	echo "</tr>";
+		
     }
     echo "</table>";
 //  print_r($results);		// TESTING PURPOSES ONLY

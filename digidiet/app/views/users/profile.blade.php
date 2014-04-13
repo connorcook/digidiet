@@ -22,9 +22,9 @@
 		<hr class="alt1" />
 		<h5>Most Recent Comments</h5>
 		@foreach(DB::table('posts')->where('author_id', '=', $user->id)->get() as $post)
-			<h4>{{DB::table('recipes')->where('id', '=', $post->parent_id)}}</h4>
+			<h4>{{Recipe::find($post->parent_id)->title}}</h4>
 			<p>{{$post->content}}</p>
-			<a href="{{'/'.$post->type.'s/'.$post->parent_id.'#'.$post->id}}"><p>Read More</p></a>
+			<a href="{{'/'.$post->parent_type.'/'.$post->parent_id.'#'.$post->id}}"><p>Read More</p></a>
 			<hr class="alt2" />
 		@endforeach
 

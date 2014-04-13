@@ -35,12 +35,14 @@
 		<hr class="alt1" />
 		<h5>Comments</h5>
 		@foreach(DB::table('posts')->where('parent_id', '=', $recipe->id)->get() as $post)
+			<div id = "{{$post->id}}">
 			<a href="{{URL::to('user/'.$post->author_id)}}"><h4>{{User::find($post->author_id)->username}}</h4></a>
 			<p>{{$post->content}}</p>
+			</div>
 			<hr class="alt2" />
 		@endforeach
 		@if(Auth::check())
-			<h4><a href="{{URL::to('recipe/'.$recipe->id.'/post')}}">Add a Comment</a></h4>
+			<h4><a href="{{URL::to('recipe/'.$recipe->id.'/post/')}}">Add a Comment</a></h4>
 		@endif
 	@else
 		<p> Recipe not found. </p>

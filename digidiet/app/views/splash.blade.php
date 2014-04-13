@@ -15,26 +15,17 @@
 		<li><img src="http://placehold.it/500x350/E49800/ffffff.png&text=550x350" /></li>
 	</ul>
 	-->
-     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>
 
-     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<p>
+     <img src="images/makecake.jpg"/>
 
-     {{ Form::open(array('url'=>'search', 'method'=>'post')); }}
+     <!--{{ Form::open(array('url'=>'search', 'method'=>'post')); }}
      <!- search box field ->
      <p>{{ Form::label('Recipe', 'Recipe Search'); }}</p>
      <p>{{ Form::text('search') }}</p>
 
      <!– search button –>
      <p>{{ Form::submit('Search', array('class' => 'btn-large')); }}</p>
-     {{ Form::close(); }}
+     {{ Form::close(); }}-->
 
 @stop
 
