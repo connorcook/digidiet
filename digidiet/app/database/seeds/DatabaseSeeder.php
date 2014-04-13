@@ -53,7 +53,8 @@ class RecipeTableSeeder extends Seeder {
                 'description' => 'This is a delicious recipe.',
                 'author_id' => 1,
                 'instructions' => "Take butter, melt, pour over dough, cook at 400 degrees Fahrenheit for 20 minutes.",
-                'ingredients' => "Butter, Dough, Oven, and a Smile"
+                'ingredients' => "Butter, Dough, Oven, and a Smile",
+                'image_url' => 'http://localhost/images/buttered_crumpets.jpg'
         ));
 
         Recipe::create(array(
