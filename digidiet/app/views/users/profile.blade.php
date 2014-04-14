@@ -17,11 +17,11 @@
 		<ul>
 		@foreach(DB::table('recipes')->where('author_id', '=', $user->id)->orderBy('created_at', 'desc')->get() as $recipe)
 			<li><p><a href="/recipe/{{ $recipe->id }}">{{ $recipe->title }}</a> 
-			
+		@if(Auth::check() && Auth::user()->id == $user->id)	
 			    {{ Form::open(array('route' => array('recipe.destroy', $recipe->id), 'method' => 'delete')) }}
         <button type="submit" href="{{ URL::route('recipe.destroy', $recipe->id) }}" class="btn btn-danger btn-mini">Delete</button>
     {{ Form::close() }}
-			
+		@endif	
 			</p></li>
 		@endforeach
 		</ul>
@@ -31,6 +31,11 @@
 			<h4>{{Recipe::find($post->parent_id)->title}}</h4>
 			<p>{{$post->content}}</p>
 			<a href="{{'/'.$post->parent_type.'/'.$post->parent_id.'#'.$post->id}}"><p>Read More</p></a>
+			@if(Auth::check() && Auth::user()->id == $user->id)	
+			    {{ Form::open(array('route' => array('post.destroy', $post->id), 'method' => 'delete')) }}
+        <button type="submit" href="{{ URL::route('post.destroy', $post->id) }}" class="btn btn-danger btn-mini">Delete</button>
+    {{ Form::close() }}
+		@endif
 			<hr class="alt2" />
 		@endforeach
 
