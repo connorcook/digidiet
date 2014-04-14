@@ -16,7 +16,13 @@
 		<h5>{{ $user->username }}'s Recipes</h5>
 		<ul>
 		@foreach(DB::table('recipes')->where('author_id', '=', $user->id)->orderBy('created_at', 'desc')->get() as $recipe)
-			<li><p><a href="/recipe/{{ $recipe->id }}">{{ $recipe->title }}</a></p></li>
+			<li><p><a href="/recipe/{{ $recipe->id }}">{{ $recipe->title }}</a> 
+			
+			    {{ Form::open(array('route' => array('recipe.destroy', $recipe->id), 'method' => 'delete')) }}
+        <button type="submit" href="{{ URL::route('recipe.destroy', $recipe->id) }}" class="btn btn-danger btn-mini">Delete</button>
+    {{ Form::close() }}
+			
+			</p></li>
 		@endforeach
 		</ul>
 		<hr class="alt1" />

@@ -125,6 +125,7 @@ class RecipeController extends \BaseController {
 	{
 		$recipe = Recipe::find($id);
 		$recipe->delete();
+		return Redirect::to('/');
 	}
 
 }
