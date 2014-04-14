@@ -23,7 +23,7 @@
 			<?php $rating = 0; ?>
 		@endif
 		<div class="star"></div>
-		<h4> By: {{$user -> username}}</h4>
+		<h4> By: <a href="{{URL::to('user/'.$user->id)}}">{{$user -> username}}</a></h4>
 		<h4> Description: </h4>
 		<p> {{ $recipe -> description }} </p>
 
