@@ -39,6 +39,7 @@ class UserController extends \BaseController {
 			User::create(array(
 				'username' => Input::get('username'),
 				'password' => Hash::make(Input::get('password')),
+				'email' => Input::get('email'),
 				'name' => Input::get('first_name')." ".Input::get('last_name'),
 				'about_me' => Input::get('about_me'),
 				'location' => Input::get('location')
