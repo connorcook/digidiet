@@ -1,8 +1,17 @@
 @extends('layouts.content')
+
+<!--
+Displays user's profile title in the form of "<Username>'s Profile"
+-->
 @section('title')
 	{{ isset($user) ? $user->username."'s Profile" : 'User not found.' }}
 @endsection
 
+<!--
+Displays user-specific content, such as a picture, a user description
+(About Me), a list of recipes the user has posted, recent comments
+the user has made, and a link for editing the user's profile
+-->
 @section('content')
 	@if(isset($user))
 		<h4>{{ isset($user) ? $user->username."'s Profile" : 'User not found.' }}</h4>

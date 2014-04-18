@@ -1,9 +1,17 @@
 @extends('layouts.content')
 
+<!--
+Names the title of the layout Users
+-->
 @section('title')
 	Users
 @stop
 
+<!--
+Displays a "User Directory" at the top,
+followed by a paginated list of all users
+of the site
+-->
 @section('content')
 	<h3>User Directory</h3>
 	<div class="grid">
