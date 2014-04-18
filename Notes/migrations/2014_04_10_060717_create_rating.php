@@ -3,11 +3,23 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+/**
+ * Filename: create_rating.php
+ * Class invariants: a database must exist
+ * Author(s):
+ * Last modified: April 18, 2014
+ * Description: this file is used to create the rating table in the database
+ */
 class CreateRating extends Migration {
 
 	/**
-	 * Run the migrations.
-	 *
+	 * Function name: up()
+	 * Description: runs the migrations - creates the rating table in the database with
+	 * an incrementing (numeric) 'id' field, an integer 'recipe_id' field,
+	 * an integer 'user_id' field, an integer 'rating' field, and
+	 * two timestamp fields, 'created_at' and 'modified_at'
+	 * postconditions: the rating table is created with the given fields
+	 * @params void
 	 * @return void
 	 */
 	public function up()
@@ -22,8 +34,11 @@ class CreateRating extends Migration {
 	}
 
 	/**
-	 * Reverse the migrations.
-	 *
+	 * Function name: down()
+	 * Description: reverses the migrations - drops the rating table from the database
+	 * preconditions: the rating table must exist in the database
+	 * postconditions: the rating table is dropped from the database
+	 * @params void
 	 * @return void
 	 */
 	public function down()
