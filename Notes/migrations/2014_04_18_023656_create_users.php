@@ -17,6 +17,7 @@ class CreateUsers extends Migration {
 			$table->increments('id');
 			$table->string('username', 64);
 			$table->string('password', 64);
+			$table->string('email',64);
 			$table->string('name', 128);
 			$table->string('location', 64);
 			$table->text('about_me');
@@ -27,6 +28,7 @@ class CreateUsers extends Migration {
 		DB::table('users')->insert(array(
             'username'  => 'admin',
             'password'  => Hash::make('devdes'),
+            'email' => 'test@email.com',
             'name'  => 'Administrator',
             'about_me' => 'Hello world.',
             'location' => 'Moon Base Alpha'

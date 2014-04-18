@@ -35,6 +35,7 @@ class UserTableSeeder extends Seeder {
         	User::create(array(
                 'username' => 'rainbowkitty'.$i,
                 'password' => Hash::make('sparklesparklejazz'),
+                'email' => 'test'.$i.'@email.com',
                 'name' => 'John Smith, #'.$i,
                 'about_me' => "The username says it all.",
                 'location' => "Eternia"

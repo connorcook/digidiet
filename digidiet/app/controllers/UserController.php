@@ -31,22 +31,34 @@ class UserController extends \BaseController {
 	public function store()
 	{
 		Eloquent::unguard();
-		User::create(array(
-			'username' => Input::get('username'),
-			'password' => Hash::make(Input::get('password')),
-			'name' => Input::get('first_name')." ".Input::get('last_name'),
-			'about_me' => Input::get('about_me'),
-			'location' => Input::get('location')
-		));
-		$user = DB::table('users')
-			->where('username', '=', Input::get('username'))
-			->first();
-		$role = DB::table('role')->where('title', '=', 'user')->first();
-		RoleUser::create(array(
-			'user_id' => $user->id,
-			'role_id' => $role->id
-		));
-		return Redirect::to('/');
+
+		$v = User::validate(Input::all());
+
+		if($v->passes()){ 
+
+			User::create(array(
+				'username' => Input::get('username'),
+				'password' => Hash::make(Input::get('password')),
+				'name' => Input::get('first_name')." ".Input::get('last_name'),
+				'about_me' => Input::get('about_me'),
+				'location' => Input::get('location')
+			));
+
+			$user = DB::table('users')
+				->where('username', '=', Input::get('username'))
+				->first();
+			$role = DB::table('role')->where('title', '=', 'user')->first();
+			
+			RoleUser::create(array(
+				'user_id' => $user->id,
+				'role_id' => $role->id
+			));
+
+			return Redirect::to('/');
+		}
+		else{
+			return Redirect::to('register')->withErrors($v);
+		}
 	}
 
 	/**
