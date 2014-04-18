@@ -23,6 +23,7 @@
 </head>
 <body>
 
+<!-- BEGIN NAVIGATION BAR -->
 <!-- Menu Horizontal -->
 @section('navigation')
 <ul class="menu">
@@ -70,6 +71,7 @@
   <div class="col_9">
     @yield('content')
   </div>
+  <!-- BEGIN SIDEBAR -->
   @section('sidebar')
   <div class="col_3">
   <h5>Now Serving</h5>
@@ -95,7 +97,8 @@
   <a class="button orange small" href="#"><i class="icon-rss"></i> RSS</a>
   </div>
   @show
-  
+  <!-- END SIDEBAR -->
+
   <hr />
 
   <!-- SUBCONTENT SECTION --> 

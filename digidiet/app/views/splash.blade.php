@@ -4,6 +4,7 @@
 	Home
 @stop
 
+<!-- Displays main homepage content -->
 @section('content')
 	<h3>Digidiet</h3>
 	<em>Recipes and more from the finest culinary enthusiasts in the world!</em>
@@ -18,17 +19,9 @@
 
      <img src="images/makecake.jpg"/>
 
-     <!--{{ Form::open(array('url'=>'search', 'method'=>'post')); }}
-     <!- search box field ->
-     <p>{{ Form::label('Recipe', 'Recipe Search'); }}</p>
-     <p>{{ Form::text('search') }}</p>
-
-     <!– search button –>
-     <p>{{ Form::submit('Search', array('class' => 'btn-large')); }}</p>
-     {{ Form::close(); }}-->
-
 @stop
 
+<!-- Displays content under What's Hot section of splash page -->
 @section('subcontent1')
 	<h4>What's Hot</h4>
     <ol>
@@ -38,6 +31,7 @@
     </ol>
 @stop
 
+<!-- Displays content under Newest section of splash page -->
 @section('subcontent2')
 	<h4>Newest</h4>
   	<ol>
@@ -47,6 +41,7 @@
     </ol>
 @stop
 
+<!-- Displays content under Top Rated section of splash page -->
 @section('subcontent3')
 	<h4>Top Rated</h4>
     <ol>
@@ -56,6 +51,7 @@
     </ol>
 @stop
 
+<!-- Displays content under New Users section of splash page -->
 @section('subcontent4')
 	<h4>New Users</h4>
     <ol>
