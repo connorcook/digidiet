@@ -16,8 +16,9 @@ the user has made, and a link for editing the user's profile
 	@if(isset($user))
 		<h4>{{ isset($user) ? $user->username."'s Profile" : 'User not found.' }}</h4>
 		<h5>{{ isset($user) ? $user->name : '' }}</h5>
-		<img src="http://placehold.it/150x150/{{substr(md5(rand()), 0, 6);}}
-			/ffffff.png&text={{$user->username}}" width="150" height="150" />
+		
+		{{HTML::image($user->avatar, null, array('width' => '250', 'height'=>250))}}
+
 		<hr class="alt1" />
 		<h5>About</h5>
 		<p> {{ isset($user) ? $user->about_me : 'The user with the specified ID was not found. Please contact an administrator.' }}</p>
