@@ -74,6 +74,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	/**
 	 * validate the input when registering a User
 	 * 
+	 * @params $input - all of the input a user gives when registering
 	 * @return Validator of input compared to rules 
 	 */
 	public static function validate($input){

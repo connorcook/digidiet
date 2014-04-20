@@ -33,13 +33,20 @@ class PostController extends \BaseController {
 	public function store($id, $type)
 	{
 		Eloquent::unguard();
-		$post = Post::create(array( 
+		$v = Post::validate(Input::all());
+
+		if($v->passes()){
+			$post = Post::create(array( 
 			'content' 		=> Input::get('content'),
 			'author_id' 	=> Auth::user()->id,
 			'parent_id'		=> $id,
 			'parent_type'	=> $type
 		));
 		return Redirect::to('/'.$type.'/'.$id.'#'.$post->id);
+		}
+		else{
+			return Redirect::to('/'.$type.'/'.$id.'/post')->withErrors($v);
+		}
 	}
 
 	/**

@@ -3,6 +3,7 @@
 @section('content')
 	<div class="span4 offset4 well">
 	{{ Form::open(array('url'=>'register', 'method'=>'post', 'files'=>true)); }}
+	
 	<!– check for registration errors –>
 	@if($errors->count() > 0)
 		<h4>Error(s)!</h4>

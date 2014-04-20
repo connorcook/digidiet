@@ -38,14 +38,22 @@ class RecipeController extends \BaseController {
 	{
 		
 		Eloquent::unguard();
-		Recipe::create([
-			'title' => Input::get('title'),
-			'description' => Input::get('description'),
-			'ingredients' => Input::get('ingredients'),
-			'instructions' => Input::get('instructions'),
-			'author_id' => Auth::user()->id
-			]);
-		return Redirect::to('/');		
+		$v = Recipe::validate(Input::all());
+
+		if($v->passes()){
+			Recipe::create(array(
+				'title' => Input::get('title'),
+				'description' => Input::get('description'),
+				'ingredients' => Input::get('ingredients'),
+				'instructions' => Input::get('instructions'),
+				'author_id' => Auth::user()->id
+			));
+			return Redirect::to('/');
+		}
+		else{
+			return Redirect::to('recipe/create')->withErrors($v);
+		}
+				
 	}
 
 	/**
