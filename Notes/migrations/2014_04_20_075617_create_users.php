@@ -22,6 +22,7 @@ class CreateUsers extends Migration {
 			$table->string('location', 64);
 			$table->text('about_me');
 			$table->string('avatar', 128);
+			$table->softDeletes();
 			$table->timestamps();
 		});
 
