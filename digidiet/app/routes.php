@@ -80,6 +80,11 @@ Route::post('user/{id}/post', function($id) {
 	return $controller->store($id, 'user');
 });
 
+Route::get('user/{id}/role', function($id) {
+	$controller = new UserController;
+	return $controller->role($id);
+});
+
 Route::get('api', function() {
 	return View::make('api');
 });
@@ -91,3 +96,30 @@ Route::get(
 	'public/images/{file}', 
 	'ImageController@getImage'
 );
+Route::get('cp', function() {
+	if(!Auth::check())
+	{
+		return Redirect::to('/');
+	}
+	else if(Auth::user()->roles()->where('role_id','=',1))
+	{
+		$users = User::paginate(12);
+		return View::make('admin.admincp')->with('users', $users);;
+	}
+	else if(Auth::user()->roles()->where('role_id','=',2))
+	{
+		$users = User::paginate(12);
+		return View::make('admin.modcp')->with('users', $users);;
+	}
+	else
+	{
+		return Redirect::to('/');
+	}
+});
+Route::get('ngusers', function() {
+	$users = User::with('roles')->get();
+	return Response::json($users);
+});
+
+Route::post('user/{id}/changerole', 'UserController@changeRole');
+

@@ -12,6 +12,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'users';
 
+	//enable soft deletes for banning users
+	protected $softDelete = true;
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
@@ -90,4 +92,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		return Validator::make($input,$rules);
 	}
+
+	public function roles()
+	{
+		return $this->hasMany('RoleUser');
+	}
+
 }

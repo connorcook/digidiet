@@ -39,6 +39,10 @@
         @if ( Auth::guest() )
           <li><a href="{{URL::to('login')}}"><span class="icon" data-icon="G"></span>Login</a></li>
           <li><a href="{{URL::to('register')}}"><span class="icon" data-icon="G"></span>Register</a></li>
+        @elseif (Auth::user()->roles()->where('role_id','=',1))
+          <li><a href="{{URL::to('profile')}}"><span class="icon" data-icon="G"></span>Profile</a></li>
+          <li><a href="{{URL::to('cp')}}"><span class="icon" data-icon="G"></span>Control Panel</a></li>
+          <li><a href="{{URL::to('logout')}}"><span class="icon" data-icon="G"></span>Logout</a></li>
         @else
           <li><a href="{{URL::to('profile')}}"><span class="icon" data-icon="G"></span>Profile</a></li>
           <li><a href="{{URL::to('logout')}}"><span class="icon" data-icon="G"></span>Logout</a></li>

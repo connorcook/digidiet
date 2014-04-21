@@ -83,7 +83,7 @@ class UserController extends \BaseController {
 	public function role($id)
 	{
 		$user = User::find($id);
-		$role = DB::table('role_user')->where('user_id', '=', $user->id)->first()->get();
+		$role = DB::table('role_user')->where('user_id', '=', $user->id)->get();
 		return $role;
 	}
 
@@ -146,4 +146,27 @@ class UserController extends \BaseController {
 		$user->delete();
 	}
 
+
+	public function changeRole($id)
+	{
+		if (!Auth::check())
+		{
+			return Redirect::to('/');
+		}
+		else if(Auth::user()->roles()->where('role_id','=',1))
+		{
+			//$role = DB::table('role_user')->where('user_id','=', $id);
+			$role = RoleUser::where('user_id','=',$id)->first();
+			$role->role_id = Input::get('newRole');
+			//$role->role_id=2;
+			$role->save();
+			return Input::get('newRole');
+		}
+		else
+		{
+			return Redirect::to('/');
+		}
+
+
+	}
 }
