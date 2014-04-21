@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call('RatingTableSeeder');
 		$this->command->info("Rating table seeded.");
 		
+        $this->call('NotificationTableSeeder');
+        $this->command->info("Notifcation table seeded.");
 	}
 
 }
@@ -264,4 +266,22 @@ class RoleTableSeeder extends Seeder {
 			));
 		}
 	}
+}
+
+class NotificationTableSeeder extends Seeder {
+
+    public function run()
+    {
+        DB::table('notifications')->delete();
+        foreach(User::all() as $user){
+            Notification::create(array(
+                'user_id'       => $user->id,
+                'link'          => 'profile',
+                'icon'          => 'icon-bell',
+                'acknowledged'  => FALSE,
+                'content'       => "Welcome to digidiet, ".$user->username. 
+                                "! Click here to view your new profile and start cooking.",
+                ));
+        }
+    }
 }

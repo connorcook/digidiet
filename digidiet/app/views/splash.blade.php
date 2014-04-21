@@ -9,15 +9,11 @@
 	<h3>Digidiet</h3>
 	<em>Recipes and more from the finest culinary enthusiasts in the world!</em>
 	<!-- Slideshow -->
-	<!--
 	<ul class="slideshow">
-		<li><img src="http://placehold.it/500x350/4D99E0/ffffff.png&text=550x350" /></li>
-		<li><img src="http://placehold.it/500x350/75CC00/ffffff.png&text=550x350" /></li>
-		<li><img src="http://placehold.it/500x350/E49800/ffffff.png&text=550x350" /></li>
+		<li><img src="images/makecake.jpg" width="700" height="487"/></li>
+		<li><img src="images/makecake.jpg" width="700" height="487"/></li>
+		<li><img src="images/makecake.jpg" width="700" height="487"/></li>
 	</ul>
-	-->
-
-     <img src="images/makecake.jpg"/>
 
 @stop
 

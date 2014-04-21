@@ -60,6 +60,44 @@
 	<input type="submit" value="Search Recipes">
 	</form>
 </li>
+<!-- NOTIFICATIONS -->
+<?php
+   if(Auth::check()){
+      $notifications = DB::table('notifications')->where('user_id', '=', Auth::user()->id)->take(10)->get();
+      $unread = count(DB::table('notifications')->where('user_id', '=', Auth::user()->id)->where('acknowledged', '=', FALSE)->get());
+      $total = count($notifications);
+    }
+?>
+@if(Auth::check())
+<li><a href="{{URL::to('notification')}}">Updates ({{$unread}})</a>
+    @if($total > 0) <!-- IF MESSAGES EXIST, SHOW THEM -->
+    <ul>
+    <!-- SHOW EACH NOTIFICATION -->
+    @foreach($notifications as $update)
+      <li><a href="{{URL::to($update->link)}}">
+      <i class="{{$update->icon}}"></i>
+      <!-- SHOW READ NOTIFICATIONS -->
+      @if($update->acknowledged)
+      <p>{{$update->content}}</p>
+
+      <!-- SHOW UNREAD NOTIFICATIONS IN BOLD -->
+      @else 
+      <b><p>{{$update->content}}</p></b>
+      <!-- MARK NOTIFICATION AS READ -->
+      <?php
+        $note = Notification::find($update->id);
+        $note->acknowledged = TRUE;
+        $note->save();
+      ?>
+      @endif
+      </a></li>
+    @endforeach
+    </ul>
+    @endif
+</li>
+@endif
+<!-- END NOTIFICATIONS -->
+
 </ul>
 @show
 <!-- END NAVIGATION BAR -->

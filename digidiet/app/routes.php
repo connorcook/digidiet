@@ -118,6 +118,12 @@ Route::resource('user', 'UserController');
 Route::resource('post', 'PostController');
 
 /**
+ * A notification RESOURCE route; handled by the
+ * NotificationController class
+ */
+Route::resource('notification', 'NotificationController');
+
+/**
  * 
  */
 Route::get('recipe/{id}/post', function($id) {
