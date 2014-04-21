@@ -12,15 +12,19 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 		$this->call('UserTableSeeder');
+        $this->command->info("User table seeded.");
+
 		$this->call('RecipeTableSeeder');
-		$this->call('RoleTableSeeder');
-		$this->call('RatingTableSeeder');
-		
-		$this->command->info("User table seeded.");
         $this->command->info("Recipe table seeded.");
-		$this->command->info("Roles table seeded.");
+
+		$this->call('RoleTableSeeder');
+        $this->command->info("Roles table seeded.");
+
+		$this->call('RatingTableSeeder');
 		$this->command->info("Rating table seeded.");
 		
+        $this->call('NotificationTableSeeder');
+        $this->command->info("Notifcation table seeded.");
 	}
 
 }
@@ -30,13 +34,44 @@ class UserTableSeeder extends Seeder {
 
 	public function run()
 	{
+        
+        $path = public_path().'/images/admin';
+
+        //create directory for admin's picture
+        if( !is_dir($path) ){
+            mkdir($path);
+        }
+        
+        //move default picture into admin's directory
+        $fileName = 'profile.jpg';
+        copy(public_path().'/images/admin.jpg', $path.'/'.$fileName);
+
+        User::create(array(
+            'username'  => 'admin',
+            'password'  => Hash::make('devdes'),
+            'email' => 'test@email.com',
+            'name'  => 'Administrator',
+            'avatar' => 'images/admin/'.$fileName,
+            'about_me' => 'Hello world.',
+            'location' => 'Moon Base Alpha'
+        ));
 		
 		for($i = 0; $i < 100; $i++){
+            $path = public_path().'/images/rainbowkitty'.$i;
+            //create directory for user's picture
+            if( !is_dir($path) ){
+                mkdir($path);
+            }
+            //move default picture into user's directory
+            $fileName = 'default_profile.jpg';
+            copy(public_path().'/images/'.$fileName, $path.'/'.$fileName);
+
         	User::create(array(
                 'username' => 'rainbowkitty'.$i,
                 'password' => Hash::make('sparklesparklejazz'),
                 'email' => 'test'.$i.'@email.com',
                 'name' => 'John Smith, #'.$i,
+                'avatar' => 'images/rainbowkitty'.$i.'/'.$fileName,
                 'about_me' => "The username says it all.",
                 'location' => "Eternia"
         	));
@@ -231,4 +266,22 @@ class RoleTableSeeder extends Seeder {
 			));
 		}
 	}
+}
+
+class NotificationTableSeeder extends Seeder {
+
+    public function run()
+    {
+        DB::table('notifications')->delete();
+        foreach(User::all() as $user){
+            Notification::create(array(
+                'user_id'       => $user->id,
+                'link'          => 'profile',
+                'icon'          => 'icon-bell',
+                'acknowledged'  => FALSE,
+                'content'       => "Welcome to digidiet, ".$user->username. 
+                                "! Click here to view your new profile and start cooking.",
+                ));
+        }
+    }
 }

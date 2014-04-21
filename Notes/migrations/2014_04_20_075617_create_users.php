@@ -25,14 +25,6 @@ class CreateUsers extends Migration {
 			$table->timestamps();
 		});
 
-		DB::table('users')->insert(array(
-            'username'  => 'admin',
-            'password'  => Hash::make('devdes'),
-            'email' => 'test@email.com',
-            'name'  => 'Administrator',
-            'about_me' => 'Hello world.',
-            'location' => 'Moon Base Alpha'
-        ));
 	}
 
 	/**

@@ -32,19 +32,45 @@ class UserController extends \BaseController {
 	{
 		Eloquent::unguard();
 
+		//do validation on input
 		$v = User::validate(Input::all());
 
+		//if it passes create the user
 		if($v->passes()){ 
 
+			//create path to image in 'username' folder
+			$path = public_path().'/images/'.Input::get('username');
+			
+			//determine if file was uploaded,
+			//if it was then use that, if not use the defualt profile picture
+			if(Input::hasFile('image')){
+				//create proper file name 
+				$fileName = 'profile.'.Input::file('image')->getClientOriginalExtension();
+				//move file to intended path
+				Input::file('image')->move($path,$fileName);
+			}
+			else{
+				//create directory for user's picture
+				if( !is_dir($path) ){
+                	mkdir($path);
+            	}
+				//move default picture into user's images directory
+				$fileName = 'default_profile.jpg';
+				copy(public_path().'/images/'.$fileName, $path.'/'.$fileName);
+			}
+
+			//make the User
+			//save path of profile picture in avatar
 			User::create(array(
 				'username' => Input::get('username'),
 				'password' => Hash::make(Input::get('password')),
 				'email' => Input::get('email'),
 				'name' => Input::get('first_name')." ".Input::get('last_name'),
+				'avatar' => 'images/'.Input::get('username').'/'.$fileName,
 				'about_me' => Input::get('about_me'),
 				'location' => Input::get('location')
 			));
-
+			
 			$user = DB::table('users')
 				->where('username', '=', Input::get('username'))
 				->first();
@@ -118,14 +144,39 @@ class UserController extends \BaseController {
 	public function update($id)
 	{
 		$user = User::find($id);
-		if(Input::has('username'))
+
+		if(Input::has('username')){
 			$user->password = Hash::make(Input::get('password'));
-		if(Input::has('first_name') && Input::has('last_name'))
+		}
+
+		if(Input::has('first_name') && Input::has('last_name')){
 			$user->name 	= Input::get('first_name')." ".Input::get('last_name');
-		if(Input::has('about_me'))
+		}
+
+		if(Input::has('about_me')){
 			$user->about_me = Input::get('about_me');
-		if(Input::has('image'))
-			$user->avatar 	= Input::get('image');
+		}
+
+		if(Input::hasFile('image')){
+
+			//contruct path and file name
+			$path = public_path().'/images/'.$user->username;
+			$fileName = 'profile.'.Input::file('image')->getClientOriginalExtension();
+
+			//delete any previous avatars from directory
+			$files = glob($path.'/profile*'); // get all file names
+			foreach($files as $file){ // iterate files
+  				if(is_file($file))
+    				unlink($file); // delete file
+			}
+
+			//move file to path
+			Input::file('image')->move($path,$fileName);
+
+			//save reference ot path in DB
+			$user->avatar = 'images/'.$user->username.'/'.$fileName;
+		}
+
 		if(Input::has('location'))
 			$user->location = Input::get('location');
 

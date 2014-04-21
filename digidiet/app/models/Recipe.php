@@ -56,5 +56,21 @@ class Recipe extends Eloquent {
 	{
 		return $this->hasMany('Rating');
 	}
+	/**
+	 * validate the input when a user adds a recipe
+	 * @param $input - the input the user gives when adding a recipe
+	 * @return a validator the contains if the input passed the check or not
+	 **/
 
+	public static function validate($input){
+
+		$rules = array(
+				'title' => 'Required',
+				'description' => 'Required',
+				'ingredients' => 'Required',
+				'instructions' => 'Required'
+			);
+
+		return Validator::make($input, $rules);
+	}
 }
