@@ -199,17 +199,21 @@ Route::get(
 	'public/images/{file}', 
 	'ImageController@getImage'
 );
+
+/**
+ * A route to display the administrator control panel
+ */
 Route::get('cp', function() {
 	if(!Auth::check())
 	{
 		return Redirect::to('/');
 	}
-	else if(Auth::user()->roles()->where('role_id','=',1))
+	else if(count(Auth::user()->roles()->where('role_id','==',1))>1)
 	{
 		$users = User::paginate(12);
 		return View::make('admin.admincp')->with('users', $users);;
 	}
-	else if(Auth::user()->roles()->where('role_id','=',2))
+	else if(count(Auth::user()->roles()->where('role_id','==',2))>1)
 	{
 		$users = User::paginate(12);
 		return View::make('admin.modcp')->with('users', $users);;
@@ -219,6 +223,7 @@ Route::get('cp', function() {
 		return Redirect::to('/');
 	}
 });
+
 Route::get('ngusers', function() {
 	$users = User::with('roles')->get();
 	return Response::json($users);
