@@ -33,17 +33,101 @@
 		<p> {{ $recipe -> instructions }} </p>
 
 		<hr class="alt1" />
-		<h5>Comments</h5>
-		@foreach(DB::table('posts')->where('parent_id', '=', $recipe->id)->get() as $post)
-			<div id = "{{$post->id}}">
-			<a href="{{URL::to('user/'.$post->author_id)}}"><h4>{{User::find($post->author_id)->username}}</h4></a>
-			<p>{{$post->content}}</p>
-			</div>
-			<hr class="alt2" />
-		@endforeach
-		@if(Auth::check())
-			<h4><a href="{{URL::to('recipe/'.$recipe->id.'/post/')}}">Add a Comment</a></h4>
-		@endif
+
+		<div class="grid">
+
+			<div class="col_3" style="font-size: 24px">Comments</div>
+			
+			@if(Auth::check())
+				<div id="add_comment" class="col_9">
+					<a href="{{URL::to('recipe/'.$recipe->id.'/post/')}}">
+						<button class="small"> Add a Comment</button>
+					</a>
+				</div>
+				
+			@else
+				<div class="col_9">You must be logged in to comment!</div>
+			@endif	
+
+			<div id="comment_form" class="col_12"></div>
+
+			<!--jquery for popup comment box-->
+			<script type="text/javascript">
+
+				$(document).ready(function(){
+					$('#add_comment').click(function(){
+						console.log("You want to add a comment.");
+						$('#comment_form').append(
+							"<p> appended content </p>");
+					});
+				});
+
+			</script>
+
+			@foreach(DB::table('posts')->where('parent_id', '=', $recipe->id)->get() as $post)
+				
+				<div class="col_3">
+					<a href="{{URL::to('user/'.$post->author_id)}}">{{User::find($post->author_id)->username}}</a>
+				</div>
+				<div class="col_6">{{$post->content}}</div>
+
+				
+				<!--must be logged in and not flagged the comment before-->
+				@if(Auth::check() && !DB::table('flags')->where('post_id','=',$post->id)->where('user_id','=',Auth::user()->id)->get())
+					<div class="col_3"> <button id={{$post->id}} class="small flag" >Flag</button>
+				@else
+					<div class="col_3"> 
+				@endif
+
+				<!--jquery to handle flagging content-->
+				<!--console logs are for debugging purposes-->
+				<script type="text/javascript">
+		
+					$(document).ready(function(){
+						$('#{{$post->id}}').click(function(){
+
+							console.log("You clicked the button to flag comment: "+{{$post->id}}+".");
+
+							var post = {{$post->id}};
+							console.log(post);
+
+							@if(Auth::check()) 
+								var user = {{Auth::user()->id}};
+								console.log(user);
+							@endif
+							
+
+							$.ajax({
+								url: '{{URL::to('flag')}}',
+								type: 'POST',
+								data: {
+									'id':post,
+									'user_id':user
+								},
+								success: function(data){
+									console.log("request returned:");
+									console.log(data);
+									$('#{{$post->id}}').replaceWith("<div class='notice success'><i class='icon-ok icon-small'></i> Flagged! <a href='#close' class='icon-remove'></a></div>");
+								},
+								error: function(xhr,ajaxOptions,thrownError){
+									alert(xhr.status);
+									alert(xhr.responseText);
+									alert(thrownError);
+								}
+							});
+
+							
+						});
+					});
+				</script>
+				</div>
+				<hr class="alt2" />
+			@endforeach
+		</div>
+
+
+
+		
 	@else
 		<p> Recipe not found. </p>
 	@endif
