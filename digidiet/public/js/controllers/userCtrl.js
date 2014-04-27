@@ -11,18 +11,12 @@ angular.module('userCtrl',[])
 			});		
 
 		//Ban a user
-		$scope.banUser = function(id) {
-			$scope.loading = true;
-
-			User.destroy(id)
-				.success(function(data){
-					//refresh list
-					User.get()
-						.success(function(getData) {
-							$scope.users = getData;
-							$scope.loading = false;
-						});
-				});
+		$scope.banUser = function(id, $index) {
+			//remove from the view
+			$scope.users.splice($index, 1);
+			//remove from the db
+			User.destroy(id);
+			
 		};
 
 		$scope.changeRole = function(id, role) {
