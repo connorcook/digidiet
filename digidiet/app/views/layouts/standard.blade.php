@@ -19,6 +19,7 @@
   {{ HTML::script('/js/kickstart.js'); }} <!-- KICKSTART -->
   {{ HTML::style('/css/kickstart.css'); }} <!-- KICKSTART -->
   {{ HTML::style('/style.css'); }} <!-- KICKSTART -->
+  {{ HTML::style('css/animate.css'); }} <!-- ANIMATE.CSS -->
 
 </head>
 <body>

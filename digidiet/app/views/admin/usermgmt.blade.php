@@ -1,5 +1,6 @@
 <div ng-app="userApp" ng-controller="userController">
 <h4>User Management</h4>
+
 	<!-- LOADING ICON =============================================== -->
 	<!-- show loading icon if the loading variable is set to true -->
 	
@@ -15,8 +16,8 @@
 	<!--show loading dialogue-->
 <h3 ng-show="loading">loading</h3>
 <!--actual table-->
-	<tbody ng-hide="loading" ng-repeat="user in users track by $index  | limitTo:pageSize">
-			<tr>
+	<tbody ng-hide="loading">
+			<tr ng-repeat="user in users">
 		<td><% user.id %></td>
 		<td><% user.name %></td>
 		<td><% user.roles[0].role_id == 1 ? "admin" : (user.roles[0].role_id == 2 ? "mod" : "user") %></td>

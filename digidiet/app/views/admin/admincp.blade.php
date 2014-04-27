@@ -10,9 +10,9 @@ Names the title of the Control Panel
 @section('content')
 
 <!-- JS -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script> <!-- load angular -->
-
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/angular.min.js"></script> <!-- load angular -->
+	<script src="/js/angular-animate.min.js"></script>
 	<!-- ANGULAR -->
 	<!-- all angular resources will be loaded from the /public folder -->
 		<script src="js/filter.js"></script>
