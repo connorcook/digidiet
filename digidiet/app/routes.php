@@ -208,15 +208,15 @@ Route::get('cp', function() {
 	{
 		return Redirect::to('/');
 	}
-	else if(count(Auth::user()->roles()->where('role_id','==',1))>1)
+	else if(User::find(Auth::user()->id)->roles()->where('role_id','=',1)->count()==1)
 	{
 		$users = User::paginate(12);
-		return View::make('admin.admincp')->with('users', $users);;
+		return View::make('admin.admincp')->with('users', $users);
 	}
-	else if(count(Auth::user()->roles()->where('role_id','==',2))>1)
+	else if(User::find(Auth::user()->id)->roles()->where('role_id','=',2)->count()==1)
 	{
 		$users = User::paginate(12);
-		return View::make('admin.modcp')->with('users', $users);;
+		return View::make('admin.modcp')->with('users', $users);
 	}
 	else
 	{
