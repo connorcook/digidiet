@@ -28,9 +28,8 @@
 <!-- Menu Horizontal -->
 @section('navigation')
 <ul class="menu">
-<li class="current">
 
-<li><a href="{{URL::to('/')}}"><span class="icon" data-icon="G"></span>Home</a></li>
+<li class="current"><a href="{{URL::to('/')}}"><span class="icon" data-icon="G"></span>Home</a></li>
 @if ( Auth::guest())
   <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="R"></span>Account</a>
 @else
@@ -103,11 +102,14 @@
 </li>
 @endif
 <!-- END NOTIFICATIONS -->
-
 </ul>
 @show
 <!-- END NAVIGATION BAR -->
-
+<!-- HEADLINE -->
+<div class="headline">
+  <h1>digidiet</h1>
+  <p><em>Recipes and more from the finest culinary enthusiasts in the world!</em></p>
+</div>
 
 <div class="grid">
 <div class="col_12">
@@ -116,31 +118,11 @@
     @yield('content')
   </div>
   <!-- BEGIN SIDEBAR -->
-  @section('sidebar')
   <div class="col_3">
-  <h5>Now Serving</h5>
-  <ul class="icons">
-  <li><i class="icon-ok"></i> Drinks</li>
-  <li><i class="icon-ok"></i> Soups</li>
-  <li><i class="icon-ok"></i> Entrees</li>
-  <li><i class="icon-ok"></i> Adult Delights</li>
-  </ul>
-  
-  <h5>Share</h5>
-  <i class="icon-twitter-sign icon-4x"></i> 
-  <i class="icon-facebook-sign icon-4x"></i>
-  <i class="icon-linkedin-sign icon-4x"></i>
-  <i class="icon-github-sign icon-4x"></i>
-  
-  <span class="icon social x-large darkgray" data-icon="1"></span>
-  <span class="icon social x-large black" data-icon="w"></span>
-  <span class="icon x-large pink" data-icon="*"></span>
-  <span class="icon social x-large green" data-icon="v"></span>
-  
-  <h5>RSS Feed</h5>
-  <a class="button orange small" href="#"><i class="icon-rss"></i> RSS</a>
-  </div>
+  @section('sidebar')
+    @yield
   @show
+  </div>
   <!-- END SIDEBAR -->
 
   <hr />

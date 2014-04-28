@@ -45,7 +45,7 @@ body{
 margin:0;
 padding:0 0 0 0;
 color:#000;
-background:#efefef url(css/img/map.png);
+background:#efefef url(css/img/outline.png) repeat center top;
 font:normal 0.9em/150% 'Arimo', arial, verdana, sans-serif;
 text-shadow: 0 0 1px transparent; /* google font pixelation fix */
 }
@@ -160,4 +160,128 @@ display:block;
 
 #navmenu li{
   display: inline-block;
+}
+
+.headline {
+	text-align:center;
+	background:#efefef url(css/img/green_cup.png) repeat center top;
+	border-bottom: 1px solid #fff;
+	margin-bottom: 10px;
+}
+
+.headline h1 {
+	margin-bottom: 0;
+	padding-top: 0;
+	margin-top: 0;
+	padding-bottom: 0;
+}
+
+.headline p {
+	margin-top: 0;
+	padding-bottom: 5px;
+}
+
+.news {
+	border:2px solid #848482;
+	border-radius: 5px;
+	margin-left: 3%;
+	margin-right: 3%;
+	border-style: dotted;
+}
+
+.news p {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: justify;
+}
+
+.col_3 {
+	background: #efefc8;
+	padding: 3px 3px 3px 3px;
+	border-radius: 5px;	
+}
+.col_3 h4 {
+	text-align: center;
+	margin-bottom: 0px;
+}
+
+.col_3 ol {
+	text-align: center;
+	list-style-position: inside;
+}
+
+.col_4 {
+	background: #efefc8;
+	padding: 3px 3px 3px 3px;
+	border-radius: 5px;
+}
+
+.col_4 h4 {
+	text-align: center;
+	margin-bottom: 0px;
+}
+
+.col_4 ol {
+	text-align: center;
+	list-style-position: inside;
+}
+
+.col_6 {
+	background: #efefc8;
+	padding: 3px 3px 3px 3px;
+	border-radius: 5px;
+}
+
+.col_6 h4 {
+	text-align: center;
+	margin-bottom: 0px;
+}
+
+.col_6 ol {
+	text-align: center;
+	list-style-position: inside;
+}
+
+
+.col_9 {
+	background: #efefc8;
+	padding: 3px 3px 3px 3px;
+	border-radius: 5px;
+}
+.col_9 p {
+	margin-left: 3%;
+	margin-right: 3%;
+}
+
+.col_12 {
+	background: #F5F5DC;
+	padding: 3px 3px 3px 3px;
+	border-radius: 5px;
+}
+
+.col_12 h3 {
+	margin-left: 4%;
+	margin-bottom: 0px;
+}
+
+.col_12 hr {
+	margin top: 0px;
+	margin-bottom: 0px;
+}
+
+.item {
+	background: #efefc8;
+	margin-left: 2%;
+	margin-right: 2%;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	padding: 3px 3px 3px 1%;
+}
+
+.item hr {
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
