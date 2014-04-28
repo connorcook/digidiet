@@ -71,16 +71,35 @@ class UserController extends \BaseController {
 				'location' => Input::get('location')
 			));
 			
+
 			$user = DB::table('users')
 				->where('username', '=', Input::get('username'))
 				->first();
 			$role = DB::table('role')->where('title', '=', 'user')->first();
 			
+			//notify user with a welcome to digidiet!
+			Notification::create(array(
+                'user_id'       => $user->id,
+                'link'          => 'profile',
+                'icon'          => 'icon-bell',
+                'acknowledged'  => FALSE,
+                'content'       => "Welcome to digidiet, ".$user->username. 
+                                "! Click here to view your new profile and start cooking."
+        	));
+
 			RoleUser::create(array(
 				'user_id' => $user->id,
 				'role_id' => $role->id
 			));
 
+			//validation has passed, so log the user in
+			$userinfo = array(
+				'username' => Input::get('username'),
+				'password' => Input::get('password')
+			);
+			Auth::attempt($userinfo);
+
+			//redirect to homepage
 			return Redirect::to('/');
 		}
 		else{
