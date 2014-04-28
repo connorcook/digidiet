@@ -6,14 +6,33 @@
 
 <!-- Displays main homepage content -->
 @section('content')
-	<h3>Digidiet</h3>
-	<em>Recipes and more from the finest culinary enthusiasts in the world!</em>
+	
 	<!-- Slideshow -->
-	<ul class="slideshow">
-		<li><img src="images/makecake.jpg" width="700" height="487"/></li>
-		<li><img src="images/makecake.jpg" width="700" height="487"/></li>
-		<li><img src="images/makecake.jpg" width="700" height="487"/></li>
-	</ul>
+	<h2 style="text-align:center;">Welcome to <b>digidiet</b>!</h2>
+	<br>
+	<p style ="text-align:justify">
+	Our philosophy has always been that knowledge is to be shared, including knowledge on delicious, delicious food. After all, if someone else has already created the perfect (cheese) wheel, why reinvent it?
+	<br><br>
+	So we decided there should be an open forum to encourage this exchange of knowledge. Of food.
+	<br><br>
+	<a href="register">Join us</a> as we seek out the best and the brightest of every food artist in the world and spread their experience to all the poor college students.
+	<br>
+	<br>
+	Thank you,
+	<br>
+	<b>Staff @ digidiet</b>
+	</p>
+
+@stop
+
+@section('sidebar')
+  <h4>Announcements</h4>
+  <div class="news">
+	  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  	  <p>Lorem ipsum... <a href="">Read more</a></p>
+  </div>
+  
+	
 
 @stop
 

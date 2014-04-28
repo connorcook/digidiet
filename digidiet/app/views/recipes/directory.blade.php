@@ -5,15 +5,15 @@
 @stop
 
 @section('content')
-	<h1> Recipes Directory </h1>
-	<div class="grid">
-
+	<h3> Recipes Directory </h3>
 	@foreach($recipes as $recipe)
+	<div class = "item">	
 		<a href="/recipe/{{$recipe->id}}">
-		<h6>{{$recipe -> title}}</h6> </a>
+		<h4>{{$recipe -> title}}</h6> </a>
+		<hr class="alt2" />
 		<p>{{$recipe -> description}}</p>
-	@endforeach
-
 	</div>
-	<div id="navmenu"><p>{{ $recipes->links(); }}</p></div>
+	@endforeach
+	<hr class="alt1" />
+	<div id="navmenu"><h6>{{ $recipes->links(); }}</h6></div>
 @endsection
