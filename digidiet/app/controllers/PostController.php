@@ -42,13 +42,11 @@ class PostController extends \BaseController {
 			'parent_id'		=> $id,
 			'parent_type'	=> $type
 		));
-			
+
 		return Redirect::to('/'.$type.'/'.$id.'#'.$post->id);
 		}
 		else{
 			return Redirect::to('/'.$type.'/'.$id)->withErrors($v);
-			return $v->messages()->toJson();
-			
 		}
 	}
 
