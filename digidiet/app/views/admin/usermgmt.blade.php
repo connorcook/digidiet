@@ -9,10 +9,10 @@
 	<!-- hide these users if the loading variable is true -->
 
 	<!--display a list of the users and their roles with options to ban and edit role-->
-	<table>
+	<table class="striped tight sortable">
 	<thead>
 	<!--table headers-->
-		<tr><th>UserID</th><th>UserName</th><th>Role</th><th>Ban</th><th>Change Role</th></tr>
+		<tr><th>ID</th><th>UserName</th><th>Name</th><th>Role</th><th>Ban</th><th>Change Role</th></tr>
 	</thead>
 	<!--show loading dialogue-->
 <h3 ng-show="loading">loading</h3>
@@ -21,7 +21,8 @@ Search User: <input ng-model="searchText">
 	<tbody ng-hide="loading">
 			<tr ng-repeat="user in users | filter:searchText">
 		<td><% user.id %></td>
-		<td><a class="fancybox" rel="group" href="/user/<% user.id %>"><% user.name %></a></td>
+		<td><a class="fancybox" rel="group" href="/user/<% user.id %>"><% user.username %></a></td>
+		<td><% user.name %></td>
 		<td><% user.roles[0].role_id == 1 ? "admin" : (user.roles[0].role_id == 2 ? "mod" : "user") %></td>
 		<td><a href="#" ng-click="banUser(user.id, $index)" class="text-muted"><img src="/images/ban.png" style="height: 10px"></a></td>
 		<td><form name="roleForm" ng-controller="userController" ng-submit="changeRole(user.id, user.roles[0].role_id)">

@@ -234,3 +234,6 @@ Route::post('user/{id}/changerole', 'UserController@changeRole');
 Route::post('/flag',array('uses'=>'FlagController@flag'));
 
 Route::get('/flag', 'FlagController@index');
+
+Route::delete('/flag/{id}', 'FlagController@destroy');
+

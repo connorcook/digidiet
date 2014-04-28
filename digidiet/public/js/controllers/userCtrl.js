@@ -28,4 +28,10 @@ angular.module('userCtrl',[])
 			User.role(id, role);
 		}
 
+		$scope.delFlag = function(id, post_id, $index) {
+
+			$scope.flags.splice($index, 1);
+			User.delFlag(id, post_id);
+		}
+
 	});

@@ -24,13 +24,17 @@ Names the title of the Control Panel
 <link rel="stylesheet" href="/fancybox/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
 <script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
 <div ng-app="userApp" ng-controller="userController">
+	
 	<h3>Admin Control Panel</h3>
-	<div style="display: inline-block">
+	<div class="grid">
+	<div class="col_6">
 	@include('admin.usermgmt')
 	</div>
-	<div style="display: inline-block">
+	<div class="col_6">
 	@include('admin.postmgmt')
 	</div>
+</div>
+
 </div>
 	<!-- 
 	<table>

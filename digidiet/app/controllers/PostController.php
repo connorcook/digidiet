@@ -121,7 +121,7 @@ class PostController extends \BaseController {
 		$post = Post::find($id);
 
 		$post->delete();
-		return Redirect::to('/');
+		//return Redirect::to('/');
 	}
 
 }
