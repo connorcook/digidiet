@@ -103,7 +103,7 @@
 
 				
 				<!--must be logged in and not flagged the comment before-->
-				@if(Auth::check() && !DB::table('flags')->where('post_id','=',$post->id)->where('user_id','=',Auth::user()->id)->get())
+				@if(Auth::check() && !DB::table('flags')->where('post_id','=',$post->id)->where('user_id','=',Auth::user()->id)->get() && $post->author_id != Auth::user()->id)
 					<div class="col_3"> <button id={{$post->id}} class="small flag" onclick="">Flag</button>
 				@else
 					<div class="col_3"> 
