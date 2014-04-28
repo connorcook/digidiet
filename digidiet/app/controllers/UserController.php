@@ -97,6 +97,7 @@ class UserController extends \BaseController {
 				'username' => Input::get('username'),
 				'password' => Input::get('password')
 			);
+			
 			Auth::attempt($userinfo);
 
 			//redirect to homepage

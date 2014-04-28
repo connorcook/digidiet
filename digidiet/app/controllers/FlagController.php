@@ -12,13 +12,17 @@ class FlagController extends BaseController{
 		//get data passed in from POST ajax request
 		$data = Input::all();
 
-		//perform check to make sure that an ajax request was made
+		//check to ensure that an ajax request was made
 		if(Request::ajax()){
 
-			//add flag to database, post_id and user_did are unique
-			//so that needs ot be checked before adding the flag
-			$result = DB::table('flags')->where('post_id','=',$data['id'])
-			->where('user_id','=',$data['user_id'])->get();
+			//add flag to database, 
+			//checking first that the user has not flagged this content
+			//by querying the database
+			$result = DB::table('flags')
+						->where('post_id','=',$data['id'])
+						->where('user_id','=',$data['user_id'])
+						->where('post_type', '=',$data['post_type'])
+						->get();
 
 			//if there was no result, then add the flag to the DB
 			if(!$result){
@@ -27,6 +31,7 @@ class FlagController extends BaseController{
 				Flag::create(array(
 					'post_id' => $data['id'],
 					'user_id' => $data['user_id'],
+					'post_type' => $data['post_type']
 				));
 
 				//return successful JSON response to page
@@ -34,6 +39,7 @@ class FlagController extends BaseController{
 				'success'=>true, 
 				'post'=>$data['id'],
 				'user'=>$data['user_id'],
+				'post_type' => $data['post_type'],
 				'query_result'=>$result
 				));
 			}
@@ -43,6 +49,7 @@ class FlagController extends BaseController{
 					'success'=>false, 
 					'post'=>$data['id'],
 					'user'=>$data['user_id'],
+					'post_type' => $data['post_type'],
 					'query_result'=>$result
 				));	
 			}		
@@ -53,7 +60,8 @@ class FlagController extends BaseController{
 			return Response::json(array(
 				'success'=>false, 
 				'post'=>$data['id'],
-				'user'=>$data['user_id'] 
+				'user'=>$data['user_id'],
+				'post_type' => $data['post_type'] 
 				));	
 		}
 
