@@ -61,6 +61,12 @@ class FlagController extends BaseController{
 
 
 	public function index(){
-		return Flag::all();
+		$flags = Flag::with('user','post')->get();
+		return Response::json($flags);
+	}
+
+	public function destroy($id){
+		$flag=Flag::find($id);
+		$flag->delete();
 	}
 }

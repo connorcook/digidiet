@@ -20,6 +20,12 @@ angular.module('userService', [])
 
 			flags: function() {
 				return $http.get('/flag');
+			},
+
+			delFlag: function(id, postid) {
+				$http.delete('/flag/'+id);
+				$http.delete('/post/'+postid);
+
 			}
 			
 		}
