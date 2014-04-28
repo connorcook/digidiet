@@ -42,13 +42,22 @@ class PostController extends \BaseController {
 			'parent_id'		=> $id,
 			'parent_type'	=> $type
 		));
-			
+		$recipe = Recipe::find($id);
+		$user = User::find($post->author_id);
+
+		Notification::create(array(
+                'user_id'       => $recipe->author_id,
+                'link'          => 'recipe/'.$recipe->id,
+                'icon'          => 'icon-comment',
+                'acknowledged'  => FALSE,
+                'content'       => $user->username.' commented on your recipe '.$recipe->title.'!'
+        ));
+
+
 		return Redirect::to('/'.$type.'/'.$id.'#'.$post->id);
 		}
 		else{
 			return Redirect::to('/'.$type.'/'.$id)->withErrors($v);
-			return $v->messages()->toJson();
-			
 		}
 	}
 

@@ -15,11 +15,11 @@
       <i class="{{$update->icon}}"></i>
       <!-- SHOW READ NOTIFICATIONS -->
       @if($update->acknowledged)
-      <p>{{$update->content}}</p>
+      {{$update->content}}
 
       <!-- SHOW UNREAD NOTIFICATIONS IN BOLD -->
       @else 
-      <b><p>{{$update->content}}</p></b>
+      <b>{{$update->content}}</b>
       <!-- MARK NOTIFICATION AS READ -->
       <?php
         $note = Notification::find($update->id);

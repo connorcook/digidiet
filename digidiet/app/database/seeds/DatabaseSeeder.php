@@ -251,18 +251,18 @@ class RoleTableSeeder extends Seeder {
 		Role::create(array(
 			'title' => 'user'
 			));
-		$user_role = DB::table('role')->where('title', '=', 'user')->first();
-		$admin_role = DB::table('role')->where('title', '=', 'admin')->first();
+		//$user_role = DB::table('role')->where('title', '=', 'user')->first();
+		//$admin_role = DB::table('role')->where('title', '=', 'admin')->first();
 		foreach (User::all() as $user){
-			if($user->name == 'rainbowkitty1')
+			if($user->id == 1)
 				RoleUser::create(array(
 					'user_id' => $user->id,
-					'role_id' => $admin_role->id
+					'role_id' => 1
 				));
 			else 
 				RoleUser::create(array(
 					'user_id' => $user->id,
-					'role_id' => $user_role->id
+					'role_id' => 3
 			));
 		}
 	}
