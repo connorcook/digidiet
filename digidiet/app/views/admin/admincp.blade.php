@@ -26,14 +26,17 @@ Names the title of the Control Panel
 <div ng-app="userApp" ng-controller="userController">
 	
 	<h3>Admin Control Panel</h3>
-	<div class="grid">
-	<div class="col_6">
-	@include('admin.usermgmt')
-	</div>
-	<div class="col_6">
-	@include('admin.postmgmt')
-	</div>
-</div>
+
+
+	<ul class="tabs left">
+<li><a href="#users">User Management</a></li>
+<li><a href="#posts">Post Management</a></li>
+<li><a href="#front">Add Content</a></li>
+</ul>
+
+<div id="users" class="tab-content">@include('admin.usermgmt')</div>
+<div id="posts" class="tab-content">@include('admin.postmgmt')</div>
+<div id="front" class="tab-content">Here's where there will be a content upload page for the front page.</div>
 
 </div>
 	<!-- 

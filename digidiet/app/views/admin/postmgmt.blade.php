@@ -9,7 +9,8 @@
 	<tbody>
 			<tr ng-repeat="flag in flags">
 		<td><% flag.user.username %></td>
-		<td style="word-wrap: normal"><% flag.post.content %></td>
+		<td> <div class="tooltip" title="hi" data-action="click"><% flag.post.content %></button></td>
+		
 		<td><% flag.updated_at %></td>
 		<td><a href="#" ng-click="delFlag(flag.id, flag.post.id, $index)" class="text-muted"><img src="/images/ban.png" style="height: 10px"></a></td>
 		</tr>
