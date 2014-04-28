@@ -232,3 +232,5 @@ Route::get('ngusers', function() {
 Route::post('user/{id}/changerole', 'UserController@changeRole');
 
 Route::post('/flag',array('uses'=>'FlagController@flag'));
+
+Route::get('/flag', 'FlagController@index');

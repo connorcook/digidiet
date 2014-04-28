@@ -3,12 +3,16 @@ angular.module('userCtrl',[])
 	//inject the User service into the controller
 	.controller('userController', function($scope, $http, User)
 	{
-		$scope.loading = true;
+		//$scope.loading = true;
 		User.get()
 			.success(function(data){
 				$scope.users = data;
-				$scope.loading = false;
-			});		
+				//$scope.loading = false;
+			});	
+		User.flags()
+			.success(function(data){
+				$scope.flags = data;
+			})	
 
 		//Ban a user
 		$scope.banUser = function(id, $index) {

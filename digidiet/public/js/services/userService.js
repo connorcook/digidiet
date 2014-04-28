@@ -16,8 +16,11 @@ angular.module('userService', [])
 			
 
 				return $http.post('/user/'+id+'/changerole', {newRole: $postdata});
-			}
+			},
 
+			flags: function() {
+				return $http.get('/flag');
+			}
 			
 		}
 

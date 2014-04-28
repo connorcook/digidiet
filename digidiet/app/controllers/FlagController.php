@@ -58,4 +58,9 @@ class FlagController extends BaseController{
 		}
 
 	}
+
+
+	public function index(){
+		return Flag::all();
+	}
 }

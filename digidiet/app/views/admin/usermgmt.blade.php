@@ -1,5 +1,6 @@
-<div ng-app="userApp" ng-controller="userController">
+
 <h4>User Management</h4>
+<h5>Registered Users</h5>
 
 	<!-- LOADING ICON =============================================== -->
 	<!-- show loading icon if the loading variable is set to true -->
@@ -16,10 +17,11 @@
 	<!--show loading dialogue-->
 <h3 ng-show="loading">loading</h3>
 <!--actual table-->
+Search User: <input ng-model="searchText">
 	<tbody ng-hide="loading">
-			<tr ng-repeat="user in users">
+			<tr ng-repeat="user in users | filter:searchText">
 		<td><% user.id %></td>
-		<td><% user.name %></td>
+		<td><a class="fancybox" rel="group" href="/user/<% user.id %>"><% user.name %></a></td>
 		<td><% user.roles[0].role_id == 1 ? "admin" : (user.roles[0].role_id == 2 ? "mod" : "user") %></td>
 		<td><a href="#" ng-click="banUser(user.id, $index)" class="text-muted"><img src="/images/ban.png" style="height: 10px"></a></td>
 		<td><form name="roleForm" ng-controller="userController" ng-submit="changeRole(user.id, user.roles[0].role_id)">
@@ -40,5 +42,9 @@
     <button ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">
         Next
     </button> -->
-	</div>
-
+	
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+</script>
