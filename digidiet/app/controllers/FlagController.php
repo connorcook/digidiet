@@ -77,14 +77,6 @@ class FlagController extends BaseController{
 		
 		$flag=Flag::find($id);
 		$user=User::find($flag->user_id);
-		Notification::create(array(
-                'user_id'       => $flag->user_id,
-                'link'          => 'profile',
-                'icon'          => 'icon-bell',
-                'acknowledged'  => FALSE,
-                'content'       => "Dear ".$user->name. 
-                                ", Your post has been removed.  Please contact us for more details."
-        ));
 		$flag->delete();
 
 	}
