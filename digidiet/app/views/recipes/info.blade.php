@@ -32,6 +32,47 @@
 		<h4> Instructions: </h4>
 		<p> {{ $recipe -> instructions }} </p>
 
+		<!--flag recipe button here-->
+		<!--user must be logged in, not flagged before, and not flagging their own recipe-->
+		@if(Auth::check() && !DB::table('flags')->where('post_id','=',$recipe->id)->where('user_id','=',Auth::user()->id)->where('post_type', '=','recipe')->get()
+					 && $recipe->author_id != Auth::user()->id)
+			<button id="flag_recipe" class="small red"> Flag Recipe </button>
+		@else
+			<button id="flag_recipe" class="small " disabled="disabled"> Flag Recipe </button>
+		@endif
+
+		<!--jquery/ajax for flagging recipe-->
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$('#flag_recipe').click(function(){
+				console.log("clicked flag recipe");
+				var recipe = {{$recipe->id}};
+				console.log("recipe: "+recipe);
+
+				var user = {{Auth::user()->id}};
+				console.log("sending ajax post request");
+				$.ajax({
+							url: '{{URL::to('flag')}}',
+							type: 'POST',
+							data: {
+								'id':recipe,
+								'user_id':user,
+								'post_type':'recipe'
+							},
+							success: function(data){
+								console.log("request returned:");
+								console.log(data);
+								$('#flag_recipe').replaceWith("<div class='notice success'><i class='icon-ok icon-small'></i> Recipe flagged! <a href='#close' class='icon-remove'></a></div>");
+							},
+							error: function(xhr,ajaxOptions,thrownError){
+								alert(xhr.status);
+								alert(xhr.responseText);
+								alert(thrownError);
+						}
+				});
+			});
+		});
+		</script>
 		<hr class="alt1" />
 
 		<div class="grid flex">
@@ -103,7 +144,8 @@
 
 				
 				<!--must be logged in and not flagged the comment before-->
-				@if(Auth::check() && !DB::table('flags')->where('post_id','=',$post->id)->where('user_id','=',Auth::user()->id)->get() && $post->author_id != Auth::user()->id)
+				@if(Auth::check() && !DB::table('flags')->where('post_id','=',$post->id)->where('user_id','=',Auth::user()->id)->where('post_type', '=','comment')->get()
+					 && $post->author_id != Auth::user()->id)
 					<div class="col_3"> <button id={{$post->id}} class="small flag" onclick="">Flag</button>
 				@else
 					<div class="col_3"> 
@@ -132,7 +174,8 @@
 								type: 'POST',
 								data: {
 									'id':post,
-									'user_id':user
+									'user_id':user,
+									'post_type':'comment'
 								},
 								success: function(data){
 									console.log("request returned:");
@@ -154,11 +197,7 @@
 				<hr class="alt2" />
 			@endforeach
 
-		</div>
-
-
-
-		
+		</div>	
 	@else
 		<p> Recipe not found. </p>
 	@endif

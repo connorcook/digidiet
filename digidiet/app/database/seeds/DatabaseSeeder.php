@@ -280,7 +280,7 @@ class NotificationTableSeeder extends Seeder {
                 'icon'          => 'icon-bell',
                 'acknowledged'  => FALSE,
                 'content'       => "Welcome to digidiet, ".$user->username. 
-                                "! Click here to view your new profile and start cooking.",
+                                "! Click here to view your new profile and start cooking."
                 ));
         }
     }
