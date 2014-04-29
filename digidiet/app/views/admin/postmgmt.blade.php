@@ -14,7 +14,7 @@
 		<td ng-if="flag.post_type=='comment'"><% flag.post.content %></td>
 		<td ng-if="flag.post_type=='recipe'"><% flag.recipe.title %></td>
 		<td><% flag.updated_at %></td>
-		<td><a href="#" ng-click="delFlag(flag.id, flag.post_type, flag.post.id, $index)" class="text-muted"><img src="/images/ban.png" style="height: 10px"></a></td>
+		<td><a href="#" ng-click="delFlag(flag.id, flag.post_type, flag.post_id, $index)" class="text-muted"><img src="/images/ban.png" style="height: 10px"></a></td>
 		</tr>
 	</tbody>
 	</table>

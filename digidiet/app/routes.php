@@ -237,3 +237,9 @@ Route::get('/flag', 'FlagController@index');
 
 Route::delete('/flag/{id}', 'FlagController@destroy');
 
+//this route is overloading the resource route so that it has no return value
+Route::delete('/ngrecipe/{id}', function($id){
+
+		$recipe = Recipe::find($id);
+		$recipe->delete();
+});
