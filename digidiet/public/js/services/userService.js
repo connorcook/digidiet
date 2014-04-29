@@ -9,7 +9,7 @@ angular.module('userService', [])
 
 			//ban a user
 			destroy : function(id) {
-				return $http.delete('/user/'+id);
+				$http.delete('/user/'+id);
 			},
 			//change the user's role
 			role : function(id, $postdata) {

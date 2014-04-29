@@ -22,18 +22,22 @@ angular.module('userCtrl',[])
 			User.destroy(id);
 			
 		};
-
+		//change a user's role
 		$scope.changeRole = function(id, role) {
 			
 			User.role(id, role);
 		}
-
+		//delete a flagged post and its flag
 		$scope.delFlag = function(id, post_type, post_id, flag) {
 
 			$scope.flags.splice($scope.flags.indexOf(flag), 1);
 			User.delFlag(id, post_type, post_id);
 		}
+		//delete just a flag but keep the post
+		$scope.unFlag = function(id, flag) {
 
-		// $scope.unFlag = function()
+			$scope.flags.splice($scope.flags.indexOf(flag), 1);
+			User.unFlag(id);
+		}
 
 	});

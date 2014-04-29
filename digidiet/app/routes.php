@@ -251,6 +251,20 @@ Route::delete('/flag/{id}', 'FlagController@destroy');
 //this route is overloading the resource route so that it has no return value
 Route::delete('/ngrecipe/{id}', function($id){
 
-		$recipe = Recipe::find($id);
-		$recipe->delete();
+	$recipe = Recipe::find($id);
+	$user = User::find($recipe->author_id);
+	Notification::create(array(
+                'user_id'       => $user->id,
+                'link'          => 'profile',
+                'icon'          => 'icon-bell',
+                'acknowledged'  => FALSE,
+                'content'       => "Dear ".$user->username. 
+                                ", Your recipe ".$recipe->title." has been flagged and removed."
+        	));
+
+
+	$recipe->delete();
 });
+
+
+
