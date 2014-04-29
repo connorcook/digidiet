@@ -24,4 +24,9 @@ class Post extends Eloquent {
 
 		return Validator::make($input,$rules);
 	}
+
+	public function user(){
+		return $this->belongsTo('User', 'author_id', 'id');
+	}
+
 }

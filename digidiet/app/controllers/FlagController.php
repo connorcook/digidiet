@@ -61,12 +61,22 @@ class FlagController extends BaseController{
 
 
 	public function index(){
-		$flags = Flag::with('user','post')->get();
+		$flags = Flag::with('user', 'post.user')->get();
 		return Response::json($flags);
 	}
 
 	public function destroy($id){
+		
 		$flag=Flag::find($id);
+		Notification::create(array(
+                'user_id'       => $flag->user_id,
+                'link'          => 'profile',
+                'icon'          => 'icon-bell',
+                'acknowledged'  => FALSE,
+                'content'       => "Dear ".$user->username. 
+                                ", Your post has been removed.  Please contact us for more details."
+        ));
 		$flag->delete();
+
 	}
 }

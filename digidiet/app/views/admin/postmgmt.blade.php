@@ -8,7 +8,7 @@
 	</thead>
 	<tbody>
 			<tr ng-repeat="flag in flags">
-		<td><% flag.user.username %></td>
+		<td><% flag.post.user.username %></td>
 		<td> <div class="tooltip" title="hi" data-action="click"><% flag.post.content %></button></td>
 		
 		<td><% flag.updated_at %></td>
