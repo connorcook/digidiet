@@ -22,9 +22,15 @@ angular.module('userService', [])
 				return $http.get('/flag');
 			},
 
-			delFlag: function(id, postid) {
+			delFlag: function(id, post_type, postid) {
 				$http.delete('/flag/'+id);
-				$http.delete('/post/'+postid);
+				if(post_type=="comment"){
+					$http.delete('/post/'+postid);
+				}
+
+				else if(post_type=="recipe"){
+					$http.delete('/ngrecipe/'+postid);
+				}
 
 			}
 			

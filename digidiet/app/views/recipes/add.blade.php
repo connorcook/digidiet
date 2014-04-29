@@ -6,7 +6,7 @@
 
 @section('content')
 	
-	{{ Form::open(array('url'=>'recipe', 'method'=>'post')); }}
+	{{ Form::open(array('url'=>'recipe', 'method'=>'post', 'files'=>true)); }}
 	<h1> Add Recipes Page </h1>
 	
 	<!- check for validation errors ->
@@ -26,6 +26,9 @@
 	<!– description field –>
 	<p>{{ Form::label('description', 'Description *'); }}</p>
 	<p>{{ Form::text('description',null,array('placeholder'=>'Enter a description...')); }}</p>
+
+	<p>{{ Form::label('image_url', 'Picture'); }}</p>
+	<p>{{ Form::file('image_url'); }}</p>
 
 	<!– ingredients field –>
 	<p>{{ Form::label('ingredients', 'Ingredients *'); }}</p>

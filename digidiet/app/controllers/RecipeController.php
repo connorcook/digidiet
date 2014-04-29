@@ -57,14 +57,41 @@ class RecipeController extends \BaseController {
 		$v = Recipe::validate(Input::all());
 
 		if($v->passes()){
-			Recipe::create(array(
-				'title' => Input::get('title'),
-				'description' => Input::get('description'),
-				'ingredients' => Input::get('ingredients'),
-				'instructions' => Input::get('instructions'),
-				'author_id' => Auth::user()->id
-			));
+
+			if(Input::hasFile('image_url')){
+
+				//CREATE PATH TO FILE FOR IMAGE
+				$path = public_path().'/images/'.Auth::user()->username.'/recipes/'.Input::get('title');
+			
+				//file is required, so don't have to check if input has a file before getting it
+				$fileName = 'recipe_picture.'.Input::file('image_url')->getClientOriginalExtension();
+
+				//move the file to intended path with fileName created
+				Input::file('image_url')->move($path,$fileName);
+			
+				//create recipe with proper path to image
+				Recipe::create(array(
+					'title' => Input::get('title'),
+					'description' => Input::get('description'),
+					'image_url'=>'/images/'.Auth::user()->username.'/recipes/'.Input::get('title').'/'.$fileName,
+					'ingredients' => Input::get('ingredients'),
+					'instructions' => Input::get('instructions'),
+					'author_id' => Auth::user()->id
+				));
+			}
+			else{
+				//create recipe without image
+				Recipe::create(array(
+					'title' => Input::get('title'),
+					'description' => Input::get('description'),
+					'ingredients' => Input::get('ingredients'),
+					'instructions' => Input::get('instructions'),
+					'author_id' => Auth::user()->id
+				));
+			}
+
 			return Redirect::to('/');
+
 		}
 		else{
 			return Redirect::to('recipe/create')->withErrors($v);

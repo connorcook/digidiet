@@ -100,6 +100,12 @@ class UserController extends \BaseController {
 			
 			Auth::attempt($userinfo);
 
+			//finally, send the user a welcome email
+			Mail::send('emails.welcome', array(), function($message) use ($user)
+			{
+  				  $message->to($user->email,$user->name )->subject('Welcome to Digidiet!');
+			});
+
 			//redirect to homepage
 			return Redirect::to('/');
 		}
@@ -213,8 +219,15 @@ class UserController extends \BaseController {
 	public function destroy($id)
 	{
 		$user = User::find($id);
-
+		
 		$user->delete();
+
+		//send email to user who is being banned
+		Mail::send('emails.ban', array(), function($message) use($user)
+		{
+  			$message->to($user->email, $user->name)->subject('You have been banned from Digidiet.');
+		});
+		
 	}
 
 

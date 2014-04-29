@@ -40,16 +40,27 @@ Route::get('login', function()
  * if the user fails to login
  */
 Route::post('login', function() {
+
 	$userinfo = array(
 		'username' => Input::get('username'),
 		'password' => Input::get('password')
 	);
+
+	//find user in table
+	$user = User::where('username', Input::get('username'))->withTrashed()->first();
+
+	//attempt login
 	if( Auth::attempt($userinfo))
 	{
 		return Redirect::to('/');
 	}
-	else
+	//if the user given by the inputted user name exists and it has been soft deleted
+	else if($user && $user->trashed())
 	{
+		return Redirect::to('login')->with('ban', true);
+	}
+	//catch all
+	else{
 		return Redirect::to('login')->with('login_errors', true);
 	}
 	
@@ -237,3 +248,9 @@ Route::get('/flag', 'FlagController@index');
 
 Route::delete('/flag/{id}', 'FlagController@destroy');
 
+//this route is overloading the resource route so that it has no return value
+Route::delete('/ngrecipe/{id}', function($id){
+
+		$recipe = Recipe::find($id);
+		$recipe->delete();
+});
