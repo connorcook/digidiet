@@ -1,7 +1,7 @@
 @extends('layouts.content')
 
 @section('content')
-	<div class="span4 offset4 well">
+	<div class="login">
 	{{ Form::open(array('url'=>'login', 'method'=>'post')); }}
 	<!– check for login errors flash var –>
 	@if (Session::has('login_errors'))
@@ -9,11 +9,11 @@
 	@endif
 
 	<!– username field –>
-		<p>{{ Form::label('username', 'Username'); }}</p>
+		<h5>{{ Form::label('username', 'Username'); }}</h5>
 		<p>{{ Form::text('username') }}</p>
 	
 	<!– password field –>
-	<p>{{ Form::label('password', 'Password'); }}</p>
+	<h5>{{ Form::label('password', 'Password'); }}</h5>
 	<p>{{ Form::password('password'); }}</p>
 	
 	<!– submit button –>

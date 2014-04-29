@@ -1,7 +1,7 @@
 @extends('layouts.content')
 
 @section('content')
-	<div class="span4 offset4 well">
+	<div class="login">
 	{{ Form::open(array('url'=>'register', 'method'=>'post', 'files'=>true)); }}
 	
 	<!– check for registration errors –>

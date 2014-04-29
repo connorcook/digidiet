@@ -14,29 +14,55 @@ the user has made, and a link for editing the user's profile
 -->
 @section('content')
 	@if(isset($user))
-		<h4>{{ isset($user) ? $user->username."'s Profile" : 'User not found.' }}</h4>
-		<h5>{{ isset($user) ? $user->name : '' }}</h5>
-		
+		<h4>{{ isset($user) ? $user->username."'s Profile" : 'User not found.' }}</h3>
+		<div class="item">
 		{{HTML::image($user->avatar, null, array('width' => '250', 'height'=>250))}}
-
-		<hr class="alt1" />
-		<h5>About</h5>
+		</div>
+		<h4>Real name</h4>
+		<div class="item">{{ isset($user) ? $user->name : '' }}</div>
+		
+		<h4>About</h4>
+		<div class="item">
 		<p> {{ isset($user) ? $user->about_me : 'The user with the specified ID was not found. Please contact an administrator.' }}</p>
-		<hr class="alt2" />
-		<h5>{{ $user->username }}'s Recipes</h5>
+		</div>
+
+		<h4>Statistics</h4>
+		<div class="item">
+		<table cellspacing="0" cellpadding="0">
+			<thead><tr>
+				<th> </th>
+				<th> </th>
+			</tr></thead>
+			<tbody><tr>
+				<th>Recipes Created</th>
+				<td>{{count(DB::table('recipes')->where('author_id', '=', $user->id)->get())}}</td>
+			</tr><tr>
+				<th>Comments</th>
+				<td>{{count(DB::table('posts')->where('author_id', '=', $user->id)->get())}}</td>
+			</tr><tr>
+				<th>Recipes Rated</th>
+				<td>{{count(DB::table('rating')->where('user_id', '=', $user->id)->get())}}</td>
+			</tr></tbody>
+			</table>
+		</div>
+
+		<h4>Newest Recipes</h4>
+		<div class="item">
 		<ul>
 		@foreach(DB::table('recipes')->where('author_id', '=', $user->id)->orderBy('created_at', 'desc')->get() as $recipe)
 			<li><p><a href="/recipe/{{ $recipe->id }}">{{ $recipe->title }}</a> 
 		@if(Auth::check() && Auth::user()->id == $user->id)	
 			    {{ Form::open(array('route' => array('recipe.destroy', $recipe->id), 'method' => 'delete')) }}
-        <button type="submit" href="{{ URL::route('recipe.destroy', $recipe->id) }}" class="btn btn-danger btn-mini">Delete</button>
-    {{ Form::close() }}
+       			 <button type="submit" href="{{ URL::route('recipe.destroy', $recipe->id) }}" class="btn btn-danger btn-mini">Delete</button>
+    			{{ Form::close() }}
 		@endif	
 			</p></li>
 		@endforeach
 		</ul>
-		<hr class="alt1" />
-		<h5>Most Recent Comments</h5>
+		</div>
+
+		<h4>Newest Comments</h4>
+		<div class="item">
 		@foreach(DB::table('posts')->where('author_id', '=', $user->id)->get() as $post)
 			<h4>{{Recipe::find($post->parent_id)->title}}</h4>
 			<p>{{$post->content}}</p>
@@ -46,12 +72,14 @@ the user has made, and a link for editing the user's profile
         <button type="submit" href="{{ URL::route('post.destroy', $post->id) }}" class="btn btn-danger btn-mini">Delete</button>
     {{ Form::close() }}
 		@endif
-			<hr class="alt2" />
+			
 		@endforeach
-
+		</div>
+		
 		@if(Auth::check() && Auth::user()->id == $user->id)
 			<b><p><a href="/user/{{Auth::user()->id}}/edit">Edit Your Profile</a></p></b>
 		@endif
+		<hr class="alt1" />
 	@else
 		<p>User not found.</p>
 	@endif

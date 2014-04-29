@@ -9,7 +9,7 @@
 	@foreach($recipes as $recipe)
 	<div class = "item">	
 		<a href="/recipe/{{$recipe->id}}">
-		<h4>{{$recipe -> title}}</h6> </a>
+		<h5>{{$recipe -> title}}</h5> </a>
 		<hr class="alt2" />
 		<p>{{$recipe -> description}}</p>
 	</div>
