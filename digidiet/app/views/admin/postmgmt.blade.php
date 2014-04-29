@@ -15,8 +15,8 @@
 		<td ng-if="flag.post_type=='recipe'"><% flag.recipe.title %></td>
 		<td><% flag.updated_at %></td>
 		<td><% flag.user.username %></td>
-		<td><a href="#" ng-click="delFlag(flag.id, flag.post_type, flag.post_id, flag)" class="text-muted"><img src="/images/ban.png" style="height: 10px"></a>
-			<a href="#" ng-click="unFlag(flag.id, flag)" class="text-muted"><i class="icon-thumbs-up"></i></a></td>
+		<td><a href="#" ng-click="delFlag(flag.id, flag.post_type, flag.post_id, flag)" class="text-muted"><i class="icon-thumbs-down" style="padding:2px" title="Delete"></i></a>
+			<a href="#" ng-click="unFlag(flag.id, flag)" class="text-muted"><i class="icon-thumbs-up" style="padding:2px" title="Unflag"></i></a></td>
 		</tr>
 	</tbody>
 	</table>
