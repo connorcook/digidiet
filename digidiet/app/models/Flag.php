@@ -12,4 +12,7 @@ class Flag extends Eloquent{
 		return $this->belongsTo('Post');
 	}
 
+	public function recipe(){
+		return $this->belongsTo('Recipe', 'post_id', 'id');
+	}
 }

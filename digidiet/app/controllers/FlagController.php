@@ -69,7 +69,7 @@ class FlagController extends BaseController{
 
 
 	public function index(){
-		$flags = Flag::with('user', 'post.user')->get();
+		$flags = Flag::with('user', 'post.user', 'recipe.user')->get();
 		return Response::json($flags);
 	}
 
