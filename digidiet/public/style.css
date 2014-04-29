@@ -166,7 +166,7 @@ display:block;
 	text-align:center;
 	background:#efefef url(css/img/green_cup.png) repeat center top;
 	border-bottom: 1px solid #fff;
-	margin-bottom: 10px;
+	margin-bottom: 0px;
 }
 
 .headline h1 {
@@ -198,7 +198,7 @@ display:block;
 }
 
 .col_3 {
-	background: #efefc8;
+	background: #dfdfdf;
 	padding: 3px 3px 3px 3px;
 	border-radius: 5px;	
 }
@@ -246,7 +246,7 @@ display:block;
 
 
 .col_9 {
-	background: #efefc8;
+	background: #dfdfdf;
 	padding: 3px 3px 3px 3px;
 	border-radius: 5px;
 }
@@ -265,23 +265,35 @@ display:block;
 	margin-left: 4%;
 	margin-bottom: 0px;
 }
+.col_12 h4 {
+	margin-left: 4%;
+	margin-bottom: 0px;
+}
 
 .col_12 hr {
-	margin top: 0px;
+	margin-top: 0px;
 	margin-bottom: 0px;
 }
 
 .item {
-	background: #efefc8;
+	background: #dfdfdf;
 	margin-left: 2%;
 	margin-right: 2%;
 	margin-top: 5px;
 	margin-bottom: 10px;
 	border-radius: 10px;
-	padding: 3px 3px 3px 1%;
+	padding: 2% 3px 2% 2%;
 }
+
 
 .item hr {
 	margin-top: 0px;
 	margin-bottom: 0px;
+}
+
+.login {
+	text-align: center;
+}
+.register {
+	text-align: center;
 }

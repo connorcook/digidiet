@@ -23,13 +23,18 @@
 
 </head>
 <body>
+<!-- HEADLINE -->
+<div class="headline">
+  <h1>digidiet</h1>
+  <p><em>Recipes and more from the finest culinary enthusiasts in the world!</em></p>
+</div>
 
 <!-- BEGIN NAVIGATION BAR -->
 <!-- Menu Horizontal -->
 @section('navigation')
 <ul class="menu">
 
-<li class="current"><a href="{{URL::to('/')}}"><span class="icon" data-icon="G"></span>Home</a></li>
+<li><a href="{{URL::to('/')}}"><span class="icon" data-icon="G"></span>Home</a></li>
 @if ( Auth::guest())
   <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="R"></span>Account</a>
 @else
@@ -58,7 +63,7 @@
     </ul>
   @endif
 </li>
-<li><a href="{{URL::to('/user/')}}">User Directory</a></li>
+<li><a href="{{URL::to('/user/')}}">Users</a></li>
 <li>
   <form action="{{URL::to('search')}}" method="post">
   <input type="search" name="search">
