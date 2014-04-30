@@ -133,19 +133,26 @@
 				
 				<div class="col_12">
 				<div class="col_3">
-					<a href="{{URL::to('user/'.$post->author_id)}}">{{User::find($post->author_id)->username}}</a>
+					<p style="font-size: 20px">{{User::find($post->author_id)->username}}</p>
+					
+					<a href="{{URL::to('user/'.$post->author_id)}}">
+					<img src="{{URL::to(User::find($post->author_id)->avatar)}}"> </a>
+					<br>at: {{$post->created_at}}
+					@if(Auth::check() && !DB::table('flags')->where('post_id','=',$post->id)->where('user_id','=',Auth::user()->id)->where('post_type', '=','comment')->get()
+					 && $post->author_id != Auth::user()->id)
+					 <button id={{$post->id}} class="small flag red">Flag Comment</button>
+				@else
+					<button id={{$post->id}} class="small flag" disabled="disabled">Flag Comment</button>
+				@endif
+				
+
+					
 				</div>
-				<div class="col_6">{{$post->content}}</div>
+				<div class="col_9">{{$post->content}}</div>
 
 				
 				<!--must be logged in and not flagged the comment before-->
-				@if(Auth::check() && !DB::table('flags')->where('post_id','=',$post->id)->where('user_id','=',Auth::user()->id)->where('post_type', '=','comment')->get()
-					 && $post->author_id != Auth::user()->id)
-					<div class="col_3"> <button id={{$post->id}} class="small flag red" onclick="">Flag</button>
-				@else
-					<div class="col_3"> 
-				@endif
-				</div>
+				
 				<!--jquery to handle flagging content-->
 				<!--console logs are for debugging purposes-->
 				<script type="text/javascript">
