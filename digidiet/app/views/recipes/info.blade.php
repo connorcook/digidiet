@@ -194,6 +194,8 @@
 	@else
 		<p> Recipe not found. </p>
 	@endif
+
+	@if(isset($recipe))
 	<script type="text/javascript">
 	//set the rating
 	var rating = {{ $rating }};
@@ -229,4 +231,5 @@
 	}
 	
 	</script>
+	@endif
 @endsection

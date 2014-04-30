@@ -112,8 +112,10 @@ class RecipeController extends \BaseController {
 	 */
 	public function show($id)
 	{
+
 		$recipe = Recipe::find($id);
-		$user = User::find($recipe->author_id);
+		if($recipe){
+			$user = User::find($recipe->author_id);
 		$rating = Rating::where('recipe_id', '=', $recipe->id)->avg('rating');
 		$url = Request::url();
 		//if not logged in, set rated so that recipes cannot be rated
@@ -127,6 +129,10 @@ class RecipeController extends \BaseController {
 			$rated = User::find(Auth::user()->id)->rating()->where('recipe_id', '=', $id)->count();
 		}
 		return View::make('recipes.info')->with(array('recipe' => $recipe, 'user' => $user, 'rating' => $rating, 'rated' => $rated));
+		}
+		else{
+			return View::make('recipes.info')->with(array('recipe'=>null));
+		}
 	}
 
 	/**
