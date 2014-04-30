@@ -21,8 +21,8 @@ Names the title of the Control Panel
 		<script src="js/services/userService.js"></script> <!-- load our service -->
 		<script src="js/services/postService.js"></script> <!-- load our service -->
 		<script src="js/app.js"></script> <!-- load our application -->
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
-<script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<!-- <link rel="stylesheet" href="/fancybox/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" /> -->
+<!-- <script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script> -->
 <div ng-app="userApp" ng-controller="userController">
 	
 	<h3>Admin Control Panel</h3>

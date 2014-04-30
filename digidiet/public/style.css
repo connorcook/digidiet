@@ -38,6 +38,10 @@ blockquote{
 font-family: "Arimo", arial, verdana, sans-serif;
 }
 
+p{
+	padding: 4%;
+}
+
 /*---------------------------------
 	LAYOUT
 -----------------------------------*/

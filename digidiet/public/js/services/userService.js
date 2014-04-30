@@ -6,14 +6,20 @@ angular.module('userService', [])
 			get : function() {
 				return $http.get('/ngusers');
 			},
-
+			getBanned : function() {
+				return $http.get('/bannedusers');
+			},
 			//ban a user
 			destroy : function(id) {
-				$http.delete('/user/'+id);
+				return $http.delete('/user/'+id);
 			},
 			//change the user's role
 			role : function(id, $postdata) {
 				return $http.post('/user/'+id+'/changerole', {newRole: $postdata});
+			},
+
+			unBan : function(id) {
+				return $http.post('/unbanuser/'+id);
 			},
 			//get an index of the flags
 			flags: function() {

@@ -3,24 +3,25 @@ angular.module('userCtrl',[])
 	//inject the User service into the controller
 	.controller('userController', function($scope, $http, $timeout, User)
 	{
-		//$scope.loading = true;
 		
 			User.get()
 			.success(function(data){
 				$scope.users = data;
-				//$scope.loading = false;
 				console.log("fetched data");
 			});	
 		
-		//get announcements
+		//get banned users
+			User.getBanned()
+			.success(function(data){
+				$scope.busers = data;
+			});
 
-		
+		//get announcements
 		User.getAnnounce()
 		.success(function(data){
 			$scope.announcements = data;
 		});
 	
-	$scope.getAnn;
 		//get flags
 		User.flags()
 			.success(function(data){
@@ -32,9 +33,26 @@ angular.module('userCtrl',[])
 			//remove from the view
 			$scope.users.splice($scope.users.indexOf(user), 1);
 			//remove from the db
-			User.destroy(id);
+			User.destroy(id)
+			.success(function(){
+				User.getBanned()
+				.success(function(data){
+					$scope.busers = data;
+				});
+			});
 			
-		};
+		}
+
+		$scope.unBanUser = function(id, buser) {
+			$scope.busers.splice($scope.busers.indexOf(buser), 1);
+			User.unBan(id)
+			.success(function(){
+				User.get()
+				.success(function(data){
+					$scope.users = data;
+				});
+			});
+		}
 		//change a user's role
 		$scope.changeRole = function(id, role) {
 			
@@ -70,6 +88,7 @@ angular.module('userCtrl',[])
 			User.destroyAnnounce(id);
 
 		}
+
 
 
 	});
