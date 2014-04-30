@@ -11,8 +11,8 @@
 		<td ng-if="flag.post_type=='comment'"><% flag.post.user.username %></td>
 		<td ng-if="flag.post_type=='recipe'"><% flag.recipe.user.username %></td>
 		<td><% flag.post_type %></td>
-		<td ng-if="flag.post_type=='comment'"><% flag.post.content %></td>
-		<td ng-if="flag.post_type=='recipe'"><% flag.recipe.title %></td>
+		<td ng-if="flag.post_type=='comment'"><a href="recipe/<% flag.post.parent_id %>"><% flag.post.content %></a></td>
+		<td ng-if="flag.post_type=='recipe'"><a href="recipe/<% flag.recipe.id %>"><% flag.recipe.title %></a></td>
 		<td><% flag.updated_at %></td>
 		<td><% flag.user.username %></td>
 		<td><a href="#" ng-click="delFlag(flag.id, flag.post_type, flag.post_id, flag)" class="text-muted"><i class="icon-thumbs-down" style="padding:2px" title="Delete"></i></a>
