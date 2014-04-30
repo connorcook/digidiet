@@ -83,13 +83,13 @@
 			
 			@if(Auth::check())
 				<div id="add_comment" class="col_9">
-						<button id="add_button" class="small"> Add a Comment</button>
+						<button id="add_button" class="small blue"> Add a Comment</button>
 				</div>
 			@else
 				<div class="col_9">You must be logged in to comment!</div>
 			@endif	
 			
-			<div id="comment_form" class="col_12" style="display: none">
+			<div id="comment_form" class="col_6" style="display: none">
 			
 
 				{{ Form::open(array('url'=> URL::to('recipe/'.$recipe->id.'/post/'),'class'=>'vertical', 'method'=>'post')); }}
@@ -98,12 +98,8 @@
 					<p>{{ Form::label('content', 'Post *'); }}</p>
 					<p>{{ Form::textarea('content',null,array('placeholder'=>'Write your comment here.')); }}</p>
 
-					<!- tags 			->
-					<p>{{ Form::label('tags', 'Tags'); }}</p>
-					<p>{{ Form::text('tags',null,array('placeholder'=>'tag your comment')); }}</p>
-					<p>Fields marked with * are required.</p>
 					<!– submit button –>
-					<p>{{ Form::submit('Create Post', array('class' => 'btn-large')); }}</p>
+					<p>{{ Form::submit('Create Post', array('class' => 'btn-large blue')); }}</p>
 					{{ Form::close(); }}
 
 			</div>
@@ -137,19 +133,26 @@
 				
 				<div class="col_12">
 				<div class="col_3">
-					<a href="{{URL::to('user/'.$post->author_id)}}">{{User::find($post->author_id)->username}}</a>
+					<p style="font-size: 20px">{{User::find($post->author_id)->username}}</p>
+					
+					<a href="{{URL::to('user/'.$post->author_id)}}">
+					<img src="{{URL::to(User::find($post->author_id)->avatar)}}"> </a>
+					<br>at: {{$post->created_at}}
+					@if(Auth::check() && !DB::table('flags')->where('post_id','=',$post->id)->where('user_id','=',Auth::user()->id)->where('post_type', '=','comment')->get()
+					 && $post->author_id != Auth::user()->id)
+					 <button id={{$post->id}} class="small flag red">Flag Comment</button>
+				@else
+					<button id={{$post->id}} class="small flag" disabled="disabled">Flag Comment</button>
+				@endif
+				
+
+					
 				</div>
-				<div class="col_6">{{$post->content}}</div>
+				<div class="col_9">{{$post->content}}</div>
 
 				
 				<!--must be logged in and not flagged the comment before-->
-				@if(Auth::check() && !DB::table('flags')->where('post_id','=',$post->id)->where('user_id','=',Auth::user()->id)->where('post_type', '=','comment')->get()
-					 && $post->author_id != Auth::user()->id)
-					<div class="col_3"> <button id={{$post->id}} class="small flag" onclick="">Flag</button>
-				@else
-					<div class="col_3"> 
-				@endif
-				</div>
+				
 				<!--jquery to handle flagging content-->
 				<!--console logs are for debugging purposes-->
 				<script type="text/javascript">
