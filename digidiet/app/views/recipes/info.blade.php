@@ -89,7 +89,7 @@
 				<div class="col_9">You must be logged in to comment!</div>
 			@endif	
 			
-			<div id="comment_form" class="col_12" style="display: none">
+			<div id="comment_form" class="col_6" style="display: none">
 			
 
 				{{ Form::open(array('url'=> URL::to('recipe/'.$recipe->id.'/post/'),'class'=>'vertical', 'method'=>'post')); }}
@@ -98,10 +98,6 @@
 					<p>{{ Form::label('content', 'Post *'); }}</p>
 					<p>{{ Form::textarea('content',null,array('placeholder'=>'Write your comment here.')); }}</p>
 
-					<!- tags 			->
-					<p>{{ Form::label('tags', 'Tags'); }}</p>
-					<p>{{ Form::text('tags',null,array('placeholder'=>'tag your comment')); }}</p>
-					<p>Fields marked with * are required.</p>
 					<!– submit button –>
 					<p>{{ Form::submit('Create Post', array('class' => 'btn-large')); }}</p>
 					{{ Form::close(); }}
