@@ -49,12 +49,12 @@
 		<script type="text/javascript">
 		$(document).ready(function(){
 			$('#flag_recipe').click(function(){
-				console.log("clicked flag recipe");
 				var recipe = {{$recipe->id}};
-				console.log("recipe: "+recipe);
 
+				@if(Auth::check())
 				var user = {{Auth::user()->id}};
-				console.log("sending ajax post request");
+				@endif
+
 				$.ajax({
 							url: '{{URL::to('flag')}}',
 							type: 'POST',
@@ -64,8 +64,6 @@
 								'post_type':'recipe'
 							},
 							success: function(data){
-								console.log("request returned:");
-								console.log(data);
 								$('#flag_recipe').replaceWith("<div class='notice success'><i class='icon-ok icon-small'></i> Recipe flagged! <a href='#close' class='icon-remove'></a></div>");
 							},
 							error: function(xhr,ajaxOptions,thrownError){
@@ -115,13 +113,11 @@
 
 				$(document).ready(function(){
 					var err = {{$errors}};
-					console.log(err);
-
+		
 					if(err.length == 0){
-						console.log("successful comment! ");
+						//comment was successfull
 					}
 					else{
-						console.log("There was an error!")
 						$('#add_comment').append("<div class='notice error'><i class='icon-remove-sign icon-small'></i> Error posting comment. <a href='#close' class='icon-remove'></a></div>");
 					}
 
@@ -132,7 +128,6 @@
 					}),
 					$('form').submit(function(){
 						$('#comment_form').toggle();
-						console.log("submit button clicked");
 					});
 				});
 
@@ -162,14 +157,10 @@
 					$(document).ready(function(){
 						$('#{{$post->id}}').click(function(){
 
-							console.log("You clicked the button to flag comment: "+{{$post->id}}+".");
-
 							var post = {{$post->id}};
-							console.log(post);
 
 							@if(Auth::check()) 
 								var user = {{Auth::user()->id}};
-								console.log(user);
 							@endif
 							
 
@@ -182,8 +173,6 @@
 									'post_type':'comment'
 								},
 								success: function(data){
-									console.log("request returned:");
-									console.log(data);
 									$('#{{$post->id}}').replaceWith("<div class='notice success'><i class='icon-ok icon-small'></i> Flagged! <a href='#close' class='icon-remove'></a></div>");
 								},
 								error: function(xhr,ajaxOptions,thrownError){
