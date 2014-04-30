@@ -6,7 +6,7 @@
 @section('content')
   {{ HTML::script('/js/jquery.raty.js'); }}
 	
-	@if( isset($recipe) )
+	@if( isset($recipe) && $user )
 		<h3> {{ $recipe -> title}} </h3><br>
 		
 		<!--if there is a picture for this recipe, display it-->
@@ -198,7 +198,7 @@
 		<p> Recipe not found. </p>
 	@endif
 
-	@if(isset($recipe))
+	@if(isset($recipe) && $user)
 	<script type="text/javascript">
 	//set the rating
 	var rating = {{ $rating }};

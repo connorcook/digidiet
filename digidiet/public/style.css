@@ -213,7 +213,7 @@ display:block;
 }
 
 .col_3 ol {
-	text-align: center;
+	text-align: left;
 	list-style-position: inside;
 }
 
@@ -267,11 +267,11 @@ display:block;
 }
 
 .col_12 h3 {
-	margin-left: 4%;
+	margin-left: 1%;
 	margin-bottom: 0px;
 }
 .col_12 h4 {
-	margin-left: 4%;
+	margin-left: 1%;
 	margin-bottom: 0px;
 }
 

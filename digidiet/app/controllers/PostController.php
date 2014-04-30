@@ -126,13 +126,13 @@ class PostController extends \BaseController {
             'link'          => 'recipe/'.$recipe->id,
             'icon'          => 'icon-remove-sign',
             'acknowledged'  => FALSE,
-            'content'       => 'Your comment on '.$recipe->title.' has been removed due to inappropriate content.'      
+            'content'       => 'Your comment on '.$recipe->title.' has been removed.'      
        	));
 
 		$post->delete();
 
 
-		//return Redirect::to('/');
+		return Redirect::to('/');
 	}
 
 }
