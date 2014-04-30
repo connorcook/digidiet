@@ -83,7 +83,7 @@
 			
 			@if(Auth::check())
 				<div id="add_comment" class="col_9">
-						<button id="add_button" class="small"> Add a Comment</button>
+						<button id="add_button" class="small blue"> Add a Comment</button>
 				</div>
 			@else
 				<div class="col_9">You must be logged in to comment!</div>
@@ -99,7 +99,7 @@
 					<p>{{ Form::textarea('content',null,array('placeholder'=>'Write your comment here.')); }}</p>
 
 					<!– submit button –>
-					<p>{{ Form::submit('Create Post', array('class' => 'btn-large')); }}</p>
+					<p>{{ Form::submit('Create Post', array('class' => 'btn-large blue')); }}</p>
 					{{ Form::close(); }}
 
 			</div>
@@ -141,7 +141,7 @@
 				<!--must be logged in and not flagged the comment before-->
 				@if(Auth::check() && !DB::table('flags')->where('post_id','=',$post->id)->where('user_id','=',Auth::user()->id)->where('post_type', '=','comment')->get()
 					 && $post->author_id != Auth::user()->id)
-					<div class="col_3"> <button id={{$post->id}} class="small flag" onclick="">Flag</button>
+					<div class="col_3"> <button id={{$post->id}} class="small flag red" onclick="">Flag</button>
 				@else
 					<div class="col_3"> 
 				@endif
