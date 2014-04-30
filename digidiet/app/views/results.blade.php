@@ -1,4 +1,7 @@
 @extends('layouts.standard')
+@section('title')
+	search
+@stop
 
 @section('content')
 {{ HTML::script('/js/jquery.raty.js'); }}
@@ -152,6 +155,7 @@ function openDBConn() {
 	echo " displayed."
 ?>
 <script>
+$('#content').attr('class','col_12');
 var rating = {{ $rating }};
 $('.star').raty({
   score: function() {
@@ -159,6 +163,40 @@ $('.star').raty({
   },
   readOnly: true
 });
+
+
 </script>
 @stop
+
+@section('sidebar')
+	<script type="text/javascript">
+	$('#sidebar').hide();
+	</script>
+@stop
+
+@section('subcontent1')
+	<script type="text/javascript">
+	$('#subcontent1').hide();
+	</script>
+@stop
+
+@section('subcontent2')
+	<script type="text/javascript">
+	$('#subcontent2').hide();
+	</script>
+@stop
+
+@section('subcontent3')
+	<script type="text/javascript">
+	$('#subcontent3').hide();
+	</script>
+@stop
+
+@section('subcontent4')
+	<script type="text/javascript">
+	$('#subcontent4').hide();
+	</script>
+@stop
+
 @endsection
+
