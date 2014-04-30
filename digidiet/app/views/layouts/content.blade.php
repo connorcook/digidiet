@@ -44,7 +44,7 @@
         @if ( Auth::guest() )
           <li><a href="{{URL::to('login')}}"><span class="icon" data-icon="G"></span>Login</a></li>
           <li><a href="{{URL::to('register')}}"><span class="icon" data-icon="G"></span>Register</a></li>
-        @elseif (Auth::user()->roles()->where('role_id','=',1)->count()==1)
+        @elseif (Auth::user()->roles()->where('role_id','=',1)->count()==1 || Auth::user()->roles()->where('role_id','=',2)->count()==1)
           <!--<li>Auth::user()->roles()->where('role_id','=',5)->id</li>-->
           <li><a href="{{URL::to('profile')}}"><span class="icon" data-icon="G"></span>Profile</a></li>
           <li><a href="{{URL::to('cp')}}"><span class="icon" data-icon="G"></span>Control Panel</a></li>
