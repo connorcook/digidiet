@@ -27,7 +27,7 @@
 	<p>{{ Form::label('description', 'Description *'); }}</p>
 	<p>{{ Form::text('description',null,array('placeholder'=>'Enter a description...')); }}</p>
 
-	<p>{{ Form::label('image_url', 'Picture'); }}</p>
+	<p>{{ Form::label('image_url', 'Picture *'); }}</p>
 	<p>{{ Form::file('image_url'); }}</p>
 
 	<!– ingredients field –>

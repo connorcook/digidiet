@@ -67,7 +67,7 @@ class Recipe extends Eloquent {
 		$rules = array(
 				'title' => 'Required',
 				'description' => 'Required',
-				'image_url'=>'mimes:jpeg,png',
+				'image_url'=>'required|mimes:jpeg,png',
 				'ingredients' => 'Required',
 				'instructions' => 'Required'
 			);

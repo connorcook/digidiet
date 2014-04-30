@@ -14,8 +14,14 @@ the user has made, and a link for editing the user's profile
 -->
 @section('content')
 	@if(isset($user))
-		<h4>{{ isset($user) ? $user->username."'s Profile" : 'User not found.' }}</h3>
+		<h4 style="display:inline">{{ isset($user) ? $user->username."'s Profile" : 'User not found.' }} </h4>
+		@if(Auth::check() && Auth::user()->id == $user->id)
+			<a href="/user/{{Auth::user()->id}}/edit"><button class="small blue">Edit Your Profile</button></a>
+		@endif
+		
+
 		<div class="item">
+
 		{{HTML::image($user->avatar, null, array('width' => '250', 'height'=>250))}}
 		</div>
 		<h4>Real name</h4>
@@ -76,9 +82,7 @@ the user has made, and a link for editing the user's profile
 		@endforeach
 		</div>
 		
-		@if(Auth::check() && Auth::user()->id == $user->id)
-			<b><p><a href="/user/{{Auth::user()->id}}/edit">Edit Your Profile</a></p></b>
-		@endif
+		
 		<hr class="alt1" />
 	@else
 		<p>User not found.</p>
