@@ -119,8 +119,19 @@ class PostController extends \BaseController {
 	public function destroy($id)
 	{
 		$post = Post::find($id);
+		$recipe = Recipe::find($post->parent_id);
+
+		Notification::create(array(
+            'user_id'       => $post->author_id,
+            'link'          => 'recipe/'.$recipe->id,
+            'icon'          => 'icon-remove-sign',
+            'acknowledged'  => FALSE,
+            'content'       => 'Your comment on '.$recipe->title.' has been removed due to inappropriate content.'      
+       	));
 
 		$post->delete();
+
+
 		//return Redirect::to('/');
 	}
 

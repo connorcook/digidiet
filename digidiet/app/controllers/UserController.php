@@ -244,6 +244,39 @@ class UserController extends \BaseController {
 			$role->role_id = Input::get('newRole');
 			//$role->role_id=2;
 			$role->save();
+
+			$roleType = Role::find($role->role_id);
+
+			//notify user of change in role
+
+			if($roleType->id == 2){
+				Notification::create(array(
+                'user_id'       => $id,
+                'link'          => 'profile',
+                'icon'          => 'icon-group',
+                'acknowledged'  => FALSE,
+                'content'       => 'Congratulations! An admin has promoted you to moderator status. You now have access to the moderator control panel.'
+        	));
+			}
+			else if ($roleType->id == 1){
+				Notification::create(array(
+                'user_id'       => $id,
+                'link'          => 'profile',
+                'icon'          => 'icon-group',
+                'acknowledged'  => FALSE,
+                'content'       => 'Congratulations! An admin has promoted you to admin status. You now have access to the admin control panel.'
+        	));
+			}
+			else{
+				Notification::create(array(
+                'user_id'       => $id,
+                'link'          => 'profile',
+                'icon'          => 'icon-group',
+                'acknowledged'  => FALSE,
+                'content'       => 'An admin has changed your privileges to user status.'
+        	));
+			}
+			
 			return Input::get('newRole');
 		}
 		else

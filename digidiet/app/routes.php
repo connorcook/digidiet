@@ -256,7 +256,7 @@ Route::delete('/ngrecipe/{id}', function($id){
 	Notification::create(array(
                 'user_id'       => $user->id,
                 'link'          => 'profile',
-                'icon'          => 'icon-bell',
+                'icon'          => 'icon-remove-sign',
                 'acknowledged'  => FALSE,
                 'content'       => "Dear ".$user->username. 
                                 ", Your recipe ".$recipe->title." has been flagged and removed."
@@ -266,5 +266,9 @@ Route::delete('/ngrecipe/{id}', function($id){
 	$recipe->delete();
 });
 
-
-
+/*
+* route for the static contact us page
+*/
+Route::get('contact', function(){
+	return View::make('contact');
+});
