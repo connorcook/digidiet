@@ -1,4 +1,4 @@
-/*
+	/*
 	99Lime.com HTML KickStart by Joshua Gatcke
 	style.css
 
@@ -39,7 +39,8 @@ font-family: "Arimo", arial, verdana, sans-serif;
 }
 
 p{
-	padding: 4%;
+	padding-left:10px;
+	padding-right:10px;
 }
 
 /*---------------------------------
