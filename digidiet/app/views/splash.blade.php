@@ -22,6 +22,62 @@
 	<br>
 	<b>Staff @ digidiet</b>
 	</p>
+	<h6 style="text-align:left;">Recent Uploads:</h2>
+
+<head>
+  <style>
+    /* Prevents slides from flashing */
+    #slides {
+      display:none;
+    }
+        #slides .slidesjs-navigation {
+      margin-top:5px;
+    }
+
+    #slides .slidesjs-previous {
+      margin-right: 5px;
+      float: left;
+    }
+    #slides .slidesjs-next {
+      margin-right: 5px;
+      float: left;
+    }
+
+    #slides a:link,
+    #slides a:visited {
+      color: #333
+    }
+
+    #slides a:hover,
+    #slides a:active {
+      color: #9e2020
+    }
+
+  </style>
+
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="/js/jquery.slides.js"></script>
+
+  <script>
+    $(function(){
+      $("#slides").slidesjs({
+        width: 940,
+        height: 528
+      });
+    });
+
+  </script>
+</head>
+<body>
+  <div id="slides">
+  	@foreach(DB::table('recipes')->orderBy('created_at', 'desc')->take(5)->get() as $recipe)
+     	<img src="{{$recipe->image_url}}">
+    @endforeach
+    <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
+      <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
+  </div>
+</body>
+
 
 @stop
 

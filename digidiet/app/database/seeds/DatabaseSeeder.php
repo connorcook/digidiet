@@ -90,7 +90,7 @@ class RecipeTableSeeder extends Seeder {
                 'author_id' => 1,
                 'instructions' => "Take butter, melt, pour over dough, cook at 400 degrees Fahrenheit for 20 minutes.",
                 'ingredients' => "Butter, Dough, Oven, and a Smile",
-                'image_url' => 'http://localhost/images/buttered_crumpets.jpg'
+                'image_url' => '/images/buttered_crumpets.jpg'
         ));
 
         Recipe::create(array(
@@ -99,6 +99,7 @@ class RecipeTableSeeder extends Seeder {
                 'author_id' => 1,
                 'instructions' => "Boil water. Throw in split peas, carrots, ham, potatoes, onion, garlic. Cook until vegetables are soft. Season with salt and pepper.",
                 'ingredients' => "Water, split peas, carrots, potatoes, ham, onion, garlic, salt",
+                'image_url' => '/images/Green_Pea_Soup.jpg'
         ));
         Recipe::create(array(
                 'title' => 'Homemade Chicken Pot Pie',
@@ -106,6 +107,7 @@ class RecipeTableSeeder extends Seeder {
                 'author_id' => 1,
                 'instructions' => "Heat it up in the microwave.",
                 'ingredients' => "Get a frozen chicken pot pie from the grocery store.",
+                'image_url' => '/images/Chicken_Pot_Pie.jpg'
         ));
         Recipe::create(array(
                 'title' => 'Sushi Alaska Roll',
@@ -113,6 +115,15 @@ class RecipeTableSeeder extends Seeder {
                 'author_id' => 2,
                 'instructions' => "Roll up some salmon, cucumber, and avocado in rice and seaweed.",
                 'ingredients' => "Rice, seaweed, salmon, cucumber, avocado, sugar, vinegar",
+                'image_url' => '/images/Alaska_Sushi.jpg'
+        ));
+                Recipe::create(array(
+                'title' => 'Eggs Benedict',
+                'description' => 'Be careful, no one knows if these eggs will betray you.',
+                'author_id' => 3,
+                'instructions' => "fry your egg and serve with the declaration of independence as a garnish",
+                'ingredients' => "eggs,oil,the declaration of independence",
+                'image_url' => '/images/Eggs_Benedict.jpg'
         ));
         Recipe::create(array(
                 'title' => 'Coffee-marinated Pork Chops',
@@ -120,13 +131,6 @@ class RecipeTableSeeder extends Seeder {
                 'author_id' => 2,
                 'instructions' => "Marinate pork chops in coffee marinade over night (12+ hours). Grill over flame til desired doneness.",
                 'ingredients' => "Coffee, worcestershire sauce, pork chops",
-        ));
-        Recipe::create(array(
-                'title' => 'Eggs Benedict',
-                'description' => 'Be careful, no one knows if these eggs will betray you.',
-                'author_id' => 3,
-                'instructions' => "fry your egg and serve with the declaration of independence as a garnish",
-                'ingredients' => "eggs,oil,the declaration of independence",
         ));
         Recipe::create(array(
                 'title' => 'Chocolate Chip Pancakes',
