@@ -70,7 +70,7 @@
 </head>
 <body>
   <div id="slides">
-  	@foreach(DB::table('recipes')->orderBy('created_at', 'desc')->take(5)->get() as $recipe)
+  	@foreach(DB::table('recipes')->orderBy('created_at', 'asc')->take(5)->get() as $recipe)
      	<img src="{{$recipe->image_url}}">
     @endforeach
     <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
