@@ -297,3 +297,15 @@ Route::delete('announcement/{id}',function($id){
 	$announcement = Post::find($id);
 	$announcement->delete();
 });
+
+
+//Route to get deleted users
+Route::get('bannedusers', function(){
+	$busers = User::onlyTrashed()->get();
+	return $busers;
+});
+
+Route::post('unbanuser/{id}', function($id){
+	$buser = User::onlyTrashed()->where('id','=',$id)->restore();
+	// $buser->restore();
+});
