@@ -266,5 +266,9 @@ Route::delete('/ngrecipe/{id}', function($id){
 	$recipe->delete();
 });
 
-
-
+/*
+* route for the static contact us page
+*/
+Route::get('contact', function(){
+	return View::make('contact');
+});
