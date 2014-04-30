@@ -136,7 +136,7 @@ function openDBConn() {
 		// $rating = Request::path(
 		$rating = $row['rating'];
     	echo "<tr>";
-    	echo "<td><a href='/recipe/" . $row['id'] . "\'>". $row['title'] . "</a></td>";
+    	echo "<td><a href='/recipe/" . $row['id'] . "/'>". $row['title'] . "</a></td>";
 		echo "<td>".$row['description']."</td>";
 		echo "<td> <div class=\"star\" data-score=\"" . $row['rating'] . "\"></div></td>";
     	echo "</tr>";
