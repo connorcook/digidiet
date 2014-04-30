@@ -71,7 +71,7 @@
 <body>
   <div id="slides">
   	@foreach(DB::table('recipes')->orderBy('created_at', 'asc')->take(5)->get() as $recipe)
-     	<img src="{{$recipe->image_url}}">
+     	<a href="recipe/{{$recipe->id}}"><img style="width:100%" src="{{$recipe->image_url}}"></a>
     @endforeach
     <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
       <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
