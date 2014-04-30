@@ -36,7 +36,7 @@ Names the title of the Control Panel
 
 <div id="users" class="tab-content">@include('admin.usermgmt')</div>
 <div id="posts" class="tab-content">@include('admin.postmgmt')</div>
-<div id="front" class="tab-content">Here's where there will be a content upload page for the front page.</div>
+<div id="front" class="tab-content">@include('admin.contentmgmt')</div>
 
 </div>
 	<!-- 

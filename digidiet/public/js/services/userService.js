@@ -34,8 +34,24 @@ angular.module('userService', [])
 			//delete just a flag but keep the post
 			unFlag: function(id) {
 				$http.delete('/flag/'+id);
-			}
-			
+			},
+
+			//get announcements
+			getAnnounce: function() {
+				return $http.get('announcement');
+			},
+
+			//store an announcement
+			announce: function($text) {
+				ret = $http.post('announcement', {content: $text})
+					.success(function(data){
+						return data;
+					});
+				return ret;
+			},
+			destroyAnnounce: function(id) {
+				$http.delete('announcement/'+id);
+			} 
 		}
 
 	});

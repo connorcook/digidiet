@@ -19,7 +19,8 @@
 Route::get('/', function()
 {
 	$recipes = DB::table('recipes')->orderBy('created_at', 'desc')->take(5)->get();
-	return View::make('splash')->with('recipes', $recipes);
+	$announcements = DB::table('posts')->where('parent_type', '=', 'announcement')->orderBy('created_at', 'desc')->take(5)->get();
+	return View::make('splash')->with(array('recipes'=>$recipes, 'announcements'=>$announcements));
 });
 
 /**
@@ -271,4 +272,28 @@ Route::delete('/ngrecipe/{id}', function($id){
 */
 Route::get('contact', function(){
 	return View::make('contact');
+});
+
+
+//Route to get announcements to show
+Route::get('announcement', function(){
+	return Post::where('parent_type','=','announcement')->get();
+});
+//Route to store announcements
+Route::post('announcement', function(){
+		Eloquent::unguard();
+		Post::create(array( 
+			'content' 		=> Input::get('content'),
+			'author_id' 	=> Auth::user()->id,
+			'parent_id'		=> 0,
+			'parent_type'	=> 'announcement'
+		));
+		return Post::where('parent_type','=','announcement')->get();
+
+});
+
+//Route to delete announcement
+Route::delete('announcement/{id}',function($id){
+	$announcement = Post::find($id);
+	$announcement->delete();
 });

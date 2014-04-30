@@ -1,18 +1,31 @@
 angular.module('userCtrl',[])
 
 	//inject the User service into the controller
-	.controller('userController', function($scope, $http, User)
+	.controller('userController', function($scope, $http, $timeout, User)
 	{
 		//$scope.loading = true;
-		User.get()
+		
+			User.get()
 			.success(function(data){
 				$scope.users = data;
 				//$scope.loading = false;
+				console.log("fetched data");
 			});	
+		
+		//get announcements
+
+		
+		User.getAnnounce()
+		.success(function(data){
+			$scope.announcements = data;
+		});
+	
+	$scope.getAnn;
+		//get flags
 		User.flags()
 			.success(function(data){
 				$scope.flags = data;
-			})	
+			});	
 
 		//Ban a user
 		$scope.banUser = function(id, user) {
@@ -39,5 +52,24 @@ angular.module('userCtrl',[])
 			$scope.flags.splice($scope.flags.indexOf(flag), 1);
 			User.unFlag(id);
 		}
+
+		//add announcement
+		$scope.announce = function(data) {
+			console.log(data);
+			User.announce(data)
+			.success(function(){
+				User.getAnnounce()
+				.success(function(data){
+				$scope.announcements = data;
+			});
+		});
+		}
+
+		$scope.destroyAnnounce = function(id, announcement){
+			$scope.announcements.splice($scope.announcements.indexOf(announcement),1);
+			User.destroyAnnounce(id);
+
+		}
+
 
 	});
