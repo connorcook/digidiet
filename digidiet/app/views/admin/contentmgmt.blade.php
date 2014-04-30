@@ -3,8 +3,8 @@
 
 <h5>Create New Announcement</h5>
 <form name="announcementForm" ng-submit="announce(makeAnnounce)">
-	<input type="text" ng-model="makeAnnounce" name="newAnnouncement" form="announcementForm">
-</input><br>
+	<textarea style="width:70%" ng-model="makeAnnounce" name="newAnnouncement" form="announcementForm">
+</textarea><br>
 <button>Save</button></form>
 	
 
