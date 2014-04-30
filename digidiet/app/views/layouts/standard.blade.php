@@ -114,11 +114,11 @@
 <div class="grid">
 <div class="col_12">
   <!-- MAIN CONTENT SECTION -->
-  <div class="col_9">
+  <div id="content" class="col_9">
     @yield('content')
   </div>
   <!-- BEGIN SIDEBAR -->
-  <div class="col_3">
+  <div id="sidebar" class="col_3">
   @section('sidebar')
     @yield
   @show
@@ -128,19 +128,19 @@
   <hr />
 
   <!-- SUBCONTENT SECTION --> 
-  <div class="col_3">
+  <div id="subcontent1" class="col_3">
     @yield('subcontent1')
   </div>
   
-  <div class="col_3">
+  <div id="subcontent2" class="col_3">
     @yield('subcontent2')
   </div>
   
-  <div class="col_3">
+  <div id="subcontent3" class="col_3">
     @yield('subcontent3')
   </div>
   
-  <div class="col_3">
+  <div id="subcontent4" class="col_3">
     @yield('subcontent4')
   
   </div>
