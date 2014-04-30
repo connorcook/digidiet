@@ -125,6 +125,14 @@ class RecipeTableSeeder extends Seeder {
                 'ingredients' => "eggs,oil,the declaration of independence",
                 'image_url' => '/images/Eggs_Benedict.jpg'
         ));
+                Recipe::create(array(
+                'title' => 'Creamy Macaroni and Cheese',
+                'description' => 'So cheesy it might make you queasy',
+                'author_id' => 4,
+                'instructions' => "Cook some noodles, then melt some cheese in them.",
+                'ingredients' => "Noodles, heavy cream, cheese",
+                'image_url' => '/images/Creamy_Macaroni_and_Cheese.jpg'
+        ));
         Recipe::create(array(
                 'title' => 'Coffee-marinated Pork Chops',
                 'description' => 'Delicious porkchops with the added bonus of liquid energy!',
@@ -152,13 +160,6 @@ class RecipeTableSeeder extends Seeder {
                 'author_id' => 4,
                 'instructions' => "Cook some noodles, then melt some cheese in them.",
                 'ingredients' => "Noodles, Cheese, salt, pepper",
-        ));
-        Recipe::create(array(
-                'title' => 'Creamy Macaroni and Cheese',
-                'description' => 'So cheesy it might make you queasy',
-                'author_id' => 4,
-                'instructions' => "Cook some noodles, then melt some cheese in them.",
-                'ingredients' => "Noodles, heavy cream, cheese",
         ));
         Recipe::create(array(
                 'title' => 'Old fashioned',
