@@ -115,6 +115,7 @@ class RecipeController extends \BaseController {
 		$recipe = Recipe::find($id);
 		$user = User::find($recipe->author_id);
 		$rating = Rating::where('recipe_id', '=', $recipe->id)->avg('rating');
+		$url = Request::url();
 		//if not logged in, set rated so that recipes cannot be rated
 		if(Auth::guest())
 		{
