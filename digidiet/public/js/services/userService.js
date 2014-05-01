@@ -1,3 +1,4 @@
+//these are the services called by the user controller that in turn call the laravel routes/api
 angular.module('userService', [])
 
 	.factory('User', function($http) 	{
