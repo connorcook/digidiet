@@ -94,7 +94,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		return Validator::make($input,$rules);
 	}
-
+	/**
+	 * roles defines a relationship beween a user and the role_user table
+	 */
 	public function roles()
 	{
 		return $this->hasMany('RoleUser');

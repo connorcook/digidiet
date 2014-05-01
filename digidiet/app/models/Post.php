@@ -24,7 +24,7 @@ class Post extends Eloquent {
 
 		return Validator::make($input,$rules);
 	}
-
+	//defines a relationship between a post and its auther based on author_id
 	public function user(){
 		return $this->belongsTo('User', 'author_id', 'id');
 	}
