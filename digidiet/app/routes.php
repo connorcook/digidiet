@@ -136,7 +136,7 @@ Route::resource('post', 'PostController');
 Route::resource('notification', 'NotificationController');
 
 /**
- * 
+ * return a page to add a recipe comment
  */
 Route::get('recipe/{id}/post', function($id) {
 	$controller = new PostController;
@@ -144,7 +144,7 @@ Route::get('recipe/{id}/post', function($id) {
 });
 
 /**
- * 
+ * return a page to add a user comment
  */
 Route::get('user/{id}/post', function($id) {
 	$controller = new PostController;
@@ -175,7 +175,7 @@ Route::post('user/{id}/post', function($id) {
 	return $controller->store($id, 'user');
 });
 
-
+//return the role of a given user by id
 Route::get('user/{id}/role', function($id) {
 	$controller = new UserController;
 	return $controller->role($id);
@@ -216,37 +216,42 @@ Route::get(
  * A route to display the administrator control panel
  */
 Route::get('cp', function() {
+	//if not logged in, go to home
 	if(!Auth::check())
 	{
 		return Redirect::to('/');
 	}
+	//if administrator, show admin panel
 	else if(User::find(Auth::user()->id)->roles()->where('role_id','=',1)->count()==1)
 	{
 		$users = User::paginate(12);
 		return View::make('admin.admincp')->with('users', $users);
 	}
+	//if mod, show mod panel
 	else if(User::find(Auth::user()->id)->roles()->where('role_id','=',2)->count()==1)
 	{
 		$users = User::paginate(12);
 		return View::make('admin.modcp')->with('users', $users);
 	}
+	//otherwise, go home
 	else
 	{
 		return Redirect::to('/');
 	}
 });
-
+//overrided users get function for angular; return values without
+//making a view
 Route::get('ngusers', function() {
 	$users = User::with('roles')->get();
 	return Response::json($users);
 });
-
+//call the changeRole function in the user controller to change a user role
 Route::post('user/{id}/changerole', 'UserController@changeRole');
-
+//call the flag  function in the flag controller to flag something
 Route::post('/flag',array('uses'=>'FlagController@flag'));
-
+//get the list of all flags in the table
 Route::get('/flag', 'FlagController@index');
-
+//delete a flag from the table
 Route::delete('/flag/{id}', 'FlagController@destroy');
 
 //this route is overloading the resource route so that it has no return value
@@ -304,7 +309,7 @@ Route::get('bannedusers', function(){
 	$busers = User::onlyTrashed()->get();
 	return $busers;
 });
-
+//restore a user from the soft-deleted state
 Route::post('unbanuser/{id}', function($id){
 	$buser = User::onlyTrashed()->where('id','=',$id)->restore();
 	// $buser->restore();
