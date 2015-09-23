@@ -31,6 +31,7 @@
 <!-- BEGIN NAVIGATION BAR -->
 <!-- Menu Horizontal -->
 @section('navigation')
+<div class ="grid flex show-desktop">
 <ul class="menu">
 
 <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="G"></span>Home</a></li>
@@ -107,6 +108,54 @@
 @endif
 <!-- END NOTIFICATIONS -->
 </ul>
+</div>
+<div class ="grid flex hide-desktop hide">
+<ul class="menu">
+
+<li><a href="{{URL::to('/')}}"><span class="icon" data-icon="G"></span>Home</a></li>
+@if ( Auth::guest())
+  <li><a href="{{URL::to('/')}}"><span class="icon" data-icon="R"></span>Account</a>
+@else
+  <li><a href="{{URL::to('profile')}}"><span class="icon" data-icon="R"></span>{{Auth::user()->username}}</a>
+@endif
+    <ul>
+        @if ( Auth::guest() )
+          <li><a href="{{URL::to('login')}}"><span class="icon" data-icon="G"></span>Login</a></li>
+          <li><a href="{{URL::to('register')}}"><span class="icon" data-icon="G"></span>Register</a></li>
+        @elseif (Auth::user()->roles()->where('role_id','=',1)->count()==1 || Auth::user()->roles()->where('role_id','=',2)->count()==1)
+          <!--<li>Auth::user()->roles()->where('role_id','=',5)->id</li>-->
+          <li><a href="{{URL::to('profile')}}"><span class="icon" data-icon="G"></span>Profile</a></li>
+          <li><a href="{{URL::to('cp')}}"><span class="icon" data-icon="G"></span>Control Panel</a></li>
+          <li><a href="{{URL::to('logout')}}"><span class="icon" data-icon="G"></span>Logout</a></li>
+        @else
+          <li><a href="{{URL::to('profile')}}"><span class="icon" data-icon="G"></span>Profile</a></li>
+          <li><a href="{{URL::to('logout')}}"><span class="icon" data-icon="G"></span>Logout</a></li>
+        @endif
+    </ul>
+</li>
+   
+<li><a href="{{URL::to('recipe')}}"><span class="icon" data-icon="R"></span>Recipes</a>
+  @if (!Auth::guest())
+    <ul>
+      <li><a href="{{URL::to('recipe/create')}}"><span class="icon" data-icon="A"></span>Add</a></li>
+    </ul>
+  @endif
+</li>
+<li><a href="{{URL::to('/user/')}}">Users</a></li>
+<!-- NOTIFICATIONS -->
+<?php
+   if(Auth::check()){
+      $notifications = DB::table('notifications')->where('user_id', '=', Auth::user()->id)->take(10)->get();
+      $unread = count(DB::table('notifications')->where('user_id', '=', Auth::user()->id)->where('acknowledged', '=', FALSE)->get());
+      $total = count($notifications);
+    }
+?>
+@if(Auth::check())
+<li><a href="{{URL::to('notification')}}">Updates ({{$unread}})</a></li>
+@endif
+<!-- END NOTIFICATIONS -->
+</ul>
+</div>
 @show
 <!-- END NAVIGATION BAR -->
 
